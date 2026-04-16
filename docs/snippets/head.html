@@ -1,0 +1,39 @@
+<!-- Paste inside <head> of each page. Substitute all {{}} tokens. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{PAGE_TITLE}} — hurricanesupplylist.com</title>
+<meta name="description" content="{{META_DESCRIPTION}}">
+<link rel="canonical" href="https://hurricanesupplylist.com/{{CANONICAL_PATH}}">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="hurricanesupplylist.com">
+<meta property="og:title" content="{{PAGE_TITLE}}">
+<meta property="og:description" content="{{META_DESCRIPTION}}">
+<meta property="og:url" content="https://hurricanesupplylist.com/{{CANONICAL_PATH}}">
+<meta property="og:image" content="https://hurricanesupplylist.com/assets/img/{{OG_IMAGE|og-default.png}}">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{PAGE_TITLE}}">
+<meta name="twitter:description" content="{{META_DESCRIPTION}}">
+<meta name="twitter:image" content="https://hurricanesupplylist.com/assets/img/{{OG_IMAGE|og-default.png}}">
+
+<!-- Styles -->
+<link rel="stylesheet" href="{{ASSET_PATH}}assets/css/site.css">
+
+<!-- JSON-LD — update type and content per page -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{PAGE_TITLE}}",
+  "description": "{{META_DESCRIPTION}}",
+  "url": "https://hurricanesupplylist.com/{{CANONICAL_PATH}}",
+  "publisher": {
+    "@type": "Person",
+    "name": "Michael",
+    "url": "https://hurricanesupplylist.com/about"
+  }
+}
+</script>
