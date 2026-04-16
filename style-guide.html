@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Style guide · hurricanesupplylist.com (dev only)</title>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <style>
+    /* Dev-only chrome — not part of site.css */
+    body { padding: 2rem 0 6rem; }
+    .sg-section { margin-bottom: 3rem; }
+    .sg-label { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--color-ink-muted); margin-bottom: 1rem; }
+    .sg-swatches { display: flex; gap: .5rem; flex-wrap: wrap; }
+    .sg-swatch { width: 120px; border-radius: 4px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+    .sg-swatch-color { height: 60px; }
+    .sg-swatch-label { font-size: 11px; font-family: monospace; padding: .35rem .5rem; background: white; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Style guide</h1>
+    <p class="prose" style="color: var(--color-ink-muted)">Development reference — open in a browser to verify the design system. Not part of the shipping site.</p>
+
+    <!-- 1. Palette swatches -->
+    <div class="sg-section">
+      <div class="sg-label">Palette swatches</div>
+      <div class="sg-swatches">
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: #FBF8F2"></div>
+          <div class="sg-swatch-label">#FBF8F2<br>--color-bg</div>
+        </div>
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: #1F2A33"></div>
+          <div class="sg-swatch-label">#1F2A33<br>--color-ink</div>
+        </div>
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: #556270"></div>
+          <div class="sg-swatch-label">#556270<br>--color-ink-muted</div>
+        </div>
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: #3A6B83"></div>
+          <div class="sg-swatch-label">#3A6B83<br>--color-storm</div>
+        </div>
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: #C2742B"></div>
+          <div class="sg-swatch-label">#C2742B<br>--color-warm</div>
+        </div>
+        <div class="sg-swatch">
+          <div class="sg-swatch-color" style="background: #E6DFD0"></div>
+          <div class="sg-swatch-label">#E6DFD0<br>--color-rule</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Type scale -->
+    <div class="sg-section">
+      <div class="sg-label">Type scale</div>
+      <h1>H1 — Fraunces 700, 2.25rem</h1>
+      <h2>H2 — Fraunces 700, 1.75rem</h2>
+      <h3>H3 — Fraunces 500, 1.35rem</h3>
+      <h4>H4 — Fraunces 500, 1.1rem</h4>
+      <p class="prose">Body paragraph — Inter 400, 18px/1.7. The quick brown fox jumps over the lazy dog. Supply kits should be reviewed and refreshed every 12 months to keep food, water, and batteries current.</p>
+      <p style="font-size: 0.875rem; color: var(--color-ink-muted)">Small / muted text — Inter 400, 0.875rem, color-ink-muted. Use for footnotes, timestamps, and secondary labels.</p>
+    </div>
+
+    <!-- 3. Link states -->
+    <div class="sg-section">
+      <div class="sg-label">Link states</div>
+      <p>
+        <a href="#">Default link</a> — storm blue underline, offset 3px.
+        <br>
+        Hover: color shifts to <code>--color-ink</code> (darken). Move pointer over link to verify.
+        <br>
+        Focus-visible: 2px solid <code>--color-warm</code> outline, offset 2px, radius 2px. Tab to the link below to verify.
+        <br>
+        <a href="#">Tab to this link to see focus ring</a>
+      </p>
+    </div>
+
+    <!-- 4. List variants -->
+    <div class="sg-section">
+      <div class="sg-label">List variants</div>
+
+      <p style="font-size: 0.875rem; color: var(--color-ink-muted); margin-bottom: 0.25rem;">Unordered list</p>
+      <ul>
+        <li>Water (one gallon per person per day)</li>
+        <li>Non-perishable food</li>
+        <li>First-aid kit</li>
+        <li>Flashlight with extra batteries</li>
+      </ul>
+
+      <p style="font-size: 0.875rem; color: var(--color-ink-muted); margin-bottom: 0.25rem;">Ordered list</p>
+      <ol>
+        <li>Assess your household's specific needs.</li>
+        <li>Gather supplies listed in your kit plan.</li>
+        <li>Store in a cool, dark, accessible location.</li>
+        <li>Review and rotate stock every 12 months.</li>
+      </ol>
+
+      <p style="font-size: 0.875rem; color: var(--color-ink-muted); margin-bottom: 0.25rem;">Checklist — ochre bullet markers, <code>.why</code> note text in muted ink</p>
+      <ul class="checklist">
+        <li>One gallon of water per person per day <span class="why">— three days minimum per person.</span></li>
+        <li>Non-perishable food <span class="why">— shelf-stable, no cooking required.</span></li>
+        <li>A manual can opener <span class="why">— the one thing people forget every time.</span></li>
+        <li>Flashlight with extra batteries <span class="why">— one per person, not shared.</span></li>
+      </ul>
+    </div>
+
+    <!-- 5. Button variants -->
+    <div class="sg-section">
+      <div class="sg-label">Button variants</div>
+      <div class="btn-row">
+        <a href="#" class="btn btn-primary">Primary button</a>
+        <a href="#" class="btn btn-secondary">Secondary button</a>
+      </div>
+      <p style="font-size: 0.875rem; color: var(--color-ink-muted)">Hover reduces opacity to 0.85. Both share <code>.btn</code> base; variants are <code>.btn-primary</code> (warm/ochre fill) and <code>.btn-secondary</code> (storm outline).</p>
+    </div>
+
+    <!-- 6. Callout block -->
+    <div class="sg-section">
+      <div class="sg-label">Callout block</div>
+      <div class="callout">
+        <strong>Before the storm arrives:</strong> Authorities may issue evacuation orders with little notice. Keep your go-bag packed and your vehicle fueled during active watches.
+      </div>
+    </div>
+
+    <!-- 7. Image placeholder -->
+    <div class="sg-section">
+      <div class="sg-label">Image placeholder</div>
+      <div class="img-placeholder" style="height: 300px;">
+        Hero image — replace <code>assets/img/hero.jpg</code>
+      </div>
+    </div>
+
+    <!-- 8. Site nav preview -->
+    <div class="sg-section">
+      <div class="sg-label">Site nav preview</div>
+      <div style="background: var(--color-bg); border: 1px solid var(--color-rule); border-radius: 6px; overflow: hidden;">
+        <nav class="site-nav">
+          <div class="container-wide">
+            <a href="#" class="brand">Hurricane Supply List</a>
+            <a href="#">Basic Kit</a>
+            <a href="#">By Household</a>
+            <a href="#">About</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <!-- 9. Site footer preview -->
+    <div class="sg-section">
+      <div class="sg-label">Site footer preview</div>
+      <div style="background: var(--color-bg); border: 1px solid var(--color-rule); border-radius: 6px; overflow: hidden;">
+        <footer class="site-footer">
+          <div class="container">
+            Last reviewed: April 2026 · A supplement, not a replacement for your local emergency management office. · <a href="#">Support on Ko-fi</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
