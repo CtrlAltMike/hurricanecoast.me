@@ -1,0 +1,10 @@
+TO GENERATE THIS PDF:
+1. Open printables/evacuation-kit.html in Chrome
+2. File → Print
+3. Destination: Save as PDF
+4. Layout: Portrait. Margins: Default. Headers and footers: ON
+5. Save as: printables/evacuation-kit.pdf
+6. Delete this .todo file
+7. git add printables/evacuation-kit.html printables/evacuation-kit.pdf
+8. git rm printables/evacuation-kit.pdf.todo
+9. git commit -m "chore: generate evacuation kit PDF"
