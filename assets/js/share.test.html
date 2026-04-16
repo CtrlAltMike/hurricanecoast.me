@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>share.js tests (dev only)</title>
+  <style>
+    body { font-family: monospace; padding: 2rem; }
+    .pass { color: green; }
+    .fail { color: red; font-weight: bold; }
+  </style>
+</head>
+<body>
+<h2>share.js unit tests</h2>
+<div id="results"></div>
+<script src="share.js"></script>
+<script>
+  const results = document.getElementById('results');
+  let passed = 0, failed = 0;
+
+  function assert(description, condition) {
+    const div = document.createElement('div');
+    if (condition) {
+      div.className = 'pass';
+      div.textContent = '✓ ' + description;
+      passed++;
+    } else {
+      div.className = 'fail';
+      div.textContent = '✗ ' + description;
+      failed++;
+    }
+    results.appendChild(div);
+  }
+
+  // buildTwitterURL
+  const twitterURL = buildTwitterURL('Evacuation kit', 'https://hurricanesupplylist.com/evacuation-kit');
+  assert('buildTwitterURL contains intent domain', twitterURL.includes('twitter.com/intent/tweet'));
+  assert('buildTwitterURL contains encoded title', twitterURL.includes(encodeURIComponent('Evacuation kit')));
+  assert('buildTwitterURL contains encoded url', twitterURL.includes(encodeURIComponent('https://hurricanesupplylist.com/evacuation-kit')));
+
+  // buildFacebookURL
+  const fbURL = buildFacebookURL('https://hurricanesupplylist.com/florida');
+  assert('buildFacebookURL contains sharer domain', fbURL.includes('facebook.com/sharer'));
+  assert('buildFacebookURL contains encoded url', fbURL.includes(encodeURIComponent('https://hurricanesupplylist.com/florida')));
+
+  // buildEmailURL
+  const emailURL = buildEmailURL('Pet kit', 'https://hurricanesupplylist.com/pet-kit');
+  assert('buildEmailURL starts with mailto:', emailURL.startsWith('mailto:'));
+  assert('buildEmailURL has subject param', emailURL.includes('subject='));
+  assert('buildEmailURL has body param', emailURL.includes('body='));
+  assert('buildEmailURL subject contains title', emailURL.includes(encodeURIComponent('Pet kit')));
+
+  // buildSmsURL
+  const smsURL = buildSmsURL('Pet kit', 'https://hurricanesupplylist.com/pet-kit');
+  assert('buildSmsURL starts with sms:', smsURL.startsWith('sms:'));
+  assert('buildSmsURL has body param', smsURL.includes('body='));
+  assert('buildSmsURL body contains url', smsURL.includes(encodeURIComponent('https://hurricanesupplylist.com/pet-kit')));
+
+  const summary = document.createElement('div');
+  summary.style.marginTop = '1rem';
+  summary.style.fontWeight = 'bold';
+  summary.textContent = `${passed} passed, ${failed} failed`;
+  results.appendChild(summary);
+</script>
+</body>
+</html>
