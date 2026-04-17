@@ -136,4 +136,41 @@ tr { page-break-inside: avoid; }
     box-shadow: 0 2px 20px rgba(0,0,0,.08);
     border-radius: 8px;
   }
+
+  .print-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #E6DFD0;
+  }
+
+  .print-bar a.back-link {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 0.875rem;
+    color: #3A6B83;
+    text-decoration: none;
+  }
+
+  .print-bar a.back-link:hover { text-decoration: underline; }
+
+  .print-bar button {
+    margin-left: auto;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    background: #C2742B;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.55rem 1.25rem;
+    cursor: pointer;
+  }
+
+  .print-bar button:hover { background: #a8601f; }
+}
+
+@media print {
+  .print-bar { display: none; }
 }
