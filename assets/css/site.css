@@ -358,3 +358,115 @@ hr {
     color: var(--color-storm);
   }
 }
+
+/* Home page */
+.hero-home {
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--color-rule);
+}
+.hero-home h1 {
+  font-size: 2.75rem;
+  margin-top: 0;
+}
+.hero-home .lede {
+  font-size: 1.2rem;
+  color: var(--color-ink-muted);
+  max-width: 58ch;
+}
+
+.home-section {
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--color-rule);
+}
+.home-section--alt {
+  background: #F5F0E8;
+}
+.home-section h2 {
+  margin-top: 0;
+}
+
+/* Kit grid */
+.kit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.kit-card {
+  display: block;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--color-rule);
+  border-radius: 6px;
+  text-decoration: none;
+  background: var(--color-bg);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.kit-card:hover {
+  border-color: var(--color-storm);
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+.kit-card-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-ink);
+  margin-bottom: 0.35rem;
+}
+.kit-card-desc {
+  font-size: 0.875rem;
+  color: var(--color-ink-muted);
+  line-height: 1.4;
+}
+
+/* State grid */
+.state-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+.state-card {
+  display: inline-block;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--color-rule);
+  border-radius: 4px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-ink);
+  background: var(--color-bg);
+}
+.state-card:hover {
+  border-color: var(--color-storm);
+  color: var(--color-storm);
+}
+
+/* Printables strip */
+.printables-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.printable-card {
+  display: block;
+  padding: 1rem;
+  border: 1px solid var(--color-rule);
+  border-radius: 6px;
+  text-decoration: none;
+  background: var(--color-bg);
+  transition: border-color 0.15s;
+}
+.printable-card:hover {
+  border-color: var(--color-warm);
+}
+.printable-card-title {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--color-ink);
+  margin-bottom: 0.25rem;
+}
+.printable-card-meta {
+  font-size: 0.8125rem;
+  color: var(--color-ink-muted);
+}
