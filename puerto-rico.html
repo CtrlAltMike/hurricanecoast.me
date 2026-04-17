@@ -56,7 +56,7 @@
       <a href="index.html" class="brand">hurricanesupplylist.com</a>
       <a href="index.html">Home</a>
       <a href="kits.html">Kit Guides</a>
-      <a href="states.html" aria-current="page">By State</a>
+      <a href="states.html" aria-current="page">Coastal Guides</a>
       <a href="about.html">About</a>
       <a href="https://ko-fi.com/mikehen" target="_blank" rel="noopener">Support</a>
     </div>
@@ -66,13 +66,27 @@
   <header class="hero hero--split">
     <div class="container-wide hero-layout">
       <div class="hero-copy">
-        <div class="hero-eyebrow">Regional guide</div>
-        <h1>Preparing for hurricanes in Puerto Rico</h1>
-      <p class="prose">Preparing for a hurricane in Puerto Rico involves considerations that don't apply to mainland US states. The island cannot be reached by road from anywhere. Pre-storm supply resupply and post-storm relief both depend on air and sea logistics. The power grid has historically been vulnerable to extended outages. A standard mainland kit is a starting point — this guide covers the island-specific additions and realities.</p>
-      <div class="btn-row">
-        <a href="kits.html" class="btn btn-primary">Browse kit guides</a>
-        <a href="printables/evacuation-kit.html" class="btn btn-secondary">Evacuation checklist</a>
-      </div>
+        <div class="page-language-panel is-active" data-page-language-panel="en">
+          <div class="hero-eyebrow">Regional guide</div>
+          <h1>Preparing for hurricanes in Puerto Rico</h1>
+          <p class="prose">Preparing for a hurricane in Puerto Rico involves considerations that don't apply to mainland US states. The island cannot be reached by road from anywhere. Pre-storm supply resupply and post-storm relief both depend on air and sea logistics. The power grid has historically been vulnerable to extended outages. A standard mainland kit is a starting point — this guide covers the island-specific additions and realities.</p>
+        </div>
+        <div class="page-language-panel" data-page-language-panel="es" lang="es" hidden>
+          <div class="hero-eyebrow">Guía regional</div>
+          <h1>Prepararse para huracanes en Puerto Rico</h1>
+          <p class="prose">Prepararse para un huracán en Puerto Rico implica consideraciones que no aplican a los estados continentales de Estados Unidos. A la isla no se puede llegar por carretera desde ningún lugar. Tanto el reabastecimiento antes de la tormenta como la ayuda después del impacto dependen de la logística aérea y marítima. La red eléctrica ha sido históricamente vulnerable a apagones prolongados. Un kit estándar del continente es solo el punto de partida: esta guía cubre las realidades y los suministros adicionales específicos de la isla.</p>
+        </div>
+        <div class="language-toggle-wrap">
+          <p class="language-toggle-label">Page language</p>
+          <div class="language-toggle" role="group" aria-label="Page language">
+            <button type="button" class="language-toggle-btn is-active" data-page-language-btn="en" aria-pressed="true">English</button>
+            <button type="button" class="language-toggle-btn" data-page-language-btn="es" aria-pressed="false">Español</button>
+          </div>
+        </div>
+        <div class="btn-row">
+          <a href="kits.html" class="btn btn-primary">Browse kit guides</a>
+          <a href="printables/evacuation-kit.html" class="btn btn-secondary">Evacuation checklist</a>
+        </div>
       </div>
       <div class="hero-media-wrap" aria-hidden="true">
         <figure class="hero-media">
@@ -85,54 +99,154 @@
   <main>
     <div class="share-sticky-wrap">
       <article class="container">
+        <div class="page-language-panel is-active" data-page-language-panel="en">
+          <!-- Section 1: What makes hurricanes here different -->
+          <section>
+            <h2>What makes hurricanes here different</h2>
+            <ul class="checklist">
+              <li><strong>Island geography</strong> means supply chains for relief and reconstruction take longer to establish. After Maria in 2017, some areas were without power for 11 months. This is not a reason for panic; it is a reason to stock supplies for a longer duration than mainland guidance suggests.</li>
+              <li><strong>The power grid</strong> has historically been fragile. Grid rehabilitation has been ongoing since Maria; conditions have improved, but the island's mountainous terrain makes restoration difficult and uneven across municipalities.</li>
+              <li><strong>The mountains</strong> create orographic rainfall effects — storms can dump extreme rainfall on the windward side of the island, causing catastrophic flooding and landslides in ways not seen on flat coastal areas.</li>
+              <li><strong>Multiple simultaneous threats</strong>: storm surge on the coasts, flash flooding and landslides in the mountains and foothills, and wind damage across the interior can all occur from a single event.</li>
+              <li><strong>Supply chain distance</strong>: basic supplies that would arrive within 24 hours on the mainland may take days or weeks after a major event. Two-week supply minimums are appropriate; three to four weeks is not excessive for critical items.</li>
+            </ul>
+          </section>
 
-        <!-- Section 1: What makes hurricanes here different -->
-        <section>
-          <h2>What makes hurricanes here different</h2>
-          <ul class="checklist">
-            <li><strong>Island geography</strong> means supply chains for relief and reconstruction take longer to establish. After Maria in 2017, some areas were without power for 11 months. This is not a reason for panic; it is a reason to stock supplies for a longer duration than mainland guidance suggests.</li>
-            <li><strong>The power grid</strong> has historically been fragile. Grid rehabilitation has been ongoing since Maria; conditions have improved, but the island's mountainous terrain makes restoration difficult and uneven across municipalities.</li>
-            <li><strong>The mountains</strong> create orographic rainfall effects — storms can dump extreme rainfall on the windward side of the island, causing catastrophic flooding and landslides in ways not seen on flat coastal areas.</li>
-            <li><strong>Multiple simultaneous threats</strong>: storm surge on the coasts, flash flooding and landslides in the mountains and foothills, and wind damage across the interior can all occur from a single event.</li>
-            <li><strong>Supply chain distance</strong>: basic supplies that would arrive within 24 hours on the mainland may take days or weeks after a major event. Two-week supply minimums are appropriate; three to four weeks is not excessive for critical items.</li>
-          </ul>
-        </section>
+          <!-- Section 2: Regional supply additions for Puerto Rico -->
+          <section>
+            <h2>Regional supply additions for Puerto Rico</h2>
+            <p class="prose">Standard kit guidance assumes a three-day to one-week planning horizon. In Puerto Rico, a conservative planning horizon for supplies is two to four weeks for a major event.</p>
+            <ul class="checklist">
+              <li><strong>Extended water supply: two-week minimum</strong> <span class="why">— rather than the standard three-day minimum; water system restoration takes longer post-major event</span></li>
+              <li><strong>A water filtration system (gravity filter or pump filter)</strong> <span class="why">— for longer-duration situations beyond stored supply</span></li>
+              <li><strong>Extended food supply: two weeks minimum</strong> <span class="why">— supply chain restoration takes longer</span></li>
+              <li><strong>A generator or solar + battery system if budget allows</strong> <span class="why">— power restoration may be measured in months in mountain areas after a major storm</span></li>
+              <li><strong>Prescription medications: at minimum two weeks, ideally one month</strong> <span class="why">— pharmacies face resupply challenges post-event</span></li>
+              <li><strong>Propane cook stove and fuel</strong> <span class="why">— for extended no-power cooking</span></li>
+            </ul>
+          </section>
 
-        <!-- Section 2: Regional supply additions for Puerto Rico -->
-        <section>
-          <h2>Regional supply additions for Puerto Rico</h2>
-          <p class="prose">Standard kit guidance assumes a three-day to one-week planning horizon. In Puerto Rico, a conservative planning horizon for supplies is two to four weeks for a major event.</p>
-          <ul class="checklist">
-            <li><strong>Extended water supply: two-week minimum</strong> <span class="why">— rather than the standard three-day minimum; water system restoration takes longer post-major event</span></li>
-            <li><strong>A water filtration system (gravity filter or pump filter)</strong> <span class="why">— for longer-duration situations beyond stored supply</span></li>
-            <li><strong>Extended food supply: two weeks minimum</strong> <span class="why">— supply chain restoration takes longer</span></li>
-            <li><strong>A generator or solar + battery system if budget allows</strong> <span class="why">— power restoration may be measured in months in mountain areas after a major storm</span></li>
-            <li><strong>Prescription medications: at minimum two weeks, ideally one month</strong> <span class="why">— pharmacies face resupply challenges post-event</span></li>
-            <li><strong>Propane cook stove and fuel</strong> <span class="why">— for extended no-power cooking</span></li>
-          </ul>
-        </section>
+          <!-- Section 3: Official sources to bookmark now -->
+          <section>
+            <h2>Official sources to bookmark now</h2>
+            <p class="prose">The organizations below are the authoritative sources for evacuation orders, shelter locations, and storm-specific guidance. Bookmark these before the season — not when a storm is approaching, when traffic on these sites is enormous.</p>
+            <ul class="checklist">
+              <li><strong><a href="https://www.nmead.pr.gov" rel="noopener">Puerto Rico Emergency Management Bureau (NMEAD)</a></strong> — official Puerto Rico emergency management</li>
+              <li><strong><a href="https://www.nhc.noaa.gov" rel="noopener">National Hurricane Center</a></strong> — track forecasts and watches/warnings</li>
+              <li><strong><a href="https://dtop.pr.gov" rel="noopener">Puerto Rico Department of Transportation</a></strong> — road conditions</li>
+              <li><strong><a href="https://pr.211.org" rel="noopener">Puerto Rico 211</a></strong> — local assistance</li>
+              <li><strong><a href="https://www.fema.gov/es/locations/puerto-rico" rel="noopener">FEMA Puerto Rico</a></strong> — federal preparedness resources</li>
+              <li><strong>Your municipality emergency management office</strong> — local evacuation orders and shelter information</li>
+            </ul>
+            <div class="callout">
+              <p>Evacuation routes and shelter locations change with each event. Always confirm with your municipal emergency management office.</p>
+            </div>
+          </section>
 
-        <!-- Section 3: Official sources to bookmark now -->
-        <section>
-          <h2>Official sources to bookmark now</h2>
-          <p class="prose">The organizations below are the authoritative sources for evacuation orders, shelter locations, and storm-specific guidance. Bookmark these before the season — not when a storm is approaching, when traffic on these sites is enormous.</p>
-          <ul class="checklist">
-            <li><strong><a href="https://www.nmead.pr.gov" rel="noopener">Puerto Rico Emergency Management Bureau (NMEAD)</a></strong> — official Puerto Rico emergency management</li>
-            <li><strong><a href="https://www.nhc.noaa.gov" rel="noopener">National Hurricane Center</a></strong> — track forecasts and watches/warnings</li>
-            <li><strong><a href="https://dtop.pr.gov" rel="noopener">Puerto Rico Department of Transportation</a></strong> — road conditions</li>
-            <li><strong><a href="https://pr.211.org" rel="noopener">Puerto Rico 211</a></strong> — local assistance</li>
-            <li><strong><a href="https://www.fema.gov/es/locations/puerto-rico" rel="noopener">FEMA Puerto Rico</a></strong> — federal preparedness resources</li>
-            <li><strong>Your municipality emergency management office</strong> — local evacuation orders and shelter information</li>
-          </ul>
-          <div class="callout">
-            <p>Evacuation routes and shelter locations change with each event. Always confirm with your municipal emergency management office.</p>
+          <!-- Section 4: Historical context -->
+          <section>
+            <h2>Historical context</h2>
+            <p class="prose">Puerto Rico's documented hurricane history includes some of the most severe events in Caribbean recorded history. The San Felipe Hurricane of 1928 and the San Ciprian Hurricane of 1932 are among the early recorded major events. More recently, Hugo in 1989 and Georges in 1998 caused significant damage and extended outages. María in 2017 is the most recent catastrophic event: it made landfall as a Category 4 with nearly 155 mph winds and caused estimated deaths of approximately 3,000 people (estimates vary by methodology) and total damage estimated at $90 billion. The response to María exposed significant gaps in federal and local emergency response coordination; subsequent planning and investment has addressed some of those gaps. Preparedness for Puerto Rico residents means planning for a more extended self-sufficiency window than mainland guidance assumes.</p>
+          </section>
+        </div>
+
+        <div class="page-language-panel" data-page-language-panel="es" lang="es" hidden>
+          <section>
+            <h2>Lo que hace que los huracanes aquí sean diferentes</h2>
+            <ul class="checklist">
+              <li><strong>La geografía insular</strong> significa que las cadenas de suministro para el socorro y la reconstrucción tardan más en restablecerse. Después de María en 2017, algunas zonas estuvieron sin electricidad durante 11 meses. Esto no es motivo de pánico; es motivo para almacenar suministros durante más tiempo del que suele sugerir la orientación para el continente.</li>
+              <li><strong>La red eléctrica</strong> ha sido históricamente frágil. La rehabilitación de la red continúa desde María; las condiciones han mejorado, pero el terreno montañoso hace que la restauración sea difícil y desigual entre municipios.</li>
+              <li><strong>Las montañas</strong> generan efectos de lluvia orográfica: las tormentas pueden descargar lluvias extremas en el lado de barlovento de la isla, causando inundaciones catastróficas y deslizamientos de tierra de maneras que no se ven en zonas costeras planas.</li>
+              <li><strong>Múltiples amenazas simultáneas</strong>: marejada ciclónica en las costas, inundaciones repentinas y deslizamientos en las montañas y estribaciones, y daños por viento en el interior pueden ocurrir en un solo evento.</li>
+              <li><strong>La distancia de la cadena de suministro</strong>: suministros básicos que en el continente llegarían en 24 horas pueden tardar días o semanas después de un evento mayor. Un mínimo de dos semanas de suministros es apropiado; tres o cuatro semanas no es excesivo para artículos críticos.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Suministros adicionales recomendados para Puerto Rico</h2>
+            <p class="prose">La orientación estándar para kits asume un horizonte de planificación de tres días a una semana. En Puerto Rico, un horizonte conservador para un evento mayor es de dos a cuatro semanas.</p>
+            <ul class="checklist">
+              <li><strong>Reserva ampliada de agua: mínimo de dos semanas</strong> <span class="why">— en lugar del mínimo estándar de tres días; la restauración del sistema de agua tarda más después de un evento mayor</span></li>
+              <li><strong>Un sistema de filtración de agua (filtro por gravedad o de bomba)</strong> <span class="why">— para situaciones de mayor duración más allá del suministro almacenado</span></li>
+              <li><strong>Reserva ampliada de alimentos: mínimo de dos semanas</strong> <span class="why">— la recuperación de la cadena de suministro tarda más</span></li>
+              <li><strong>Un generador o un sistema solar con batería, si el presupuesto lo permite</strong> <span class="why">— la restauración eléctrica puede medirse en meses en zonas montañosas después de una tormenta mayor</span></li>
+              <li><strong>Medicamentos recetados: como mínimo dos semanas, idealmente un mes</strong> <span class="why">— las farmacias enfrentan problemas de reabastecimiento después del evento</span></li>
+              <li><strong>Estufa de propano y combustible</strong> <span class="why">— para cocinar durante apagones prolongados</span></li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Fuentes oficiales que conviene guardar desde ahora</h2>
+            <p class="prose">Las organizaciones de abajo son las fuentes autorizadas para órdenes de evacuación, ubicación de refugios y orientación específica de cada tormenta. Guárdalas antes de la temporada, no cuando se acerque una tormenta y el tráfico en esos sitios sea enorme.</p>
+            <ul class="checklist">
+              <li><strong><a href="https://www.nmead.pr.gov" rel="noopener">Negociado para el Manejo de Emergencias y Administración de Desastres (NMEAD)</a></strong> — manejo de emergencias oficial de Puerto Rico</li>
+              <li><strong><a href="https://www.nhc.noaa.gov" rel="noopener">Centro Nacional de Huracanes</a></strong> — pronósticos de trayectoria y avisos y vigilancias</li>
+              <li><strong><a href="https://dtop.pr.gov" rel="noopener">Departamento de Transportación y Obras Públicas de Puerto Rico</a></strong> — condiciones de las carreteras</li>
+              <li><strong><a href="https://pr.211.org" rel="noopener">Puerto Rico 211</a></strong> — asistencia local</li>
+              <li><strong><a href="https://www.fema.gov/es/locations/puerto-rico" rel="noopener">FEMA Puerto Rico</a></strong> — recursos federales de preparación</li>
+              <li><strong>La oficina de manejo de emergencias de su municipio</strong> — órdenes locales de evacuación e información sobre refugios</li>
+            </ul>
+            <div class="callout">
+              <p>Las rutas de evacuación y la ubicación de refugios cambian con cada evento. Confírmelas siempre con la oficina municipal de manejo de emergencias.</p>
+            </div>
+          </section>
+
+          <section>
+            <h2>Contexto histórico</h2>
+            <p class="prose">El historial documentado de huracanes de Puerto Rico incluye algunos de los eventos más severos en la historia registrada del Caribe. El huracán San Felipe de 1928 y el huracán San Ciprián de 1932 figuran entre los primeros grandes eventos documentados. Más recientemente, Hugo en 1989 y Georges en 1998 causaron daños significativos y apagones prolongados. María en 2017 es el evento catastrófico más reciente: tocó tierra como categoría 4 con vientos cercanos a 155 mph y provocó unas 3,000 muertes estimadas (las cifras varían según la metodología) y daños totales estimados en 90 mil millones de dólares. La respuesta a María dejó al descubierto brechas importantes en la coordinación de la respuesta de emergencia federal y local; la planificación y la inversión posteriores han atendido parte de esas brechas. Para los residentes de Puerto Rico, estar preparados significa planificar un periodo de autosuficiencia más largo del que supone la orientación para el continente.</p>
+          </section>
+        </div>
+
+        <hr>
+
+        <section class="weather-popout" aria-label="Live Puerto Rico wind gust map">
+          <div class="weather-popout-header">
+            <div class="weather-popout-copy">
+              <div class="page-language-panel is-active" data-page-language-panel="en">
+                <p class="weather-popout-eyebrow">Weather intelligence</p>
+                <h2>Live Puerto Rico wind gusts</h2>
+                <p class="prose">A fast live view for checking where stronger gusts are organizing around the island. Use it as context, then verify warnings and local instructions with <a href="https://www.nmead.pr.gov" target="_blank" rel="noopener">NMEAD</a> and the <a href="https://www.nhc.noaa.gov" target="_blank" rel="noopener">National Hurricane Center</a>.</p>
+                <div class="weather-popout-meta" aria-label="Weather map details">
+                  <span class="weather-popout-pill">Wind gusts</span>
+                  <span class="weather-popout-pill">Puerto Rico focus</span>
+                  <span class="weather-popout-pill">Ventusky live map</span>
+                </div>
+              </div>
+              <div class="page-language-panel" data-page-language-panel="es" lang="es" hidden>
+                <p class="weather-popout-eyebrow">Inteligencia meteorológica</p>
+                <h2>Ráfagas en vivo para Puerto Rico</h2>
+                <p class="prose">Una vista rápida en vivo para ver dónde se están concentrando las ráfagas más fuertes alrededor de la isla. Úsela como contexto y luego confirme avisos e instrucciones locales con <a href="https://www.nmead.pr.gov" target="_blank" rel="noopener">NMEAD</a> y el <a href="https://www.nhc.noaa.gov" target="_blank" rel="noopener">Centro Nacional de Huracanes</a>.</p>
+                <div class="weather-popout-meta" aria-label="Detalles del mapa meteorológico">
+                  <span class="weather-popout-pill">Ráfagas</span>
+                  <span class="weather-popout-pill">Enfoque en Puerto Rico</span>
+                  <span class="weather-popout-pill">Mapa en vivo de Ventusky</span>
+                </div>
+              </div>
+            </div>
+            <div class="weather-popout-actions">
+              <div class="page-language-panel is-active" data-page-language-panel="en">
+                <a href="https://www.ventusky.com/?p=18.22;-66.47;7&l=gust" class="btn btn-secondary" target="_blank" rel="noopener">Open live map</a>
+              </div>
+              <div class="page-language-panel" data-page-language-panel="es" lang="es" hidden>
+                <a href="https://www.ventusky.com/?p=18.22;-66.47;7&l=gust" class="btn btn-secondary" target="_blank" rel="noopener">Abrir mapa en vivo</a>
+              </div>
+            </div>
           </div>
-        </section>
-
-        <!-- Section 4: Historical context -->
-        <section>
-          <h2>Historical context</h2>
-          <p class="prose">Puerto Rico's documented hurricane history includes some of the most severe events in Caribbean recorded history. The San Felipe Hurricane of 1928 and the San Ciprian Hurricane of 1932 are among the early recorded major events. More recently, Hugo in 1989 and Georges in 1998 caused significant damage and extended outages. María in 2017 is the most recent catastrophic event: it made landfall as a Category 4 with nearly 155 mph winds and caused estimated deaths of approximately 3,000 people (estimates vary by methodology) and total damage estimated at $90 billion. The response to María exposed significant gaps in federal and local emergency response coordination; subsequent planning and investment has addressed some of those gaps. Preparedness for Puerto Rico residents means planning for a more extended self-sufficiency window than mainland guidance assumes.</p>
+          <div class="weather-popout-media">
+            <div class="weather-popout-frame">
+              <iframe
+                src="https://embed.ventusky.com/?p=18.22;-66.47;7&l=gust&w=soft&pin=18.22;-66.47;dot;Puerto%20Rico"
+                title="Ventusky wind gust map centered on Puerto Rico"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+          </div>
+          <div class="page-language-panel is-active" data-page-language-panel="en">
+            <p class="weather-popout-note">Source: <a href="https://www.ventusky.com/?p=18.22;-66.47;7&l=gust" target="_blank" rel="noopener">Ventusky</a>. For official warnings, use <a href="https://www.nmead.pr.gov" target="_blank" rel="noopener">NMEAD</a> and the <a href="https://www.nhc.noaa.gov" target="_blank" rel="noopener">National Hurricane Center</a>.</p>
+          </div>
+          <div class="page-language-panel" data-page-language-panel="es" lang="es" hidden>
+            <p class="weather-popout-note">Fuente: <a href="https://www.ventusky.com/?p=18.22;-66.47;7&l=gust" target="_blank" rel="noopener">Ventusky</a>. Para avisos oficiales, use <a href="https://www.nmead.pr.gov" target="_blank" rel="noopener">NMEAD</a> y el <a href="https://www.nhc.noaa.gov" target="_blank" rel="noopener">Centro Nacional de Huracanes</a>.</p>
+          </div>
         </section>
 
         <!-- Bottom share row -->
@@ -167,6 +281,7 @@
     </div>
   </footer>
 
+  <script src="assets/js/page-language-toggle.js"></script>
   <script src="assets/js/share.js"></script>
 </body>
 </html>
