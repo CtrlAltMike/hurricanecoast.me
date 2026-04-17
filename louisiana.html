@@ -34,7 +34,7 @@
     "url": "https://hurricanesupplylist.com/louisiana",
     "publisher": {
       "@type": "Person",
-      "name": "Michael",
+      "name": "Mike",
       "url": "https://hurricanesupplylist.com/about"
     }
   }
@@ -45,22 +45,31 @@
   <!-- Site nav -->
   <nav class="site-nav" aria-label="Site navigation">
     <div class="container-wide">
-      <a href="/" class="brand">hurricanesupplylist.com</a>
-      <a href="/#kits">Kits</a>
-      <a href="/#states" aria-current="page">States</a>
-      <a href="/printables/">Printables</a>
-      <a href="/about">About</a>
+      <a href="index.html" class="brand">hurricanesupplylist.com</a>
+      <a href="index.html">Home</a>
+      <a href="kits.html">Kit Guides</a>
+      <a href="states.html" aria-current="page">By State</a>
+      <a href="about.html">About</a>
+      <a href="https://ko-fi.com/mikehen" target="_blank" rel="noopener">Support</a>
     </div>
   </nav>
 
   <!-- Hero -->
-  <header class="hero">
-    <div class="container">
-      <h1>Preparing for hurricanes in Louisiana</h1>
+  <header class="hero hero--split">
+    <div class="container-wide hero-layout">
+      <div class="hero-copy">
+        <div class="hero-eyebrow">Regional guide</div>
+        <h1>Preparing for hurricanes in Louisiana</h1>
       <p class="prose">Louisiana faces hurricane risk that is shaped by geography unlike anywhere else in the US. The Mississippi River delta is slowly sinking. Coastal wetlands that once absorbed storm surge have been eroding for decades. The result is that hurricane impact in Louisiana — even from storms that make landfall elsewhere — can be severe. This guide covers the specific risks, regional considerations, and official resources.</p>
       <div class="btn-row">
-        <a href="evacuation-kit.html" class="btn btn-primary">Evacuation kit guide</a>
-        <a href="printables/evacuation-kit.html" class="btn btn-secondary">Print checklist</a>
+        <a href="kits.html" class="btn btn-primary">Browse kit guides</a>
+        <a href="printables/evacuation-kit.html" class="btn btn-secondary">Evacuation checklist</a>
+      </div>
+      </div>
+      <div class="hero-media-wrap" aria-hidden="true">
+        <figure class="hero-media">
+          <img src="assets/img/heroes/states/louisiana.png" alt="" class="hero-media-image" loading="eager" decoding="async">
+        </figure>
       </div>
     </div>
   </header>
@@ -157,8 +166,8 @@
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container-wide">
-      <p>Last reviewed: April 2026 &nbsp;·&nbsp; A supplement, not a replacement for your <a href="https://www.ready.gov/">local emergency management office</a>.</p>
-      <p><a href="{{KOFI_URL}}">Support this site on Ko-fi</a> &nbsp;·&nbsp; <a href="/">hurricanesupplylist.com</a></p>
+      <p>A supplement, not a replacement for your <a href="https://www.ready.gov/local">local emergency management office</a>.</p>
+      <p><a href="index.html">hurricanesupplylist.com</a></p>
     </div>
   </footer>
 

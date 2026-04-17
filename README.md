@@ -11,8 +11,11 @@ Plain HTML/CSS/JavaScript hosted on GitHub Pages. No build step, no framework, n
 - One `site.css` for all web pages
 - One `printables.css` for printable checklists
 - Shared HTML fragments in `docs/snippets/` — copy and paste into each page
+- Shared SVG hero artwork in `assets/img/heroes/`
 - Self-hosted fonts in `assets/fonts/`
 - No third-party scripts at runtime
+- Primary site navigation is `Home`, `Kit Guides`, `By State`, `About`
+- `printables/` is a utility area for print-friendly checklist versions of the kit guides, not a primary navigation section
 
 ## How to add a new page
 
@@ -36,7 +39,7 @@ Each kit has two files that must be kept in sync:
 1. Copy `evacuation-kit.html` → rename (e.g. `pet-kit.html`).
 2. Update the `<head>` tokens: `{{PAGE_TITLE}}`, `{{META_DESCRIPTION}}`, `{{CANONICAL_PATH}}`.
 3. Update the `<h1>` and hero paragraph.
-4. Update the PDF download link href: `printables/<name>-kit.pdf`.
+4. Add two hero routes: the kit's printable checklist (`printables/<name>-kit.html`) and the library page (`kits.html`).
 5. Write 4–8 sections. Each section follows this pattern:
    - `<h2>` section name
    - `<p class="prose">` — 2–4 sentence why-paragraph (editorial voice, no "I")
@@ -97,15 +100,14 @@ If you add or remove items, update **both files**. Then:
 4. Save to `/printables/<name>-kit.pdf` (overwrite the existing file).
 5. Commit: `git add printables/<name>-kit.html printables/<name>-kit.pdf && git commit -m "chore: update <name> checklist"`
 
-## Ko-fi URL
+## Site structure
 
-The Ko-fi URL is stored as `{{KOFI_URL}}` in several places. When the final URL is ready, find and replace across all pages:
-
-```
-grep -rln "{{KOFI_URL}}" . --include="*.html"
-```
-
-Then replace in each file.
+- `/index.html` is the homepage and orientation page
+- `/kits.html` is the landing page for all kit guides
+- `/states.html` is the landing page for all state and regional guides
+- `/printables/index.html` is the checklist utility index that points back to the full guides
+- Printable detail pages should use the utility header pattern, not the full site nav
+- `scripts/generate-hero-svgs.sh` regenerates the shared SVG hero illustrations if the visual system changes
 
 ## How to deploy
 
@@ -121,7 +123,7 @@ To point the domain at GitHub Pages:
 ## Voice
 
 - Kit and state pages: editorial, neutral voice. No "I".
-- About page: first-person. "I'm Michael, I did the homework."
+- About page: first-person. "I'm Mike, I did the homework."
 - Never publish evacuation routes, shelter addresses, or phone numbers. Link to the authoritative source instead.
 - Tone: care, not fear. Useful, not just informative. Honest about limits.
 - More detail in `docs/plans/2026-04-16-hurricanesupplylist-design.md`.

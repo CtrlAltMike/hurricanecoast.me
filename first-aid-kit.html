@@ -34,7 +34,7 @@
     "url": "https://hurricanesupplylist.com/first-aid-kit",
     "publisher": {
       "@type": "Person",
-      "name": "Michael",
+      "name": "Mike",
       "url": "https://hurricanesupplylist.com/about"
     }
   }
@@ -45,27 +45,33 @@
   <!-- Site nav -->
   <nav class="site-nav" aria-label="Site navigation">
     <div class="container-wide">
-      <a href="/" class="brand">hurricanesupplylist.com</a>
-      <a href="/#kits" aria-current="page">Kits</a>
-      <a href="/#states">States</a>
-      <a href="/printables/">Printables</a>
-      <a href="/about">About</a>
+      <a href="index.html" class="brand">hurricanesupplylist.com</a>
+      <a href="index.html">Home</a>
+      <a href="kits.html" aria-current="page">Kit Guides</a>
+      <a href="states.html">By State</a>
+      <a href="about.html">About</a>
+      <a href="https://ko-fi.com/mikehen" target="_blank" rel="noopener">Support</a>
     </div>
   </nav>
 
   <main>
 
     <!-- Hero -->
-    <section class="hero">
-      <div class="container">
-        <h1>First aid kit</h1>
+    <section class="hero hero--split">
+      <div class="container-wide hero-layout">
+        <div class="hero-copy">
+          <div class="hero-eyebrow">Kit guide</div>
+          <h1>First aid kit</h1>
         <p class="prose">Most first aid kits are built for hikers or campers. Hurricane first aid is different. The injuries that happen in hurricanes and their aftermath — cuts from debris, blisters from evacuation, respiratory problems from mold, heat exhaustion — aren't the same as a sprained ankle on a trail. This guide covers what belongs in a hurricane-specific kit, and why.</p>
         <div class="btn-row">
           <a href="printables/first-aid-kit.html" class="btn btn-primary">Print checklist</a>
-          <a href="printables/first-aid-kit.html" class="btn btn-secondary">View printable version</a>
+          <a href="kits.html" class="btn btn-secondary">All kit guides</a>
         </div>
-        <div class="img-placeholder" style="height: 280px; margin-top: 1.5rem;">
-          Hero image — replace <code>assets/img/kits/first-aid-kit.jpg</code>
+        </div>
+        <div class="hero-media-wrap" aria-hidden="true">
+          <figure class="hero-media">
+            <img src="assets/img/heroes/kits/first-aid-kit.png" alt="" class="hero-media-image" loading="eager" decoding="async">
+          </figure>
         </div>
       </div>
     </section>
@@ -193,8 +199,8 @@
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container-wide">
-      <p>Last reviewed: April 2026 &nbsp;·&nbsp; A supplement, not a replacement for your <a href="https://www.ready.gov/">local emergency management office</a>.</p>
-      <p><a href="{{KOFI_URL}}">Support this site on Ko-fi</a> &nbsp;·&nbsp; <a href="/">hurricanesupplylist.com</a></p>
+      <p>A supplement, not a replacement for your <a href="https://www.ready.gov/local">local emergency management office</a>.</p>
+      <p><a href="index.html">hurricanesupplylist.com</a></p>
     </div>
   </footer>
 

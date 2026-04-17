@@ -126,6 +126,19 @@ tr { page-break-inside: avoid; }
   margin-top: 4pt;
 }
 
+.print-support-line {
+  margin: 0 0 0.22in;
+  padding: 0 0 8pt;
+  border-bottom: 0.5pt solid #E6DFD0;
+  font-size: 9.5pt;
+  color: #556270;
+}
+
+.print-support-line a {
+  color: inherit;
+  text-decoration: none;
+}
+
 /* Screen-only: basic readability when viewed in a browser */
 @media screen {
   body {
@@ -140,10 +153,26 @@ tr { page-break-inside: avoid; }
   .print-bar {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid #E6DFD0;
+  }
+
+  .print-bar .print-bar-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .print-bar .print-bar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-left: auto;
   }
 
   .print-bar a.back-link {
@@ -155,8 +184,17 @@ tr { page-break-inside: avoid; }
 
   .print-bar a.back-link:hover { text-decoration: underline; }
 
+  .print-bar .print-support-link {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #556270;
+    text-decoration: none;
+  }
+
+  .print-bar .print-support-link:hover { text-decoration: underline; }
+
   .print-bar button {
-    margin-left: auto;
     font-family: 'Inter', Arial, sans-serif;
     font-size: 0.9375rem;
     font-weight: 600;
@@ -169,6 +207,30 @@ tr { page-break-inside: avoid; }
   }
 
   .print-bar button:hover { background: #a8601f; }
+
+  .print-support-line {
+    margin-bottom: 1.1rem;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid #E6DFD0;
+    border-radius: 8px;
+    background: #F7F3EA;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  body {
+    padding: 1.25rem;
+  }
+
+  .print-bar .print-bar-actions {
+    width: 100%;
+    justify-content: space-between;
+    margin-left: 0;
+  }
+
+  .print-bar button {
+    flex: 1 1 auto;
+  }
 }
 
 @media print {

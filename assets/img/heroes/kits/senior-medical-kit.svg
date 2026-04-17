@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Senior and medical kit illustration</title>
+  <desc id="desc">A stylized coastal preparedness illustration in the hurricanesupplylist.com visual style.</desc>
+  <defs>
+    <linearGradient id="sea" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c1c5bb"/>
+      <stop offset="100%" stop-color="#8aa2a8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="760" rx="56" fill="#f2ecdf"/>
+  <rect width="1200" height="760" rx="56" fill="#e2d9cd" opacity="0.28"/>
+  <circle cx="980" cy="122" r="152" fill="#efbf77" opacity="0.58"/>
+  <g fill="none" stroke="#bdb5aa" stroke-width="3" opacity="0.58">
+    <path d="M-40 102c153 18 265 31 398 27 144-4 234-28 371-30 156-2 271 18 511 44"/>
+    <path d="M-58 156c168 16 280 22 429 9 155-13 238-44 382-50 137-6 246 8 487 33"/>
+    <path d="M-34 212c144 10 265 8 404-15 146-24 243-59 391-67 135-7 223 2 479 30"/>
+    <path d="M-60 270c162 1 273-8 425-36 154-28 243-62 393-76 127-11 226-4 482 21"/>
+  </g>
+  <path d="M0 320c144-25 278-16 412-35 166-24 230-67 389-77 120-8 249 12 399 57v156H0Z" fill="#d7cec2"/>
+  <path d="M0 418c179-30 298-14 470 8 147 19 249 15 400-6 113-15 218-15 330 7v170H0Z" fill="url(#sea)"/>
+  <path d="M0 520c163-58 292-62 451-39 125 18 210 8 329-26 174-49 270-37 420 26v279H0Z" fill="#4a5350"/>
+  <path d="M0 598c145-33 271-27 399-5 169 29 288 8 444-36 138-39 250-39 357 0v203H0Z" fill="#2f3638" opacity="0.42"/>
+  <path d="M0 520c119-44 235-68 329-72 99-3 189 14 289 22 102 8 201-5 318-44 115-39 196-53 264-51v59c-110 24-210 47-322 71-162 35-316 48-483 33-173-15-280-12-395 14Z" fill="#93a8ae" opacity="0.86"/>
+  <g transform="translate(676 238)">
+    <rect x="42" y="86" width="154" height="228" rx="34" fill="#f2ecdf"/>
+    <rect x="74" y="42" width="90" height="62" rx="20" fill="#f2ecdf"/>
+    <path d="M92 154h54M92 198h54M92 242h54" stroke="#6e553c" stroke-width="12" stroke-linecap="round"/>
+    <rect x="250" y="120" width="214" height="164" rx="32" fill="#7ca1ab"/>
+    <path d="M318 140v126" stroke="#f4eadb" stroke-width="12" opacity="0.72"/>
+    <path d="M392 140v126" stroke="#f4eadb" stroke-width="12" opacity="0.72"/>
+    <path d="M280 188h154" stroke="#f4eadb" stroke-width="12" opacity="0.72"/>
+    <path d="M280 232h154" stroke="#f4eadb" stroke-width="12" opacity="0.72"/>
+    <circle cx="520" cy="170" r="42" fill="#c2742b"/>
+    <path d="M520 130c-16 18-28 34-28 52 0 21 13 34 28 34s28-13 28-34c0-18-12-34-28-52Z" fill="#f5efe5"/>
+  </g>
+</svg>

@@ -2,64 +2,119 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>share.js tests (dev only)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>share.js tests (dev only) — hurricanesupplylist.com</title>
+  <meta name="description" content="Share test description">
+  <meta property="og:title" content="Share Test Title">
+  <link rel="canonical" href="https://hurricanesupplylist.com/share-test">
   <style>
     body { font-family: monospace; padding: 2rem; }
+    .site-nav { margin-bottom: 2rem; }
+    .container-wide { display: flex; gap: 1rem; align-items: center; }
+    .brand { margin-right: auto; }
     .pass { color: green; }
     .fail { color: red; font-weight: bold; }
   </style>
 </head>
 <body>
-<h2>share.js unit tests</h2>
-<div id="results"></div>
-<script src="share.js"></script>
-<script>
-  const results = document.getElementById('results');
-  let passed = 0, failed = 0;
+  <nav class="site-nav" aria-label="Test navigation">
+    <div class="container-wide">
+      <a href="/" class="brand">hurricanesupplylist.com</a>
+      <a href="/about">About</a>
+    </div>
+  </nav>
 
-  function assert(description, condition) {
-    const div = document.createElement('div');
-    if (condition) {
-      div.className = 'pass';
-      div.textContent = '✓ ' + description;
-      passed++;
-    } else {
-      div.className = 'fail';
-      div.textContent = '✗ ' + description;
-      failed++;
+  <h2>share.js unit tests</h2>
+  <div id="results"></div>
+
+  <script src="share.js"></script>
+  <script>
+    const results = document.getElementById('results');
+    let passed = 0;
+    let failed = 0;
+
+    function assert(description, condition) {
+      const div = document.createElement('div');
+      if (condition) {
+        div.className = 'pass';
+        div.textContent = 'PASS ' + description;
+        passed++;
+      } else {
+        div.className = 'fail';
+        div.textContent = 'FAIL ' + description;
+        failed++;
+      }
+      results.appendChild(div);
     }
-    results.appendChild(div);
-  }
 
-  // buildTwitterURL
-  const twitterURL = buildTwitterURL('Evacuation kit', 'https://hurricanesupplylist.com/evacuation-kit');
-  assert('buildTwitterURL contains intent domain', twitterURL.includes('twitter.com/intent/tweet'));
-  assert('buildTwitterURL contains encoded title', twitterURL.includes(encodeURIComponent('Evacuation kit')));
-  assert('buildTwitterURL contains encoded url', twitterURL.includes(encodeURIComponent('https://hurricanesupplylist.com/evacuation-kit')));
+    function summary() {
+      const div = document.createElement('div');
+      div.style.marginTop = '1rem';
+      div.style.fontWeight = 'bold';
+      div.textContent = passed + ' passed, ' + failed + ' failed';
+      results.appendChild(div);
+    }
 
-  // buildFacebookURL
-  const fbURL = buildFacebookURL('https://hurricanesupplylist.com/florida');
-  assert('buildFacebookURL contains sharer domain', fbURL.includes('facebook.com/sharer'));
-  assert('buildFacebookURL contains encoded url', fbURL.includes(encodeURIComponent('https://hurricanesupplylist.com/florida')));
+    async function runTests() {
+      const share = window.HurricaneShare;
+      const shareData = share.getShareData();
 
-  // buildEmailURL
-  const emailURL = buildEmailURL('Pet kit', 'https://hurricanesupplylist.com/pet-kit');
-  assert('buildEmailURL starts with mailto:', emailURL.startsWith('mailto:'));
-  assert('buildEmailURL has subject param', emailURL.includes('subject='));
-  assert('buildEmailURL has body param', emailURL.includes('body='));
-  assert('buildEmailURL subject contains title', emailURL.includes(encodeURIComponent('Pet kit')));
+      assert('getShareData uses og:title', shareData.title === 'Share Test Title');
+      assert('getShareData uses meta description', shareData.text === 'Share test description');
+      assert('getShareData uses canonical URL', shareData.url === 'https://hurricanesupplylist.com/share-test');
 
-  // buildSmsURL
-  const smsURL = buildSmsURL('Pet kit', 'https://hurricanesupplylist.com/pet-kit');
-  assert('buildSmsURL starts with sms:', smsURL.startsWith('sms:'));
-  assert('buildSmsURL has body param', smsURL.includes('body='));
-  assert('buildSmsURL body contains url', smsURL.includes(encodeURIComponent('https://hurricanesupplylist.com/pet-kit')));
+      assert('nav share button is injected', document.querySelector('.nav-share-btn') !== null);
+      assert('floating share button is injected', document.querySelector('.floating-share-btn') !== null);
 
-  const summary = document.createElement('div');
-  summary.style.marginTop = '1rem';
-  summary.style.fontWeight = 'bold';
-  summary.textContent = `${passed} passed, ${failed} failed`;
-  results.appendChild(summary);
-</script>
+      const testButton = share.createShareButton('test-share-btn');
+      document.body.appendChild(testButton);
+      assert('createShareButton returns a button element', testButton.tagName === 'BUTTON');
+      assert('createShareButton includes SVG icon', testButton.querySelector('svg') !== null);
+
+      const originalClipboard = Object.getOwnPropertyDescriptor(Navigator.prototype, 'clipboard');
+      let copiedValue = '';
+      Object.defineProperty(Navigator.prototype, 'clipboard', {
+        configurable: true,
+        get: function () {
+          return {
+            writeText: function (value) {
+              copiedValue = value;
+              return Promise.resolve();
+            }
+          };
+        }
+      });
+
+      await share.copyLink('https://example.com/test');
+      assert('copyLink writes to clipboard when clipboard API exists', copiedValue === 'https://example.com/test');
+
+      if (originalClipboard) {
+        Object.defineProperty(Navigator.prototype, 'clipboard', originalClipboard);
+      } else {
+        delete Navigator.prototype.clipboard;
+      }
+
+      share.setConfirmedState();
+      assert('setConfirmedState adds confirmation class', document.querySelectorAll('.share-button.is-confirmed').length >= 1);
+
+      await new Promise(function (resolve) {
+        window.setTimeout(resolve, 1700);
+      });
+
+      assert('setConfirmedState clears confirmation class', document.querySelectorAll('.share-button.is-confirmed').length === 0);
+
+      summary();
+    }
+
+    window.addEventListener('load', function () {
+      runTests().catch(function (error) {
+        assert('test runner completed without throwing', false);
+        const pre = document.createElement('pre');
+        pre.textContent = String(error && error.stack ? error.stack : error);
+        results.appendChild(pre);
+        summary();
+      });
+    });
+  </script>
 </body>
 </html>
