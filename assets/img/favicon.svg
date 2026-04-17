@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Hurricane Supply List icon</title>
+  <desc id="desc">A stylized hurricane eye on a light coastal background.</desc>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#F4EBDD" stroke="#C2742B" stroke-width="2.5"/>
+  <path
+    d="M12 25c5-13 18-18 30-15 6 2 10 6 12 12"
+    fill="none"
+    stroke="#1F2A33"
+    stroke-linecap="round"
+    stroke-width="12"
+  />
+  <path
+    d="M52 39c-5 13-18 18-30 15-6-2-10-6-12-12"
+    fill="none"
+    stroke="#1F2A33"
+    stroke-linecap="round"
+    stroke-width="12"
+  />
+  <circle cx="32" cy="32" r="8.5" fill="#3A6B83"/>
+  <circle cx="32" cy="32" r="4.25" fill="#F4EBDD"/>
+</svg>
