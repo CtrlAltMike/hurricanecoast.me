@@ -106,8 +106,36 @@ If you add or remove items, update **both files**. Then:
 - `/kits.html` is the landing page for all kit guides
 - `/states.html` is the landing page for all state and regional guides
 - `/printables/index.html` is the checklist utility index that points back to the full guides
+- `/storms/` is reserved for generated named-storm packets and PDFs
 - Printable detail pages should use the utility header pattern, not the full site nav
 - `scripts/generate-hero-svgs.sh` regenerates the shared SVG hero illustrations if the visual system changes
+
+## Named storm packets
+
+To generate a fast sendable storm packet:
+
+```bash
+node scripts/generate-storm-packet.js --storm "Milton" --region florida --pdf
+```
+
+That creates:
+
+- `storms/milton-florida-prep-checklist.html`
+- `storms/milton-florida-prep-checklist.pdf`
+
+Supported regions:
+
+- `florida`
+- `texas`
+- `louisiana`
+- `gulf-coast`
+- `carolinas`
+- `georgia`
+- `alabama`
+- `mississippi`
+- `puerto-rico`
+
+If you only want the HTML first, omit `--pdf`.
 
 ## How to deploy
 
