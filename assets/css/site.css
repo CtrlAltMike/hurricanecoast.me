@@ -493,13 +493,9 @@ hr {
   transform: translateY(calc(-50% - 1px));
 }
 
-/* Legacy share markup from the previous implementation */
+/* Guide article wrapper */
 .share-sticky-wrap {
   display: block;
-}
-.share-row,
-.share-sticky {
-  display: none !important;
 }
 
 @media (max-width: 900px) {

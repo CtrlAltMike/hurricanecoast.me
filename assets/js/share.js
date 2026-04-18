@@ -170,13 +170,21 @@
   }
 
   function initGuideSupportCard() {
-    const shareRow = document.querySelector('article.container .share-row');
+    const guideArticle = document.querySelector('.share-sticky-wrap article.container');
 
-    if (!shareRow || document.querySelector('.support-card')) {
+    if (!guideArticle || document.querySelector('.share-sticky-wrap .support-card')) {
       return;
     }
 
-    shareRow.parentNode.insertBefore(createSupportCard(), shareRow);
+    const relatedKits = guideArticle.querySelector('.related-kits');
+    const supportCard = createSupportCard();
+
+    if (relatedKits && relatedKits.parentNode === guideArticle) {
+      relatedKits.insertAdjacentElement('afterend', supportCard);
+      return;
+    }
+
+    guideArticle.appendChild(supportCard);
   }
 
   window.HurricaneShare = {

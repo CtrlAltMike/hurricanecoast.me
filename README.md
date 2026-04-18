@@ -11,11 +11,12 @@ Plain HTML/CSS/JavaScript hosted on GitHub Pages. No build step, no framework, n
 - One `site.css` for all web pages
 - One `printables.css` for printable checklists
 - Shared HTML fragments in `docs/snippets/` — copy and paste into each page
-- Shared SVG hero artwork in `assets/img/heroes/`
+- Shared hero artwork in `assets/img/heroes/`
 - Self-hosted fonts in `assets/fonts/`
-- No third-party scripts at runtime
+- Sitewide Cloudflare Web Analytics
+- Ventusky embeds on the coastal guide pages
 - Primary site navigation is `Home`, `Kit Guides`, `By State`, `About`
-- `printables/` is a utility area for print-friendly checklist versions of the kit guides, not a primary navigation section
+- `printables/` is a utility area for browser-printable checklist versions of the kit guides, not a primary navigation section
 
 ## How to add a new page
 
@@ -31,8 +32,8 @@ Plain HTML/CSS/JavaScript hosted on GitHub Pages. No build step, no framework, n
 ## How to add a kit page (detailed)
 
 Each kit has two files that must be kept in sync:
-- `/<name>-kit.html` — the web guide (prose + item list + PDF download CTA)
-- `/printables/<name>-kit.html` — the print-ready version (table format)
+- `/<name>-kit.html` — the web guide (prose + item list + print checklist CTA)
+- `/printables/<name>-kit.html` — the browser-printable version (table format)
 
 ### Web page (`/<name>-kit.html`)
 
@@ -60,12 +61,12 @@ Each kit has two files that must be kept in sync:
 5. For each section: one `<h2>` + one `<table>` with CRITICAL / IMPORTANT / RECOMMENDED priority tiers.
 6. Keep the disclaimer and site-line at the bottom.
 
-### Generate the PDF
+### Generate a PDF export (optional local asset)
 
 1. Open `printables/<name>-kit.html` in Chrome.
 2. File → Print.
 3. Destination: Save as PDF. Layout: Portrait. Margins: Default. Headers and footers: **ON** (the domain appears at top of each page from the `<title>`).
-4. Save as `printables/<name>-kit.pdf`.
+4. Save as `printables/<name>-kit.pdf` if you want a local PDF copy or a distribution asset.
 5. Delete `printables/<name>-kit.pdf.todo` if present.
 
 ### Update `sitemap.xml`
@@ -82,23 +83,23 @@ Add before `</urlset>`:
 ### Commit
 
 ```bash
-git add <name>-kit.html printables/<name>-kit.html printables/<name>-kit.pdf sitemap.xml
+git add <name>-kit.html printables/<name>-kit.html sitemap.xml
 git commit -m "feat: add <name> kit page and printable"
 ```
 
 ## How to update a checklist (web + printable)
 
 Each kit has two files:
-- `/<name>-kit.html` — the full web guide (prose + items + download CTA)
-- `/printables/<name>-kit.html` — the print-ready version (table format, CRITICAL/IMPORTANT/RECOMMENDED)
+- `/<name>-kit.html` — the full web guide (prose + items + print CTA)
+- `/printables/<name>-kit.html` — the browser-printable version (table format, CRITICAL/IMPORTANT/RECOMMENDED)
 
 If you add or remove items, update **both files**. Then:
 
 1. Open `/printables/<name>-kit.html` in Chrome.
 2. File → Print → Destination: Save as PDF.
 3. Layout: Portrait. Margins: Default. Headers and footers: on (the page title appears at top of each page automatically).
-4. Save to `/printables/<name>-kit.pdf` (overwrite the existing file).
-5. Commit: `git add printables/<name>-kit.html printables/<name>-kit.pdf && git commit -m "chore: update <name> checklist"`
+4. Save to `/printables/<name>-kit.pdf` only if you need a refreshed PDF export.
+5. Commit: `git add printables/<name>-kit.html && git commit -m "chore: update <name> checklist"`
 
 ## Site structure
 
