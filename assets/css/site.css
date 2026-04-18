@@ -794,6 +794,7 @@ hr {
 .hero-media-image {
   display: block;
   width: 100%;
+  height: auto;
   min-height: 300px;
   aspect-ratio: 1.48 / 1;
   object-fit: cover;
@@ -973,6 +974,7 @@ hr {
 .directory-card-image {
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 2.2 / 1;
   object-fit: cover;
   object-position: center;
@@ -1040,6 +1042,7 @@ hr {
 .kit-card-image {
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 2.2 / 1;
   object-fit: cover;
   object-position: center;
