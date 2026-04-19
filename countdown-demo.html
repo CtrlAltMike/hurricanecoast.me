@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Countdown Options · hurricanesupplylist.com</title>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <style>
+
+    /* ── Demo page chrome ─────────────────────────────────── */
+    .demo-intro {
+      max-width: 640px;
+      margin: 3rem auto 4rem;
+      padding: 0 1.5rem;
+    }
+    .demo-intro h1 {
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      margin-top: 0;
+    }
+    .demo-intro p { color: var(--color-ink-muted); font-size: 0.95rem; }
+
+    .demo-section {
+      margin-bottom: 5rem;
+    }
+    .demo-label {
+      max-width: 1120px;
+      margin: 0 auto 1rem;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+    }
+    .demo-label strong { font-family: 'Newsreader', Georgia, serif; font-size: 1.1rem; }
+    .demo-label span { font-size: 0.85rem; color: var(--color-ink-muted); }
+    .demo-frame {
+      border-top: 1px solid var(--color-rule);
+      border-bottom: 1px solid var(--color-rule);
+      background: var(--color-bg);
+      overflow: hidden;
+    }
+
+    /* Fake hero stub for context */
+    .stub-hero {
+      padding: 3rem 0 2.5rem;
+      background: var(--color-bg);
+    }
+    .stub-hero-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .stub-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--color-ink-muted);
+      margin-bottom: 0.5rem;
+    }
+    .stub-h1 {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--color-ink);
+      margin: 0 0 0.75rem;
+    }
+    .stub-lede {
+      color: var(--color-ink-muted);
+      font-size: 1rem;
+      margin: 0;
+      max-width: 520px;
+    }
+
+    /* ── Option A: Full-width season banner ──────────────── */
+    .season-banner {
+      background: #2B5068;
+      color: #fff;
+      padding: 0.6rem 0;
+      text-align: center;
+      font-size: 0.9rem;
+      letter-spacing: 0.01em;
+    }
+    .season-banner strong {
+      font-weight: 600;
+    }
+    .season-banner a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      margin-left: 1rem;
+      font-size: 0.83rem;
+    }
+    .season-banner a:hover { color: #fff; border-color: rgba(255,255,255,0.6); }
+
+    /* ── Option B: Warm ochre banner ─────────────────────── */
+    .season-banner-warm {
+      background: #7A4A1A;
+      color: #FBF8F2;
+      padding: 0.6rem 0;
+      text-align: center;
+      font-size: 0.88rem;
+      letter-spacing: 0.01em;
+    }
+    .season-banner-warm strong { font-weight: 600; }
+    .season-banner-warm a {
+      color: rgba(251,248,242,0.7);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(251,248,242,0.3);
+      margin-left: 1rem;
+      font-size: 0.83rem;
+    }
+    .season-banner-warm a:hover { color: #FBF8F2; }
+
+    /* ── Option C: Subtle rule-colored banner ────────────── */
+    .season-banner-subtle {
+      background: #EDE5D6;
+      color: var(--color-ink);
+      padding: 0.55rem 0;
+      text-align: center;
+      font-size: 0.875rem;
+      border-bottom: 1px solid var(--color-rule);
+    }
+    .season-banner-subtle strong { font-weight: 600; }
+    .season-banner-subtle a {
+      color: var(--color-storm);
+      text-decoration: none;
+      margin-left: 1rem;
+      font-size: 0.83rem;
+    }
+    .season-banner-subtle a:hover { text-decoration: underline; }
+
+    /* ── Option D: Nav-integrated pill ──────────────────── */
+    .countdown-nav-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--color-storm);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2rem;
+      white-space: nowrap;
+    }
+    .countdown-nav-pill .pill-num {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    /* ── Option E: Hero-integrated eyebrow ───────────────── */
+    .season-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.85rem;
+    }
+    .season-eyebrow-badge {
+      background: var(--color-storm);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.55rem;
+      border-radius: 3px;
+    }
+    .season-eyebrow-text {
+      font-size: 0.82rem;
+      color: var(--color-ink-muted);
+    }
+
+    /* ── Option F: Below-hero callout card ───────────────── */
+    .season-callout-card {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem 2rem;
+    }
+    .season-callout-card-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      background: #EDE5D6;
+      border-left: 3px solid var(--color-storm);
+      padding: 1rem 1.25rem;
+      border-radius: 0 4px 4px 0;
+      flex-wrap: wrap;
+    }
+    .season-callout-card-copy p {
+      margin: 0;
+      font-size: 0.92rem;
+    }
+    .season-callout-card-copy strong {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 1.1rem;
+    }
+    .season-callout-card-copy .card-sub {
+      color: var(--color-ink-muted);
+      font-size: 0.85rem;
+      margin-top: 0.2rem;
+    }
+
+    /* Demo nav clone */
+    .demo-nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 1rem 1.5rem;
+      background: rgba(251, 248, 242, 0.94);
+      border-bottom: 1px solid var(--color-rule);
+      flex-wrap: wrap;
+    }
+    .demo-nav .brand {
+      font-family: 'Newsreader', Georgia, serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--color-ink);
+      text-decoration: none;
+      margin-right: auto;
+    }
+    .demo-nav a {
+      font-size: 0.9375rem;
+      color: var(--color-ink-muted);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="demo-intro">
+    <h1>Countdown options</h1>
+    <p>Six placements for the hurricane season countdown. The date and count update live from JS. Pick one or mix elements.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       Option A: Storm-blue banner (above nav)
+  ══════════════════════════════════════════════════════════ -->
+  <div class="demo-section">
+    <div class="demo-label">
+      <strong>A — Storm-blue banner, above nav</strong>
+      <span>High visibility. Works when season is close or active.</span>
+    </div>
+    <div class="demo-frame">
+      <div class="season-banner" id="banner-a"></div>
+      <div class="demo-nav">
+        <a href="#" class="brand">HurricaneSupplyList.com</a>
+        <a href="#">Home</a>
+        <a href="#">Kit Guides</a>
+        <a href="#">Coastal Guides</a>
+        <a href="#">About</a>
+        <a href="#">Support</a>
+      </div>
+      <div class="stub-hero">
+        <div class="stub-hero-inner">
+          <div class="stub-eyebrow">Regional guide</div>
+          <h1 class="stub-h1">Preparing for hurricanes in Texas</h1>
+          <p class="stub-lede">Texas has over 350 miles of Gulf Coast, from Beaumont in the northeast to Brownsville at the southern tip.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       Option B: Warm ochre banner (above nav)
+  ══════════════════════════════════════════════════════════ -->
+  <div class="demo-section">
+    <div class="demo-label">
+      <strong>B — Warm ochre banner, above nav</strong>
+      <span>Same position, warmer palette. More urgency than A without being alarming.</span>
+    </div>
+    <div class="demo-frame">
+      <div class="season-banner-warm" id="banner-b"></div>
+      <div class="demo-nav">
+        <a href="#" class="brand">HurricaneSupplyList.com</a>
+        <a href="#">Home</a>
+        <a href="#">Kit Guides</a>
+        <a href="#">Coastal Guides</a>
+        <a href="#">About</a>
+        <a href="#">Support</a>
+      </div>
+      <div class="stub-hero">
+        <div class="stub-hero-inner">
+          <div class="stub-eyebrow">Regional guide</div>
+          <h1 class="stub-h1">Preparing for hurricanes in Texas</h1>
+          <p class="stub-lede">Texas has over 350 miles of Gulf Coast, from Beaumont in the northeast to Brownsville at the southern tip.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       Option C: Subtle warm-rule banner (below nav)
+  ══════════════════════════════════════════════════════════ -->
+  <div class="demo-section">
+    <div class="demo-label">
+      <strong>C — Subtle banner, below nav</strong>
+      <span>Lowest visual weight. Fits the site's calm register. Never competes with content.</span>
+    </div>
+    <div class="demo-frame">
+      <div class="demo-nav">
+        <a href="#" class="brand">HurricaneSupplyList.com</a>
+        <a href="#">Home</a>
+        <a href="#">Kit Guides</a>
+        <a href="#">Coastal Guides</a>
+        <a href="#">About</a>
+        <a href="#">Support</a>
+      </div>
+      <div class="season-banner-subtle" id="banner-c"></div>
+      <div class="stub-hero">
+        <div class="stub-hero-inner">
+          <div class="stub-eyebrow">Regional guide</div>
+          <h1 class="stub-h1">Preparing for hurricanes in Texas</h1>
+          <p class="stub-lede">Texas has over 350 miles of Gulf Coast, from Beaumont in the northeast to Brownsville at the southern tip.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       Option D: Nav-integrated pill
+  ══════════════════════════════════════════════════════════ -->
+  <div class="demo-section">
+    <div class="demo-label">
+      <strong>D — Nav pill</strong>
+      <span>Permanent fixture in the nav. Minimal footprint, always visible on scroll.</span>
+    </div>
+    <div class="demo-frame">
+      <div class="demo-nav">
+        <a href="#" class="brand">HurricaneSupplyList.com</a>
+        <a href="#">Home</a>
+        <a href="#">Kit Guides</a>
+        <a href="#">Coastal Guides</a>
+        <a href="#">About</a>
+        <span class="countdown-nav-pill" id="pill-d"><span class="pill-num">—</span>&nbsp;days</span>
+      </div>
+      <div class="stub-hero">
+        <div class="stub-hero-inner">
+          <div class="stub-eyebrow">Regional guide</div>
+          <h1 class="stub-h1">Preparing for hurricanes in Texas</h1>
+          <p class="stub-lede">Texas has over 350 miles of Gulf Coast, from Beaumont in the northeast to Brownsville at the southern tip.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       Option E: Hero eyebrow integration
+  ══════════════════════════════════════════════════════════ -->
+  <div class="demo-section">
+    <div class="demo-label">
+      <strong>E — Hero eyebrow badge</strong>
+      <span>Woven into the page content. Works best on index.html where the hero has room.</span>
+    </div>
+    <div class="demo-frame">
+      <div class="demo-nav">
+        <a href="#" class="brand">HurricaneSupplyList.com</a>
+        <a href="#">Home</a>
+        <a href="#">Kit Guides</a>
+        <a href="#">Coastal Guides</a>
+        <a href="#">About</a>
+        <a href="#">Support</a>
+      </div>
+      <div class="stub-hero">
+        <div class="stub-hero-inner">
+          <div class="season-eyebrow">
+            <span class="season-eyebrow-badge">Hurricane season</span>
+            <span class="season-eyebrow-text" id="eyebrow-e">Begins June 1</span>
+          </div>
+          <h1 class="stub-h1">Build your kit before the season starts.</h1>
+          <p class="stub-lede">If you live on the Gulf or Atlantic coast, hurricane season is part of your calendar. This site covers the preparation piece.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       Option F: Below-hero callout card
+  ══════════════════════════════════════════════════════════ -->
+  <div class="demo-section">
+    <div class="demo-label">
+      <strong>F — Below-hero callout card</strong>
+      <span>Larger presence. Good for index.html only. Easy to dismiss or hide after the season starts.</span>
+    </div>
+    <div class="demo-frame">
+      <div class="demo-nav">
+        <a href="#" class="brand">HurricaneSupplyList.com</a>
+        <a href="#">Home</a>
+        <a href="#">Kit Guides</a>
+        <a href="#">Coastal Guides</a>
+        <a href="#">About</a>
+        <a href="#">Support</a>
+      </div>
+      <div class="stub-hero">
+        <div class="stub-hero-inner">
+          <div class="stub-eyebrow">hurricanesupplylist.com</div>
+          <h1 class="stub-h1">Build your kit before the season starts.</h1>
+          <p class="stub-lede">If you live on the Gulf or Atlantic coast, hurricane season is part of your calendar. This site covers the preparation piece.</p>
+        </div>
+      </div>
+      <div class="season-callout-card">
+        <div class="season-callout-card-inner">
+          <div class="season-callout-card-copy">
+            <p><strong id="card-f-days">—</strong></p>
+            <p class="card-sub">Hurricane season begins June 1. Now is the right time to build or review your kit.</p>
+          </div>
+          <a href="kits.html" class="btn btn-primary">Browse kit guides</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const now = new Date();
+      const thisYear = now.getFullYear();
+      let target = new Date(thisYear, 5, 1); // June 1, month is 0-indexed
+
+      const msPerDay = 1000 * 60 * 60 * 24;
+      const diff = target - now;
+      const days = Math.ceil(diff / msPerDay);
+
+      let bannerText, subtleText, pillText, eyebrowText, cardDays;
+
+      if (days > 1) {
+        bannerText = `<strong>Hurricane season begins June 1</strong> — ${days} days away. <a href="kits.html">Build your kit now →</a>`;
+        subtleText = `Hurricane season begins June 1 &mdash; <strong>${days} days away</strong>. <a href="kits.html">Kit guides →</a>`;
+        pillText = `<span class="pill-num">${days}</span>&nbsp;days to season`;
+        eyebrowText = `${days} days until June 1`;
+        cardDays = `${days} days until hurricane season.`;
+      } else if (days === 1) {
+        bannerText = `<strong>Hurricane season begins tomorrow.</strong> <a href="kits.html">Is your kit ready? →</a>`;
+        subtleText = `Hurricane season begins <strong>tomorrow</strong>. <a href="kits.html">Kit guides →</a>`;
+        pillText = `<span class="pill-num">1</span>&nbsp;day to season`;
+        eyebrowText = `Begins tomorrow`;
+        cardDays = `Hurricane season begins tomorrow.`;
+      } else if (days === 0) {
+        bannerText = `<strong>Hurricane season begins today.</strong> <a href="kits.html">Kit guides →</a>`;
+        subtleText = `<strong>Hurricane season begins today.</strong> <a href="kits.html">Kit guides →</a>`;
+        pillText = `<span class="pill-num">Active</span>&nbsp;season`;
+        eyebrowText = `Season starts today`;
+        cardDays = `Hurricane season begins today.`;
+      } else {
+        // Season is underway — count toward Nov 30 end
+        const nov30 = new Date(thisYear, 10, 30);
+        const daysLeft = Math.ceil((nov30 - now) / msPerDay);
+        if (daysLeft > 0) {
+          bannerText = `<strong>Hurricane season is active</strong> — ${daysLeft} days remain. <a href="kits.html">Is your kit ready? →</a>`;
+          subtleText = `Hurricane season is active &mdash; <strong>${daysLeft} days remaining</strong>. <a href="kits.html">Kit guides →</a>`;
+          pillText = `<span class="pill-num">${daysLeft}</span>&nbsp;days left`;
+          eyebrowText = `${daysLeft} days remaining in season`;
+          cardDays = `${daysLeft} days left in hurricane season.`;
+        } else {
+          // Off-season
+          const nextJune1 = new Date(thisYear + 1, 5, 1);
+          const nextDays = Math.ceil((nextJune1 - now) / msPerDay);
+          bannerText = `Hurricane season begins June 1 — <strong>${nextDays} days away.</strong> <a href="kits.html">Prep early →</a>`;
+          subtleText = `Next hurricane season begins June 1 &mdash; <strong>${nextDays} days</strong>. <a href="kits.html">Kit guides →</a>`;
+          pillText = `<span class="pill-num">${nextDays}</span>&nbsp;days to season`;
+          eyebrowText = `${nextDays} days until June 1`;
+          cardDays = `${nextDays} days until hurricane season.`;
+        }
+      }
+
+      document.getElementById('banner-a').innerHTML = bannerText;
+      document.getElementById('banner-b').innerHTML = bannerText;
+      document.getElementById('banner-c').innerHTML = subtleText;
+      document.getElementById('pill-d').innerHTML = pillText;
+      document.getElementById('eyebrow-e').textContent = eyebrowText;
+      document.getElementById('card-f-days').textContent = cardDays;
+    })();
+  </script>
+</body>
+</html>

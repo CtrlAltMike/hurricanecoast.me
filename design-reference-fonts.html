@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Font Options · hurricanesupplylist.com</title>
+  <link rel="icon" href="assets/img/favicon.ico">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=Instrument+Serif:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(180deg, #efe9de 0%, var(--color-bg) 28%, #f7f2e8 100%);
+      padding: 2rem 1rem 6rem;
+    }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* Page intro */
+    .page-intro {
+      max-width: 760px;
+      margin: 0 auto 3rem;
+    }
+
+    .page-intro h1 {
+      margin: 0 0 .6rem;
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      line-height: 1.08;
+      letter-spacing: -.02em;
+    }
+
+    .page-intro p {
+      margin: 0;
+      color: var(--color-ink-muted);
+      font-size: .95rem;
+    }
+
+    /* Option sections */
+    .font-option {
+      max-width: 760px;
+      margin: 0 auto 4rem;
+    }
+
+    .option-header {
+      margin-bottom: 1rem;
+    }
+
+    .option-number {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--color-ink-muted);
+      margin-bottom: .35rem;
+    }
+
+    .option-name {
+      margin: 0 0 .3rem;
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.4rem;
+      line-height: 1.15;
+      letter-spacing: -.01em;
+      color: var(--color-ink);
+    }
+
+    .option-desc {
+      margin: 0;
+      font-size: .88rem;
+      color: var(--color-ink-muted);
+      line-height: 1.55;
+    }
+
+    .option-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-top: .6rem;
+    }
+
+    .option-pills span {
+      display: inline-flex;
+      align-items: center;
+      padding: .3rem .6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(31, 42, 51, .14);
+      background: rgba(255, 253, 249, .85);
+      color: var(--color-ink);
+      font-size: .76rem;
+    }
+
+    /* Mini mockup shell (same as design-reference.html) */
+    .mini {
+      overflow: hidden;
+      border-radius: 14px;
+      background: var(--color-bg);
+      border: 1px solid rgba(31, 42, 51, .08);
+      box-shadow: 0 14px 50px rgba(31, 42, 51, .11);
+      margin-top: 1rem;
+    }
+
+    .mini nav {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: .9rem 2rem;
+      border-bottom: 1px solid var(--color-rule);
+      font-size: .82rem;
+    }
+
+    .mini nav .brand {
+      margin-right: auto;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--color-ink);
+    }
+
+    .mini nav a {
+      color: var(--color-ink);
+      text-decoration: none;
+    }
+
+    .mini .page {
+      padding: 2rem 2rem 2.25rem;
+    }
+
+    .mini .hero-text {
+      margin: 0 0 1.25rem;
+      line-height: 1.05;
+      letter-spacing: -.025em;
+      color: var(--color-ink);
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      font-weight: 700;
+    }
+
+    .mini h2 {
+      margin: 0 0 .65rem;
+      font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+      line-height: 1.1;
+      letter-spacing: -.02em;
+    }
+
+    .mini .lede {
+      margin: 0 0 1.25rem;
+      font-size: 1rem;
+      line-height: 1.65;
+      max-width: 36rem;
+      color: var(--color-ink);
+    }
+
+    .mini h3 {
+      margin: 0 0 .5rem;
+      font-size: 1.1rem;
+      line-height: 1.25;
+    }
+
+    .mini .checklist {
+      margin-bottom: 1.25rem;
+    }
+
+    .mini .checklist li {
+      font-size: .93rem;
+      line-height: 1.6;
+    }
+
+    .mini .checklist li .why {
+      display: inline;
+      color: var(--color-ink-muted);
+      font-size: .91em;
+    }
+
+    .mini footer {
+      padding: .85rem 2rem;
+      border-top: 1px solid var(--color-rule);
+      color: var(--color-ink-muted);
+      font-size: .78rem;
+    }
+
+    /* ─── Option 1: Newsreader ─────────────────────────────── */
+    .opt-newsreader nav .brand,
+    .opt-newsreader .hero-text,
+    .opt-newsreader h2,
+    .opt-newsreader h3 {
+      font-family: 'Newsreader', Georgia, serif;
+    }
+
+    .opt-newsreader .hero-text { font-weight: 700; }
+    .opt-newsreader h2 { font-weight: 700; }
+    .opt-newsreader h3 { font-weight: 600; }
+    .opt-newsreader nav .brand { font-weight: 600; }
+
+    /* ─── Option 2: Instrument Serif ──────────────────────── */
+    .opt-instrument nav .brand,
+    .opt-instrument .hero-text,
+    .opt-instrument h2,
+    .opt-instrument h3 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+    }
+
+    .opt-instrument .hero-text { letter-spacing: -.02em; }
+
+    /* ─── Option 3: Libre Baskerville ─────────────────────── */
+    .opt-baskerville nav .brand,
+    .opt-baskerville .hero-text,
+    .opt-baskerville h2,
+    .opt-baskerville h3 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+    }
+
+    .opt-baskerville .hero-text { font-weight: 700; }
+    .opt-baskerville h2 { font-weight: 700; }
+    .opt-baskerville h3 { font-weight: 700; }
+    .opt-baskerville nav .brand { font-weight: 700; }
+
+    /* ─── Option 4: Inter brand + DM Serif Display headings ── */
+    .opt-dm nav .brand {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 600;
+      letter-spacing: -.01em;
+    }
+
+    .opt-dm .hero-text,
+    .opt-dm h2,
+    .opt-dm h3 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-weight: 400;
+    }
+
+    @media (max-width: 640px) {
+      .mini nav,
+      .mini .page,
+      .mini footer {
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+      }
+
+      .mini nav {
+        flex-wrap: wrap;
+        gap: .6rem;
+      }
+
+      .mini nav .brand {
+        width: 100%;
+        margin-right: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="page-intro">
+    <h1>Font options</h1>
+    <p>Four alternatives to the current Fraunces + Inter pairing. Each mockup shows the domain name in the nav, a hero-scale heading, a section heading, lede, checklist, and buttons — the full range where font choice is felt.</p>
+  </div>
+
+  <!-- ─── Option 1: Newsreader ─────────────────────────────── -->
+  <div class="font-option">
+    <div class="option-header">
+      <div class="option-number">Option 1</div>
+      <h2 class="option-name">Newsreader</h2>
+      <p class="option-desc">Newspaper-quality Google serif. The brand name reads like a masthead — specific, grounded, no optical tricks. Strong bold at large sizes with the kind of authority you'd expect from a publication that gets things right. Keeps Inter for body.</p>
+      <div class="option-pills">
+        <span>Newsreader 600/700 + Inter 400/600</span>
+        <span>Google Fonts</span>
+        <span>Variable optical size</span>
+      </div>
+    </div>
+    <div class="mini opt-newsreader">
+      <nav>
+        <span class="brand">HurricaneSupplyList.com</span>
+        <a href="#">Kit Guides</a>
+        <a href="#">Coastal Guides</a>
+        <a href="#">About</a>
+      </nav>
+      <div class="page">
+        <p class="hero-text">Be ready before the storm.</p>
+        <h2>Evacuation kit</h2>
+        <p class="lede">The bag by the door. You have twenty minutes — maybe less. What goes in it, how much of it, and why, so that when the call comes you're moving, not thinking.</p>
+        <h3>Water and food (first 72 hours)</h3>
+        <ul class="checklist">
+          <li>One gallon of water per person per day <span class="why">— drinking plus a little for basic hygiene</span></li>
+          <li>Three days of non-perishable food per person <span class="why">— shelf-stable, no cooking required</span></li>
+          <li>A manual can opener <span class="why">— the one thing people forget every time</span></li>
+        </ul>
+        <div class="btn-row">
+          <a href="#" class="btn btn-primary">Browse kit guides</a>
+          <a href="#" class="btn btn-secondary">Tip on Ko-fi</a>
+        </div>
+      </div>
+      <footer>A supplement, not a replacement for your local emergency management office.</footer>
+    </div>
+  </div>
+
+  <!-- ─── Option 2: Instrument Serif ───────────────────────── -->
+  <div class="font-option">
+    <div class="option-header">
+      <div class="option-number">Option 2</div>
+      <h2 class="option-name">Instrument Serif</h2>
+      <p class="option-desc">Clean, contemporary Google serif from 2023. Single weight — no bold — so large headings rely on size and letterform rather than stroke weight. Works consistently from nav scale to hero scale without Fraunces's optical quirkiness. Reads younger and more coastal-modern.</p>
+      <div class="option-pills">
+        <span>Instrument Serif 400 + Inter 400/600</span>
+        <span>Google Fonts</span>
+        <span>Single weight — size does the work</span>
+      </div>
+    </div>
+    <div class="mini opt-instrument">
+      <nav>
+        <span class="brand">HurricaneSupplyList.com</span>
+        <a href="#">Kit Guides</a>
+        <a href="#">Coastal Guides</a>
+        <a href="#">About</a>
+      </nav>
+      <div class="page">
+        <p class="hero-text">Be ready before the storm.</p>
+        <h2>Evacuation kit</h2>
+        <p class="lede">The bag by the door. You have twenty minutes — maybe less. What goes in it, how much of it, and why, so that when the call comes you're moving, not thinking.</p>
+        <h3>Water and food (first 72 hours)</h3>
+        <ul class="checklist">
+          <li>One gallon of water per person per day <span class="why">— drinking plus a little for basic hygiene</span></li>
+          <li>Three days of non-perishable food per person <span class="why">— shelf-stable, no cooking required</span></li>
+          <li>A manual can opener <span class="why">— the one thing people forget every time</span></li>
+        </ul>
+        <div class="btn-row">
+          <a href="#" class="btn btn-primary">Browse kit guides</a>
+          <a href="#" class="btn btn-secondary">Tip on Ko-fi</a>
+        </div>
+      </div>
+      <footer>A supplement, not a replacement for your local emergency management office.</footer>
+    </div>
+  </div>
+
+  <!-- ─── Option 3: Libre Baskerville ─────────────────────── -->
+  <div class="font-option">
+    <div class="option-header">
+      <div class="option-number">Option 3</div>
+      <h2 class="option-name">Libre Baskerville</h2>
+      <p class="option-desc">Traditional transitional serif with a heavy, confident bold. The brand name looks like something you'd trust with a checklist — capable and utilitarian rather than editorial. Large headings have solid weight. Most grounded of the four; least precious.</p>
+      <div class="option-pills">
+        <span>Libre Baskerville 400/700 + Inter 400/600</span>
+        <span>Google Fonts</span>
+        <span>Strong bold — weight does the work</span>
+      </div>
+    </div>
+    <div class="mini opt-baskerville">
+      <nav>
+        <span class="brand">HurricaneSupplyList.com</span>
+        <a href="#">Kit Guides</a>
+        <a href="#">Coastal Guides</a>
+        <a href="#">About</a>
+      </nav>
+      <div class="page">
+        <p class="hero-text">Be ready before the storm.</p>
+        <h2>Evacuation kit</h2>
+        <p class="lede">The bag by the door. You have twenty minutes — maybe less. What goes in it, how much of it, and why, so that when the call comes you're moving, not thinking.</p>
+        <h3>Water and food (first 72 hours)</h3>
+        <ul class="checklist">
+          <li>One gallon of water per person per day <span class="why">— drinking plus a little for basic hygiene</span></li>
+          <li>Three days of non-perishable food per person <span class="why">— shelf-stable, no cooking required</span></li>
+          <li>A manual can opener <span class="why">— the one thing people forget every time</span></li>
+        </ul>
+        <div class="btn-row">
+          <a href="#" class="btn btn-primary">Browse kit guides</a>
+          <a href="#" class="btn btn-secondary">Tip on Ko-fi</a>
+        </div>
+      </div>
+      <footer>A supplement, not a replacement for your local emergency management office.</footer>
+    </div>
+  </div>
+
+  <!-- ─── Option 4: Inter brand + DM Serif Display ──────────── -->
+  <div class="font-option">
+    <div class="option-header">
+      <div class="option-number">Option 4</div>
+      <h2 class="option-name">Inter brand · DM Serif Display headings</h2>
+      <p class="option-desc">Structural split: the domain name moves to Inter semibold — the same font as body text — so it's never asked to perform at a size it wasn't designed for. Display headings get DM Serif Display, a serif built exclusively for large sizes. Cleanest architectural separation of the four.</p>
+      <div class="option-pills">
+        <span>Inter 400/600 (brand + body) · DM Serif Display 400 (headings)</span>
+        <span>Google Fonts</span>
+        <span>Nav sans · headings serif</span>
+      </div>
+    </div>
+    <div class="mini opt-dm">
+      <nav>
+        <span class="brand">HurricaneSupplyList.com</span>
+        <a href="#">Kit Guides</a>
+        <a href="#">Coastal Guides</a>
+        <a href="#">About</a>
+      </nav>
+      <div class="page">
+        <p class="hero-text">Be ready before the storm.</p>
+        <h2>Evacuation kit</h2>
+        <p class="lede">The bag by the door. You have twenty minutes — maybe less. What goes in it, how much of it, and why, so that when the call comes you're moving, not thinking.</p>
+        <h3>Water and food (first 72 hours)</h3>
+        <ul class="checklist">
+          <li>One gallon of water per person per day <span class="why">— drinking plus a little for basic hygiene</span></li>
+          <li>Three days of non-perishable food per person <span class="why">— shelf-stable, no cooking required</span></li>
+          <li>A manual can opener <span class="why">— the one thing people forget every time</span></li>
+        </ul>
+        <div class="btn-row">
+          <a href="#" class="btn btn-primary">Browse kit guides</a>
+          <a href="#" class="btn btn-secondary">Tip on Ko-fi</a>
+        </div>
+      </div>
+      <footer>A supplement, not a replacement for your local emergency management office.</footer>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

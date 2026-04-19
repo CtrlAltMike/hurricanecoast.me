@@ -1,4 +1,5 @@
 /* printables.css — print-ready checklist pages */
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&display=swap');
 
 :root {
   --color-bg: #FBF8F2;
@@ -7,22 +8,6 @@
   --color-storm: #3A6B83;
   --color-warm: #C2742B;
   --color-rule: #E6DFD0;
-}
-
-@font-face {
-  font-family: 'Fraunces';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('../fonts/fraunces.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Fraunces';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('../fonts/fraunces.woff2') format('woff2');
 }
 
 @font-face {
@@ -55,7 +40,7 @@ body {
 }
 
 h1 {
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: 'Newsreader', Georgia, serif;
   font-size: 28pt;
   font-weight: 700;
   color: var(--color-ink);
@@ -71,7 +56,7 @@ h1 {
 }
 
 h2 {
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: 'Newsreader', Georgia, serif;
   font-size: 16pt;
   font-weight: 700;
   color: var(--color-ink);

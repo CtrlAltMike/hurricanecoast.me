@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Brand Options · hurricanesupplylist.com</title>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <style>
+
+    /* ── Page chrome ──────────────────────────────────── */
+    body { padding-bottom: 6rem; }
+
+    .demo-intro {
+      max-width: 600px;
+      margin: 3rem auto 3.5rem;
+      padding: 0 1.5rem;
+    }
+    .demo-intro h1 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin-top: 0;
+      margin-bottom: 0.4rem;
+    }
+    .demo-intro p { color: var(--color-ink-muted); font-size: 0.92rem; margin: 0; }
+
+    .demo-section {
+      margin-bottom: 3.5rem;
+    }
+    .demo-label {
+      max-width: 1120px;
+      margin: 0 auto 0.6rem;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+    }
+    .demo-label strong {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 1.05rem;
+    }
+    .demo-label span {
+      font-size: 0.83rem;
+      color: var(--color-ink-muted);
+    }
+    .demo-frame {
+      border-top: 1px solid var(--color-rule);
+      border-bottom: 1px solid var(--color-rule);
+    }
+
+    /* ── Shared nav shell ─────────────────────────────── */
+    .demo-nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 1rem 1.5rem;
+      background: rgba(251, 248, 242, 0.94);
+      flex-wrap: wrap;
+    }
+    .demo-nav-links {
+      display: contents;
+    }
+    .demo-nav a.nav-link {
+      font-size: 0.9375rem;
+      color: var(--color-ink-muted);
+      text-decoration: none;
+      font-weight: 400;
+    }
+
+    /* Shared: brand is always the first child, margin-right:auto pushes links right */
+    .demo-nav > a:first-child,
+    .demo-nav > span:first-child {
+      margin-right: auto;
+    }
+
+    /* ── Option A: Word spaces ────────────────────────── */
+    /* hurricane supply list .com — just spaces added */
+    .brand-a {
+      font-family: 'Newsreader', Georgia, serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--color-ink);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── Option B: CamelCase ──────────────────────────── */
+    /* HurricaneSupplyList.com */
+    .brand-b {
+      font-family: 'Newsreader', Georgia, serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--color-ink);
+      text-decoration: none;
+    }
+
+    /* ── Option C: Color split ────────────────────────── */
+    /* hurricane in muted, supply list in ink, .com in storm */
+    .brand-c {
+      font-family: 'Newsreader', Georgia, serif;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      color: var(--color-ink);
+    }
+    .brand-c .part-prefix { color: var(--color-ink-muted); font-weight: 400; }
+    .brand-c .part-tld    { color: var(--color-storm); font-weight: 400; font-size: 0.85em; }
+
+    /* ── Option D: Dot separator ──────────────────────── */
+    /* hurricane · supply list .com */
+    .brand-d {
+      font-family: 'Newsreader', Georgia, serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--color-ink);
+      text-decoration: none;
+    }
+    .brand-d .dot {
+      color: var(--color-ink-muted);
+      font-weight: 400;
+      margin: 0 0.15em;
+    }
+    .brand-d .part-tld {
+      color: var(--color-ink-muted);
+      font-weight: 400;
+      font-size: 0.85em;
+    }
+
+    /* ── Option E: Two-line stacked ──────────────────── */
+    .brand-e {
+      font-family: 'Newsreader', Georgia, serif;
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--color-ink);
+      text-decoration: none;
+      line-height: 1.15;
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-e .line-2 {
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: var(--color-ink-muted);
+      letter-spacing: 0.04em;
+      text-transform: lowercase;
+    }
+
+    /* ── Option F: Small-caps style ──────────────────── */
+    /* HURRICANE SUPPLY LIST with small .com */
+    .brand-f {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-ink);
+      text-decoration: none;
+    }
+    .brand-f .part-tld {
+      font-size: 0.75em;
+      letter-spacing: 0.05em;
+      color: var(--color-ink-muted);
+      font-weight: 400;
+      text-transform: lowercase;
+    }
+
+    /* ── Option G: Serif + condensed Inter ───────────── */
+    /* "hurricane" in Newsreader italic, rest in Inter */
+    .brand-g {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--color-ink);
+      text-decoration: none;
+    }
+    .brand-g .part-h {
+      font-family: 'Newsreader', Georgia, serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 1.05em;
+    }
+    .brand-g .part-tld {
+      color: var(--color-ink-muted);
+      font-weight: 400;
+      font-size: 0.85em;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="demo-intro">
+    <h1>Nav brand options</h1>
+    <p>Seven treatments for the brand mark. Resize the browser to check mobile legibility too.</p>
+  </div>
+
+  <!-- Current (for reference) -->
+  <div class="demo-section">
+    <div class="demo-label">
+      <strong>Current</strong>
+      <span>One long lowercase string — the baseline problem.</span>
+    </div>
+    <div class="demo-frame">
+      <div class="demo-nav">
+        <a href="index.html" class="brand-a" style="font-weight:700; font-family:'Newsreader',Georgia,serif; font-size:1rem; color:var(--color-ink); text-decoration:none;">hurricanesupplylist.com</a>
+        <a href="#" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Kit Guides</a>
+        <a href="#" class="nav-link">Coastal Guides</a>
+        <a href="#" class="nav-link">About</a>
+        <a href="#" class="nav-link">Support</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- A: Word spaces -->
+  <div class="demo-section">
+    <div class="demo-label">
+      <strong>A — Word spaces</strong>
+      <span>Simplest fix. Three readable words plus .com. Lowercase, matches current feel.</span>
+    </div>
+    <div class="demo-frame">
+      <div class="demo-nav">
+        <a href="index.html" class="brand-a">hurricane supply list .com</a>
+        <a href="#" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Kit Guides</a>
+        <a href="#" class="nav-link">Coastal Guides</a>
+        <a href="#" class="nav-link">About</a>
+        <a href="#" class="nav-link">Support</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- B: CamelCase -->
+  <div class="demo-section">
+    <div class="demo-label">
+      <strong>B — CamelCase</strong>
+      <span>Keeps it as a URL but uses capitals to break the words. Familiar, no-fuss.</span>
+    </div>
+    <div class="demo-frame">
+      <div class="demo-nav">
+        <a href="index.html" class="brand-b">HurricaneSupplyList.com</a>
+        <a href="#" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Kit Guides</a>
+        <a href="#" class="nav-link">Coastal Guides</a>
+        <a href="#" class="nav-link">About</a>
+        <a href="#" class="nav-link">Support</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- C: Color split -->
+  <div class="demo-section">
+    <div class="demo-label">
+      <strong>C — Color split</strong>
+      <span>"hurricane" recedes, "supply list" anchors, ".com" is secondary. Draws the eye to the useful part.</span>
+    </div>
+    <div class="demo-frame">
+      <div class="demo-nav">
+        <a href="index.html" class="brand-c"><span class="part-prefix">hurricane </span>supply list<span class="part-tld">.com</span></a>
+        <a href="#" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Kit Guides</a>
+        <a href="#" class="nav-link">Coastal Guides</a>
+        <a href="#" class="nav-link">About</a>
+        <a href="#" class="nav-link">Support</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- D: Dot separator -->
+  <div class="demo-section">
+    <div class="demo-label">
+      <strong>D — Dot separator</strong>
+      <span>Middle-dot breaks the words visually without adding spaces. Clean, slightly editorial.</span>
+    </div>
+    <div class="demo-frame">
+      <div class="demo-nav">
+        <a href="index.html" class="brand-d">hurricane<span class="dot">·</span>supply list<span class="part-tld">.com</span></a>
+        <a href="#" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Kit Guides</a>
+        <a href="#" class="nav-link">Coastal Guides</a>
+        <a href="#" class="nav-link">About</a>
+        <a href="#" class="nav-link">Support</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- E: Two-line stacked -->
+  <div class="demo-section">
+    <div class="demo-label">
+      <strong>E — Two-line stacked</strong>
+      <span>Top line is the meaningful name, .com is a quiet footnote. Compact footprint.</span>
+    </div>
+    <div class="demo-frame">
+      <div class="demo-nav">
+        <a href="index.html" class="brand-e">
+          <span>hurricane supply list</span>
+          <span class="line-2">.com</span>
+        </a>
+        <a href="#" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Kit Guides</a>
+        <a href="#" class="nav-link">Coastal Guides</a>
+        <a href="#" class="nav-link">About</a>
+        <a href="#" class="nav-link">Support</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- F: Small-caps uppercase -->
+  <div class="demo-section">
+    <div class="demo-label">
+      <strong>F — Uppercase spaced</strong>
+      <span>Inter with wide letter-spacing. Shifts the feel toward institutional — more official, less editorial.</span>
+    </div>
+    <div class="demo-frame">
+      <div class="demo-nav">
+        <a href="index.html" class="brand-f">Hurricane Supply List<span class="part-tld">.com</span></a>
+        <a href="#" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Kit Guides</a>
+        <a href="#" class="nav-link">Coastal Guides</a>
+        <a href="#" class="nav-link">About</a>
+        <a href="#" class="nav-link">Support</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- G: Newsreader italic + Inter -->
+  <div class="demo-section">
+    <div class="demo-label">
+      <strong>G — Italic serif + sans-serif</strong>
+      <span>"hurricane" in Newsreader italic, the rest in Inter. Creates a clear anchor word without relying on color.</span>
+    </div>
+    <div class="demo-frame">
+      <div class="demo-nav">
+        <a href="index.html" class="brand-g"><span class="part-h">hurricane</span> supply list<span class="part-tld">.com</span></a>
+        <a href="#" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Kit Guides</a>
+        <a href="#" class="nav-link">Coastal Guides</a>
+        <a href="#" class="nav-link">About</a>
+        <a href="#" class="nav-link">Support</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
