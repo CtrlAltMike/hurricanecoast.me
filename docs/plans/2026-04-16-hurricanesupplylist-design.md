@@ -77,7 +77,7 @@ Three pillars (lifted from the author's sister site):
 
 ## Visual system
 
-**Palette — "Coastal calm" (Variant A)**
+**Palette — "Coastal calm"**
 
 | Role | Color | Use |
 |---|---|---|

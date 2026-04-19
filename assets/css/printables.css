@@ -1,12 +1,53 @@
 /* printables.css — print-ready checklist pages */
 
+:root {
+  --color-bg: #FBF8F2;
+  --color-ink: #1F2A33;
+  --color-ink-muted: #556270;
+  --color-storm: #3A6B83;
+  --color-warm: #C2742B;
+  --color-rule: #E6DFD0;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/fraunces.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/fraunces.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/inter.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/inter.woff2') format('woff2');
+}
+
 *, *::before, *::after { box-sizing: border-box; }
 
 body {
   font-family: 'Inter', Arial, sans-serif;
   font-size: 11pt;
   line-height: 1.5;
-  color: #1F2A33;
+  color: var(--color-ink);
   background: #fff;
   margin: 0;
   padding: 0.25in 0.5in;
@@ -17,14 +58,14 @@ h1 {
   font-family: 'Fraunces', Georgia, serif;
   font-size: 28pt;
   font-weight: 700;
-  color: #1F2A33;
+  color: var(--color-ink);
   margin: 0 0 0.1in 0;
   line-height: 1.1;
 }
 
 .lede {
   font-size: 10.5pt;
-  color: #556270;
+  color: var(--color-ink-muted);
   margin: 0 0 0.3in 0;
   max-width: 5.5in;
 }
@@ -33,10 +74,10 @@ h2 {
   font-family: 'Fraunces', Georgia, serif;
   font-size: 16pt;
   font-weight: 700;
-  color: #1F2A33;
+  color: var(--color-ink);
   margin: 0.25in 0 0.1in 0;
   padding-bottom: 4pt;
-  border-bottom: 1pt solid #E6DFD0;
+  border-bottom: 1pt solid var(--color-rule);
 }
 
 /* The checklist table */
@@ -53,8 +94,8 @@ thead th {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #556270;
-  border-bottom: 1.5pt solid #1F2A33;
+  color: var(--color-ink-muted);
+  border-bottom: 1.5pt solid var(--color-ink);
   padding: 4pt 6pt 5pt;
   text-align: left;
 }
@@ -65,7 +106,7 @@ thead th:last-child {
 }
 
 tbody tr {
-  border-bottom: 0.5pt solid #E6DFD0;
+  border-bottom: 0.5pt solid var(--color-rule);
 }
 
 tbody tr:last-child {
@@ -86,7 +127,7 @@ tbody td:first-child {
 /* Quantity column */
 tbody td:nth-child(2) {
   width: 34%;
-  color: #1F2A33;
+  color: var(--color-ink);
 }
 
 /* Priority column */
@@ -95,7 +136,7 @@ tbody td:nth-child(3) {
   font-size: 8.5pt;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: #556270;
+  color: var(--color-ink-muted);
 }
 
 /* Checkbox column */
@@ -103,7 +144,7 @@ tbody td:last-child {
   text-align: center;
   font-size: 12pt;
   width: 28pt;
-  color: #556270;
+  color: var(--color-ink-muted);
 }
 
 /* Page break: avoid mid-section */
@@ -114,24 +155,24 @@ tr { page-break-inside: avoid; }
 /* Disclaimer and footer */
 .disclaimer {
   font-size: 9pt;
-  color: #556270;
-  border-top: 0.5pt solid #E6DFD0;
+  color: var(--color-ink-muted);
+  border-top: 0.5pt solid var(--color-rule);
   margin-top: 0.3in;
   padding-top: 6pt;
 }
 
 .site-line {
   font-size: 9pt;
-  color: #556270;
+  color: var(--color-ink-muted);
   margin-top: 4pt;
 }
 
 .print-support-line {
   margin: 0 0 0.22in;
   padding: 0 0 8pt;
-  border-bottom: 0.5pt solid #E6DFD0;
+  border-bottom: 0.5pt solid var(--color-rule);
   font-size: 9.5pt;
-  color: #556270;
+  color: var(--color-ink-muted);
 }
 
 .print-support-line a {
@@ -158,7 +199,7 @@ tr { page-break-inside: avoid; }
     gap: 1rem;
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid #E6DFD0;
+    border-bottom: 1px solid var(--color-rule);
   }
 
   .print-bar .print-bar-links {
@@ -178,7 +219,7 @@ tr { page-break-inside: avoid; }
   .print-bar a.back-link {
     font-family: 'Inter', Arial, sans-serif;
     font-size: 0.875rem;
-    color: #3A6B83;
+    color: var(--color-storm);
     text-decoration: none;
   }
 
@@ -188,7 +229,7 @@ tr { page-break-inside: avoid; }
     font-family: 'Inter', Arial, sans-serif;
     font-size: 0.875rem;
     font-weight: 600;
-    color: #556270;
+    color: var(--color-ink-muted);
     text-decoration: none;
   }
 
@@ -198,7 +239,7 @@ tr { page-break-inside: avoid; }
     font-family: 'Inter', Arial, sans-serif;
     font-size: 0.9375rem;
     font-weight: 600;
-    background: #C2742B;
+    background: var(--color-warm);
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -211,7 +252,7 @@ tr { page-break-inside: avoid; }
   .print-support-line {
     margin-bottom: 1.1rem;
     padding: 0.7rem 0.9rem;
-    border: 1px solid #E6DFD0;
+    border: 1px solid var(--color-rule);
     border-radius: 8px;
     background: #F7F3EA;
   }

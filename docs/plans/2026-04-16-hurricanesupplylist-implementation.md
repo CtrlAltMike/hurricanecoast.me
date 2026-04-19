@@ -23,7 +23,7 @@
 
 **Files:**
 - Create: `.gitignore`
-- Existing: `docs/plans/2026-04-16-hurricanesupplylist-design.md`, `docs/plans/2026-04-16-hurricanesupplylist-implementation.md`, `design-samples.html`, `Earthquake Kit — Checklist.pdf`, `Family Communication Plan — cascadia.me.pdf`
+- Existing: `docs/plans/2026-04-16-hurricanesupplylist-design.md`, `docs/plans/2026-04-16-hurricanesupplylist-implementation.md`, `design-reference.html`, `Earthquake Kit — Checklist.pdf`, `Family Communication Plan — cascadia.me.pdf`
 
 **Step 1: Write `.gitignore`**
 
@@ -42,7 +42,7 @@ node_modules/
 ```bash
 cd /Users/michaelhendrick/Documents/HurricaneSupplyList.com
 git init -b main
-git add .gitignore docs/ design-samples.html
+git add .gitignore docs/ design-reference.html
 git commit -m "chore: initial commit with validated design"
 ```
 
@@ -117,13 +117,13 @@ git commit -m "feat: self-host Fraunces and Inter fonts"
 
 **Step 1: Write `site.css`**
 
-Contents: `@font-face` declarations (four families); `:root` custom properties for the "Coastal calm" palette (all tokens from the design doc); CSS reset (minimal — just `*,*::before,*::after { box-sizing: border-box }` and `body { margin: 0 }`); base typography (Inter body 18px/1.7, Fraunces headings, max line length 68ch); link styles (coastal blue-grey, underline on hover); list styles with the ochre `::before` marker pattern from `design-samples.html`; button styles (`.btn-primary` ochre, `.btn-secondary` outlined storm); responsive adjustments (17px body on mobile, single-column always).
+Contents: `@font-face` declarations (four families); `:root` custom properties for the "Coastal calm" palette (all tokens from the design doc); CSS reset (minimal — just `*,*::before,*::after { box-sizing: border-box }` and `body { margin: 0 }`); base typography (Inter body 18px/1.7, Fraunces headings, max line length 68ch); link styles (coastal blue-grey, underline on hover); list styles with the ochre `::before` marker pattern from `design-reference.html`; button styles (`.btn-primary` ochre, `.btn-secondary` outlined storm); responsive adjustments (17px body on mobile, single-column always).
 
-Reference the Variant A styles in `design-samples.html` as the starting point — copy and adapt rather than rewriting from scratch.
+Reference the canonical Coastal Calm styles in `design-reference.html` as the starting point — copy and adapt rather than rewriting from scratch.
 
 **Step 2: Verify**
 
-Create a throwaway `style-check.html` at repo root that loads `site.css` and contains sample heading, paragraph, list, link, and two buttons. Open in browser. Compare against Variant A in `design-samples.html` — they should match.
+Create a throwaway `style-check.html` at repo root that loads `site.css` and contains sample heading, paragraph, list, link, and two buttons. Open in browser. Compare against `design-reference.html` — they should match.
 
 **Step 3: Commit**
 

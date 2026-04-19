@@ -61,6 +61,20 @@
     </div>
   </nav>
 
+  <aside class="live-alert-ticker" aria-label="Live National Weather Service tropical alerts" data-live-alert-ticker>
+    <a class="live-alert-ticker-label" href="https://www.weather.gov/alerts/active" target="_blank" rel="noopener">
+      <span class="live-alert-ticker-label-dot" aria-hidden="true"></span>
+      Live · NWS tropical alerts
+    </a>
+    <div class="live-alert-ticker-track" aria-live="polite">
+      <div class="live-alert-ticker-track-inner" data-live-alert-items>
+        <span class="live-alert-ticker-empty">Loading live NWS tropical alerts…</span>
+        <span class="live-alert-ticker-empty">Loading live NWS tropical alerts…</span>
+      </div>
+    </div>
+    <span class="live-alert-ticker-readout" data-live-alert-updated>NWS · Connecting…</span>
+  </aside>
+
   <main>
 
     <!-- HERO -->
@@ -164,6 +178,50 @@
       <p><a href="index.html">hurricanesupplylist.com</a></p>
     </div>
   </footer>
+  <script>
+    (function () {
+      var bootTimer = window.setTimeout(function () {
+        if (window.HSLLiveAlertTickerBooted) {
+          return;
+        }
+
+        var track = document.querySelector('[data-live-alert-items]');
+        var readout = document.querySelector('[data-live-alert-updated]');
+
+        if (track) {
+          track.classList.add('is-static');
+          track.innerHTML = '<span class="live-alert-ticker-empty">Unable to load live NWS tropical alerts right now. The ticker script did not start.</span>';
+        }
+
+        if (readout) {
+          readout.textContent = 'NWS · Script error';
+        }
+      }, 4000);
+
+      window.HSLLiveAlertTickerScriptLoaded = function () {
+        window.HSLLiveAlertTickerBooted = true;
+        window.clearTimeout(bootTimer);
+      };
+
+      window.HSLLiveAlertTickerScriptError = function () {
+        window.clearTimeout(bootTimer);
+
+        var track = document.querySelector('[data-live-alert-items]');
+        var readout = document.querySelector('[data-live-alert-updated]');
+
+        if (track) {
+          track.classList.add('is-static');
+          track.innerHTML = '<span class="live-alert-ticker-empty">Unable to load live NWS tropical alerts right now. The ticker script failed to load.</span>';
+        }
+
+        if (readout) {
+          readout.textContent = 'NWS · Script load error';
+        }
+      };
+    })();
+  </script>
+  <script src="assets/js/live-alert-ticker.js?v=20260418c" onerror="window.HSLLiveAlertTickerScriptError && window.HSLLiveAlertTickerScriptError()"></script>
+  <script src="assets/js/card-wind-tilt.js?v=20260418c"></script>
   <script src="assets/js/share.js"></script>
 
 </body>

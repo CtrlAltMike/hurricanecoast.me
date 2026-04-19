@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Disallow: /design-samples.html
+Disallow: /design-reference.html
 Disallow: /style-guide.html
 
 Sitemap: https://hurricanesupplylist.com/sitemap.xml

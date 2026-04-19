@@ -285,6 +285,160 @@ ul.checklist li .why {
   }
 }
 
+.live-alert-ticker {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--color-rule);
+  background: linear-gradient(180deg, rgba(241, 238, 232, 0.68) 0%, rgba(241, 238, 232, 0) 100%);
+  color: var(--color-ink);
+  overflow: hidden;
+  min-height: 2.3rem;
+  font: 500 0.78rem/1.1 'Inter', system-ui, sans-serif;
+}
+
+.live-alert-ticker-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: var(--color-ink);
+  color: var(--color-bg);
+  font: 700 0.66rem/1 'Inter', system-ui, sans-serif;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  flex: none;
+}
+
+.live-alert-ticker-label:hover {
+  color: var(--color-bg);
+  background: #162029;
+}
+
+.live-alert-ticker-label-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #7FC97F;
+  box-shadow: 0 0 0 2px rgba(127, 201, 127, 0.25);
+  animation: live-alert-ticker-blink 2.1s ease-in-out infinite;
+  flex: none;
+}
+
+@keyframes live-alert-ticker-blink {
+  0%, 100% { opacity: 1; }
+  55% { opacity: 0.35; }
+}
+
+.live-alert-ticker-track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.live-alert-ticker-track-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.25rem;
+  min-width: max-content;
+  white-space: nowrap;
+  padding-left: 100%;
+  animation: live-alert-ticker-scroll 30s linear infinite;
+  will-change: transform;
+}
+
+.live-alert-ticker-track-inner.is-static {
+  padding-left: 0;
+  animation: none;
+}
+
+.live-alert-ticker:hover .live-alert-ticker-track-inner,
+.live-alert-ticker:focus-within .live-alert-ticker-track-inner {
+  animation-play-state: paused;
+}
+
+@keyframes live-alert-ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.live-alert-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.live-alert-ticker-item-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #B8404C;
+  box-shadow: 0 0 0 2px rgba(184, 64, 76, 0.18);
+  flex: none;
+}
+
+.live-alert-ticker-item-event {
+  color: var(--color-ink);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.live-alert-ticker-item-area {
+  color: var(--color-ink-muted);
+  font-size: 0.78rem;
+}
+
+.live-alert-ticker-empty {
+  display: inline-block;
+  padding: 0 1rem;
+  color: var(--color-ink-muted);
+  font-style: italic;
+}
+
+.live-alert-ticker-readout {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6rem 0.9rem;
+  border-left: 1px solid var(--color-rule);
+  color: var(--color-ink-muted);
+  font: 500 0.68rem/1 'JetBrains Mono', 'SFMono-Regular', ui-monospace, monospace;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  flex: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-alert-ticker-label-dot {
+    animation: none;
+  }
+
+  .live-alert-ticker-track-inner {
+    animation: none;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    min-width: 0;
+    padding: 0.4rem 0.9rem;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 720px) {
+  .live-alert-ticker-label {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.6rem;
+  }
+
+  .live-alert-ticker-readout {
+    display: none;
+  }
+}
+
 /* Site footer */
 .site-footer {
   border-top: 1px solid var(--color-rule);
@@ -956,6 +1110,7 @@ hr {
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1rem;
   margin-top: 1.5rem;
+  perspective: 900px;
 }
 .directory-card {
   display: flex;
@@ -965,7 +1120,10 @@ hr {
   border: 1px solid var(--color-rule);
   border-radius: 0.9rem;
   background: var(--color-bg);
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transform-origin: center center;
+  will-change: transform;
+  backface-visibility: hidden;
+  transition: transform 0.35s cubic-bezier(.2,.7,.3,1), border-color 0.15s, box-shadow 0.15s;
 }
 .directory-card:hover {
   border-color: var(--color-storm);
@@ -1024,6 +1182,7 @@ hr {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1rem;
   margin-top: 1.5rem;
+  perspective: 900px;
 }
 .kit-card {
   display: flex;
@@ -1033,7 +1192,10 @@ hr {
   border: 1px solid var(--color-rule);
   border-radius: 0.9rem;
   background: var(--color-bg);
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transform-origin: center center;
+  will-change: transform;
+  backface-visibility: hidden;
+  transition: transform 0.35s cubic-bezier(.2,.7,.3,1), border-color 0.15s, box-shadow 0.15s;
 }
 .kit-card:hover {
   border-color: var(--color-storm);
@@ -1103,6 +1265,7 @@ hr {
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 1.5rem;
+  perspective: 900px;
 }
 .home-state-shortcuts {
   position: relative;
@@ -1148,6 +1311,9 @@ hr {
   text-decoration: none;
   color: var(--color-ink);
   background: var(--color-bg);
+  transform-origin: center center;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 .state-card:hover {
   border-color: var(--color-storm);
@@ -1160,7 +1326,7 @@ hr {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(243, 237, 226, 0.9) 100%);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
   font-size: 0.9rem;
-  transition: transform 0.16s ease, border-color 0.16s ease, color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
+  transition: transform 0.35s cubic-bezier(.2,.7,.3,1), border-color 0.16s ease, color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
 }
 .home-state-shortcuts .state-card:hover {
   transform: translateY(-1px);
@@ -1168,6 +1334,21 @@ hr {
   color: var(--color-storm);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(232, 241, 246, 0.96) 100%);
   box-shadow: 0 8px 18px rgba(58, 107, 131, 0.1);
+}
+@media (hover: none) {
+  .directory-card,
+  .kit-card,
+  .state-card {
+    transform: none !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .directory-card,
+  .kit-card,
+  .state-card {
+    transition: none !important;
+    transform: none !important;
+  }
 }
 @media (max-width: 640px) {
   .home-state-shortcuts {
