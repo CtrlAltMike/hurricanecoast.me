@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -6,10 +6,10 @@
   <title>About — hurricanesupplylist.com</title>
   <meta name="description" content="Who made this site, why, and what I don't know. Plus a Ko-fi tip link if this helped.">
   <link rel="canonical" href="https://hurricanesupplylist.com/about">
-<link rel="icon" href="assets/img/favicon.ico">
-<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
-<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="icon" href="assets/img/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
@@ -27,6 +27,7 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/about-variants.css">
 
 <!-- Cloudflare Web Analytics -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "ab045889ac1845719235f1f16e8f646f"}'></script>
@@ -48,9 +49,7 @@
   }
   </script>
 </head>
-<body>
-
-  <!-- Site nav -->
+<body class="about-variant-page">
   <nav class="site-nav" aria-label="Site navigation">
     <div class="container-wide">
       <a href="index.html" class="brand">hurricanesupplylist.com</a>
@@ -62,42 +61,53 @@
     </div>
   </nav>
 
-  <main>
-    <article class="container" style="padding-top: 3rem; padding-bottom: 4rem;">
+  <main class="about-demo-main">
+    <header class="about-hero about-hero-notes">
+      <div class="container-wide">
+        <div class="about-hero-panel">
+          <div class="about-notes-visual">
+            <div class="about-notes-quote">
+              <strong>On preparedness</strong>
+              <p>Preparedness is not performance. It is a deliberate set of decisions made early enough that a natural disaster does not get to make them for you.</p>
+            </div>
+          </div>
 
-      <h1>About this site</h1>
+          <div class="about-notes-copy">
+            <div>
+              <h1>Who made this, why, and what I don't know.</h1>
+              <p class="lede">I wanted a site I could send to family without apologizing for the panic, the ads, or the affiliate links. That turned out to be harder to find than I expected, so I built one.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
 
-      <img
-        src="assets/img/heroes/AboutMe.webp"
-        alt="Mike on a coastal boardwalk"
-        class="author-photo"
-        width="200"
-        height="200"
-        decoding="async"
-      >
+    <article class="container about-story">
+      <h2>Why I built it</h2>
+      <p class="prose">The internet has plenty of hurricane content. Most of it is technically correct, hard to act on, or quietly built around a referral fee. I wanted a site I could send to family — no catastrophizing, no pop-ups, no commission on the flashlight.</p>
+      <p class="prose">What I wanted was simple: a place that treated preparedness as care. Not a performance of seriousness. Not a shopping spree. Just clear help for people trying to take care of a household before the weather turns.</p>
 
-      <h2>Who I am</h2>
-      <p class="prose">I'm Mike. I'm not a meteorologist, emergency management professional, or disaster response expert. I'm someone who lives in a part of the country where natural disasters are real and I've done a lot of research on what preparation actually looks like.</p>
-      <p class="prose">I also built <a href="https://cascadia.me">cascadia.me</a>, a preparedness resource for the Pacific Northwest. The same philosophy applies here: care, not fear. Useful, not just informative.</p>
+      <h2>What I know, and what I don't</h2>
+      <p class="prose">I am not a meteorologist, a doctor, or an emergency manager. I am someone who has spent a long time studying preparedness, building lists, comparing guidance, and thinking about what actually works when stress is high and time is short.</p>
+      <p class="prose">That means I can help with planning logic, communication, supply decisions, and organization. It also means I should be careful about the edges of my authority. When the right answer belongs to an official agency or a professional, I say that.</p>
 
-      <h2>Why this site exists</h2>
-      <p class="prose">Most hurricane preparedness content online falls into one of two categories: government PDFs that nobody reads, or affiliate-link roundups designed to sell you something. I wanted something in between — guides that actually explain the reasoning behind the recommendations, built by someone who isn't trying to monetize the fear.</p>
-      <p class="prose">This site has no ads. No affiliate links. The kit guides don't link to specific products to earn a commission. If you want to support the work (which is sincerely appreciated by me,) there's a simple Ko-fi link you can tap which doesn't require login.</p>
+      <h2>What useful looks like</h2>
+      <p class="prose">I want the tone to stay calm enough that you can read it before hurricane season, not just during a warning. I want a page to feel useful when you're tired, busy, or trying to help someone else get ready. And I want the guidance to be specific enough that it reduces friction instead of adding to it.</p>
+      <p class="prose">Preparedness advice should make a reader feel steadier. If a page is technically complete but leaves someone more overwhelmed than before, it has not done its job.</p>
 
-      <h2>What I don't know</h2>
-      <p class="prose">I'm not a medical professional, and nothing on this site should be treated as medical advice. I'm not a structural engineer and can't tell you whether your house will survive a Category 4. I'm not a meteorologist and I don't forecast storms.</p>
-      <p class="prose">Where I reference guidance from authoritative sources — FEMA, the National Hurricane Center, the Red Cross, CDC — I link to those sources. Where I'm working from research and personal judgment rather than professional expertise, I try to say so.</p>
-      <p class="prose">The best emergency preparedness resource is still your local emergency management office. This site is a supplement, not a replacement.</p>
+      <h2>How I work on it</h2>
+      <p class="prose">I review the site before June 1 and revisit it after major natural disasters, new lessons, broken links, or anything else that shows me a blind spot. An independent site still has to earn its trust. That means rewriting when the writing is unclear and updating when the facts move.</p>
+      <p class="prose">I also keep the project deliberately small. I would rather publish fewer pages that someone might actually use than expand into content I cannot maintain well.</p>
 
-      <h2>How I keep it current</h2>
-      <p class="prose">I review each page before hurricane season (which starts June 1) and after any major event that reveals something I got wrong or missed. If you find an error or an outdated link, you can reach me through Ko-fi.</p>
-      <h2>Support this site</h2>
-      <p class="prose">If something here helped you — if you built a kit, printed a checklist, or sent a page to someone who needed it — please consider leaving a small tip. It takes a long time to write this kind of content carefully, and tips are the only revenue this site has.</p>
+      <h2>No ads or affiliate links</h2>
+      <p class="prose">There are no ads or affiliate links. A page that doesn't need to sell a generator can just tell you whether you need one.</p>
+
+      <h2>Keep it independent</h2>
+      <p class="prose">If the site has helped you build a kit, print a checklist, or explain hurricane risk to somebody else, a tip is appreciated. It helps keep the work slow, careful, and independent.</p>
       <div class="btn-row">
         <a href="https://ko-fi.com/mikehen" class="btn btn-primary">Tip on Ko-fi</a>
       </div>
-      <p class="prose" style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-ink-muted);">Ko-fi is a simple tipping platform. No account required. Any amount is appreciated.</p>
-
+      <p class="prose" style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-ink-muted);">Ko-fi is a simple tipping platform. No account required. Any amount is appreciated, and it keeps the project ad-free.</p>
     </article>
 
     <div class="palm-footer-scene" aria-hidden="true">
@@ -105,8 +115,7 @@
         <path class="palm-footer-dune-back" d="M0 110 C 180 92, 320 118, 500 100 S 820 80, 1000 104 S 1200 98, 1200 102 L 1200 160 L 0 160 Z"></path>
         <path class="palm-footer-dune-front" d="M0 130 C 140 116, 280 136, 460 124 S 780 108, 960 128 S 1200 122, 1200 126 L 1200 160 L 0 160 Z"></path>
       </svg>
-
-      <svg viewBox="0 0 200 160" preserveAspectRatio="xMinYMax meet" style="width: auto; height: 100%; left: 8%;">
+      <svg viewBox="0 0 200 160" preserveAspectRatio="xMinYMax meet" style="width:auto; height:100%; left:8%;">
         <g class="palm-footer-trunk">
           <path d="M 96 160 C 96 130, 94 100, 100 70 C 104 55, 104 48, 100 40 L 98 38 L 96 40 C 92 48, 92 55, 96 70 C 102 100, 92 130, 92 160 Z"></path>
         </g>
@@ -120,8 +129,7 @@
           <circle cx="99" cy="42" r="3"></circle>
         </g>
       </svg>
-
-      <svg viewBox="0 0 200 160" preserveAspectRatio="xMinYMax meet" style="width: auto; height: 82%; left: auto; right: 14%;">
+      <svg viewBox="0 0 200 160" preserveAspectRatio="xMinYMax meet" style="width:auto; height:82%; left:auto; right:14%;">
         <g class="palm-footer-trunk palm-footer-trunk-right">
           <path d="M 96 160 C 96 132, 94 104, 100 80 C 104 66, 104 60, 100 54 L 98 52 L 96 54 C 92 60, 92 66, 96 80 C 102 104, 92 132, 92 160 Z"></path>
         </g>
@@ -135,7 +143,6 @@
           <circle cx="99" cy="56" r="2.5"></circle>
         </g>
       </svg>
-
       <svg viewBox="0 0 1200 160" preserveAspectRatio="none">
         <path class="palm-footer-bird" d="M 260 40 q 10 -8 20 0 q 10 -8 20 0"></path>
         <path class="palm-footer-bird" d="M 290 28 q 8 -6 16 0 q 8 -6 16 0" style="animation-delay: -5s;"></path>
@@ -143,7 +150,6 @@
     </div>
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="container-wide">
       <p>A supplement, not a replacement for your <a href="https://www.ready.gov/local">local emergency management office</a>.</p>

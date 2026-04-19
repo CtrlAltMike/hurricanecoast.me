@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>About Page Top Ideas · hurricanesupplylist.com</title>
+  <link rel="icon" href="assets/img/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <style>
+    body.about-ideas-page {
+      background:
+        radial-gradient(circle at top right, rgba(194, 116, 43, 0.12), transparent 28%),
+        linear-gradient(180deg, #efe9de 0%, var(--color-bg) 24%, #f7f2e8 100%);
+    }
+
+    .about-ideas-page .site-nav {
+      background: rgba(251, 248, 242, 0.9);
+      backdrop-filter: blur(12px);
+    }
+
+    .ideas-shell {
+      padding: 2rem 0 5rem;
+    }
+
+    .ideas-intro {
+      display: grid;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      padding: 0 1rem;
+    }
+
+    .ideas-intro-panel {
+      padding: 1.4rem 1.5rem;
+      border: 1px solid rgba(31, 42, 51, 0.08);
+      border-radius: 20px;
+      background: rgba(255, 252, 248, 0.84);
+      box-shadow: 0 16px 36px rgba(31, 42, 51, 0.08);
+    }
+
+    .ideas-intro h1 {
+      margin: 0 0 0.75rem;
+      font-size: clamp(2.4rem, 6vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: -0.035em;
+    }
+
+    .ideas-intro .prose {
+      margin: 0;
+      max-width: 44rem;
+      font-size: 1rem;
+    }
+
+    .ideas-criteria {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .ideas-criteria li {
+      padding: 0.45rem 0.75rem;
+      border: 1px solid rgba(58, 107, 131, 0.16);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--color-ink);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .idea-stack {
+      display: grid;
+      gap: 2rem;
+      padding: 0 1rem;
+    }
+
+    .idea-card {
+      overflow: hidden;
+      border: 1px solid rgba(31, 42, 51, 0.08);
+      border-radius: 26px;
+      background: rgba(255, 252, 248, 0.9);
+      box-shadow: 0 18px 52px rgba(31, 42, 51, 0.1);
+    }
+
+    .idea-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem 0.8rem;
+      align-items: center;
+      padding: 1rem 1.3rem;
+      border-bottom: 1px solid rgba(31, 42, 51, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 243, 235, 0.84));
+    }
+
+    .idea-kicker {
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(58, 107, 131, 0.12);
+      color: var(--color-storm);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .idea-kicker--recommended {
+      background: rgba(194, 116, 43, 0.14);
+      color: var(--color-warm);
+    }
+
+    .idea-title {
+      margin: 0;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.35rem;
+      line-height: 1.1;
+    }
+
+    .idea-note {
+      margin-left: auto;
+      color: var(--color-ink-muted);
+      font-size: 0.86rem;
+    }
+
+    .idea-frame {
+      padding: 1.2rem;
+      background:
+        linear-gradient(180deg, rgba(251, 248, 242, 0.92), rgba(243, 237, 226, 0.96));
+    }
+
+    .idea-recap {
+      display: grid;
+      gap: 0.5rem;
+      padding: 1.15rem 1.3rem 1.35rem;
+      border-top: 1px solid rgba(31, 42, 51, 0.08);
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    .idea-recap p {
+      margin: 0;
+      color: var(--color-ink-muted);
+      font-size: 0.92rem;
+    }
+
+    .idea-recap strong {
+      color: var(--color-ink);
+    }
+
+    .concept-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 1.4rem;
+      align-items: stretch;
+      min-height: 30rem;
+      padding: 2rem;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at top right, rgba(58, 107, 131, 0.18), transparent 28%),
+        linear-gradient(145deg, #fffdfa 0%, #f3ede3 100%);
+    }
+
+    .concept-hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+      min-width: 0;
+    }
+
+    .concept-hero-copy h3 {
+      margin: 0 0 0.8rem;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .concept-hero-copy p {
+      margin: 0;
+      max-width: 34rem;
+      color: var(--color-ink-muted);
+      font-size: 1rem;
+    }
+
+    .idea-pillars {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+
+    .idea-pillar {
+      padding: 0.9rem 1rem;
+      border: 1px solid rgba(31, 42, 51, 0.08);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .idea-pillar strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: var(--color-ink);
+      font-size: 0.94rem;
+    }
+
+    .idea-pillar span {
+      color: var(--color-ink-muted);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .idea-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .idea-badges span {
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(31, 42, 51, 0.08);
+      background: rgba(255, 255, 255, 0.72);
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--color-ink);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .concept-portrait {
+      position: relative;
+      display: grid;
+      align-items: end;
+      min-height: 100%;
+      padding: 1rem;
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(31, 42, 51, 0.08), rgba(31, 42, 51, 0.24)),
+        linear-gradient(160deg, #d3c2ad 0%, #8da3ac 100%);
+    }
+
+    .concept-portrait img {
+      width: 100%;
+      height: 100%;
+      min-height: 24rem;
+      object-fit: cover;
+      object-position: center 22%;
+      border-radius: 20px;
+      box-shadow: 0 18px 48px rgba(31, 42, 51, 0.2);
+    }
+
+    .concept-callout {
+      position: absolute;
+      left: 1.4rem;
+      right: 1.4rem;
+      bottom: 1.35rem;
+      padding: 0.95rem 1rem 1rem;
+      border-radius: 16px;
+      background: rgba(251, 248, 242, 0.92);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 22px rgba(31, 42, 51, 0.12);
+    }
+
+    .concept-callout strong {
+      display: block;
+      margin-bottom: 0.2rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-storm);
+    }
+
+    .concept-callout p {
+      margin: 0;
+      color: var(--color-ink);
+      font-size: 0.96rem;
+      line-height: 1.45;
+    }
+
+    .concept-broadcast {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at top left, rgba(194, 116, 43, 0.18), transparent 28%),
+        linear-gradient(135deg, #1f2a33 0%, #2a3d48 35%, #3a6b83 100%);
+      color: #f7f3ea;
+    }
+
+    .concept-broadcast::after {
+      content: "";
+      position: absolute;
+      inset: auto -2rem 1.6rem auto;
+      width: 16rem;
+      height: 16rem;
+      border-radius: 50%;
+      background: rgba(250, 210, 126, 0.08);
+      filter: blur(4px);
+    }
+
+    .concept-broadcast-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+      gap: 1.25rem;
+      padding: 2rem;
+    }
+
+    .concept-broadcast h3 {
+      margin: 0 0 0.8rem;
+      color: #f7f3ea;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      line-height: 0.97;
+      letter-spacing: -0.04em;
+    }
+
+    .concept-broadcast p {
+      margin: 0;
+      max-width: 34rem;
+      color: rgba(247, 243, 234, 0.84);
+    }
+
+    .broadcast-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1rem;
+    }
+
+    .broadcast-chip-row span {
+      padding: 0.42rem 0.7rem;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff7eb;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .broadcast-rail {
+      display: grid;
+      gap: 0.75rem;
+      align-content: start;
+    }
+
+    .broadcast-card {
+      padding: 1rem 1.05rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .broadcast-card strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: #fff7eb;
+      font-size: 0.9rem;
+    }
+
+    .broadcast-card span {
+      color: rgba(247, 243, 234, 0.8);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .concept-notebook {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.95fr);
+      gap: 1.35rem;
+      align-items: stretch;
+      padding: 1.2rem;
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.48), rgba(255, 255, 255, 0.18)),
+        linear-gradient(135deg, #f2eadf 0%, #efe4d3 100%);
+    }
+
+    .notebook-visual {
+      position: relative;
+      overflow: hidden;
+      min-height: 27rem;
+      border-radius: 20px;
+      background:
+        linear-gradient(180deg, rgba(31, 42, 51, 0.1), rgba(31, 42, 51, 0.26)),
+        url("assets/img/heroes/AboutMe.webp") center 24% / cover no-repeat;
+      box-shadow: 0 18px 44px rgba(31, 42, 51, 0.14);
+    }
+
+    .notebook-quote {
+      position: absolute;
+      left: 1.25rem;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      padding: 1rem 1.05rem;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 16px;
+      background: rgba(28, 39, 47, 0.68);
+      backdrop-filter: blur(10px);
+      color: #f7f3ea;
+    }
+
+    .notebook-quote strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #fad27e;
+    }
+
+    .notebook-quote p {
+      margin: 0;
+      font-size: 0.98rem;
+      line-height: 1.45;
+      color: rgba(247, 243, 234, 0.92);
+    }
+
+    .notebook-stack {
+      display: grid;
+      gap: 0.95rem;
+      align-content: center;
+    }
+
+    .notebook-sheet {
+      padding: 1.1rem 1.15rem;
+      border-radius: 18px;
+      border: 1px solid rgba(31, 42, 51, 0.08);
+      background: rgba(255, 255, 255, 0.84);
+      box-shadow: 0 12px 26px rgba(31, 42, 51, 0.08);
+    }
+
+    .notebook-sheet strong {
+      display: block;
+      margin-bottom: 0.32rem;
+      color: var(--color-ink);
+      font-size: 0.92rem;
+    }
+
+    .notebook-sheet span {
+      color: var(--color-ink-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 940px) {
+      .concept-hero,
+      .concept-broadcast-inner,
+      .concept-notebook {
+        grid-template-columns: 1fr;
+      }
+
+      .concept-hero,
+      .concept-broadcast-inner {
+        padding: 1.4rem;
+      }
+
+      .idea-pillars {
+        grid-template-columns: 1fr;
+      }
+
+      .idea-note {
+        margin-left: 0;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .ideas-shell {
+        padding-top: 1.2rem;
+      }
+
+      .ideas-intro,
+      .idea-stack {
+        padding: 0 0.75rem;
+      }
+
+      .idea-meta,
+      .idea-frame,
+      .idea-recap {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .concept-hero,
+      .concept-broadcast-inner,
+      .concept-notebook {
+        padding: 1rem;
+      }
+
+      .concept-portrait img,
+      .notebook-visual {
+        min-height: 22rem;
+      }
+    }
+  </style>
+</head>
+<body class="about-ideas-page">
+  <nav class="site-nav" aria-label="Site navigation">
+    <div class="container-wide">
+      <a href="index.html" class="brand">hurricanesupplylist.com</a>
+      <a href="index.html">Home</a>
+      <a href="kits.html">Kit Guides</a>
+      <a href="states.html">Coastal Guides</a>
+      <a href="about.html">About</a>
+      <a href="https://ko-fi.com/mikehen" target="_blank" rel="noopener">Support</a>
+    </div>
+  </nav>
+
+  <main class="ideas-shell">
+    <section class="container-wide ideas-intro">
+      <div class="ideas-intro-panel">
+        <p class="hero-eyebrow">About page study</p>
+        <h1>The top of <code>about.html</code> needs a stronger signal.</h1>
+        <p class="prose">Right now it opens like a plain article: heading, portrait, then paragraphs. That explains things, but it does not make a strong first impression. The better move is to use the first screen to establish voice, trust boundaries, and why this site exists.</p>
+      </div>
+      <ul class="ideas-criteria">
+        <li>Bring the portrait into a composition</li>
+        <li>Put trust markers above the fold</li>
+        <li>State the thesis fast: care, not fear</li>
+        <li>Make the page feel authored, not generic</li>
+      </ul>
+    </section>
+
+    <section class="container-wide idea-stack">
+      <article class="idea-card">
+        <div class="idea-meta">
+          <span class="idea-kicker idea-kicker--recommended">Recommended</span>
+          <h2 class="idea-title">Founder Signal Hero</h2>
+          <span class="idea-note">Best balance of trust, personality, and polish</span>
+        </div>
+        <div class="idea-frame">
+          <div class="concept-hero">
+            <div class="concept-hero-copy">
+              <div>
+                <p class="hero-eyebrow">About this site</p>
+                <h3>Built by a real person, with clear limits and no fear-selling.</h3>
+                <p>This version makes the about page feel like an authored front door. The portrait stops floating by itself and becomes part of a real hero. The first screen says who made the site, why the project exists, and what standards hold it together.</p>
+              </div>
+
+              <div class="idea-pillars">
+                <div class="idea-pillar">
+                  <strong>No ads, no affiliate links</strong>
+                  <span>The business model is stated immediately instead of buried in body copy.</span>
+                </div>
+                <div class="idea-pillar">
+                  <strong>Reviewed before June 1</strong>
+                  <span>Update cadence becomes part of the page’s credibility signal.</span>
+                </div>
+                <div class="idea-pillar">
+                  <strong>Official sources linked when relevant</strong>
+                  <span>The trust boundary is clear: what is sourced, what is judgment.</span>
+                </div>
+                <div class="idea-pillar">
+                  <strong>Care, not fear</strong>
+                  <span>The site philosophy becomes the headline-level message, not a later aside.</span>
+                </div>
+              </div>
+
+              <div class="idea-badges">
+                <span>Independent</span>
+                <span>Local-risk mindset</span>
+                <span>Useful over viral</span>
+                <span>Transparent limits</span>
+              </div>
+            </div>
+
+            <div class="concept-portrait">
+              <img src="assets/img/heroes/AboutMe.webp" alt="" loading="lazy" decoding="async" width="200" height="200">
+              <div class="concept-callout">
+                <strong>What this fixes</strong>
+                <p>The page stops feeling like an afterthought and starts feeling like a deliberate trust statement.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="idea-recap">
+          <p><strong>Why it works:</strong> it makes the page more human without turning it into a personal blog.</p>
+          <p><strong>If we ship only one change:</strong> replace the current `h1 + circular portrait` opening with this kind of full hero and move the trust markers into that first screen.</p>
+        </div>
+      </article>
+
+      <article class="idea-card">
+        <div class="idea-meta">
+          <span class="idea-kicker">Option 2</span>
+          <h2 class="idea-title">Storm Desk Intro</h2>
+          <span class="idea-note">More editorial, more structured, less personal-photo-led</span>
+        </div>
+        <div class="idea-frame">
+          <div class="concept-broadcast">
+            <div class="concept-broadcast-inner">
+              <div>
+                <p class="hero-eyebrow" style="color: rgba(247, 243, 234, 0.74);">Why this project exists</p>
+                <h3>A practical hurricane site should explain its standards on arrival.</h3>
+                <p>This direction treats the top of the page like a station briefing. It is less portrait-driven and more about editorial authority: what the site is, what it is not, and how the material is maintained.</p>
+                <div class="broadcast-chip-row">
+                  <span>No fear merchandising</span>
+                  <span>No fake expertise</span>
+                  <span>Links to official guidance</span>
+                </div>
+              </div>
+
+              <div class="broadcast-rail">
+                <div class="broadcast-card">
+                  <strong>Who made it</strong>
+                  <span>Mike, building preparedness resources from the perspective of a careful independent publisher.</span>
+                </div>
+                <div class="broadcast-card">
+                  <strong>What it covers</strong>
+                  <span>Preparedness kits, local risk, and planning logic for real households.</span>
+                </div>
+                <div class="broadcast-card">
+                  <strong>What it does not claim</strong>
+                  <span>Not medical advice, not engineering advice, not storm forecasting.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="idea-recap">
+          <p><strong>Why it works:</strong> the page gets a stronger editorial identity and trust boundary.</p>
+          <p><strong>Tradeoff:</strong> it is cooler and more institutional, so it loses some of the warmth the portrait currently brings.</p>
+        </div>
+      </article>
+
+      <article class="idea-card">
+        <div class="idea-meta">
+          <span class="idea-kicker">Option 3</span>
+          <h2 class="idea-title">Field Notes Opening</h2>
+          <span class="idea-note">Most atmospheric and personal</span>
+        </div>
+        <div class="idea-frame">
+          <div class="concept-notebook">
+            <div class="notebook-visual">
+              <div class="notebook-quote">
+                <strong>Page thesis</strong>
+                <p>Preparedness is not performance. It is a quiet set of decisions made early enough that a storm does not get to make them for you.</p>
+              </div>
+            </div>
+
+            <div class="notebook-stack">
+              <div class="notebook-sheet">
+                <strong>Use the top like a note from the author</strong>
+                <span>Open with a short personal statement, not just a heading and a portrait. Give the page a reason to be read.</span>
+              </div>
+              <div class="notebook-sheet">
+                <strong>Pull the best lines upward</strong>
+                <span>The current page already has the right ideas. They are just lower on the page than they should be.</span>
+              </div>
+              <div class="notebook-sheet">
+                <strong>Let the body become calmer afterward</strong>
+                <span>Once the top has mood and intent, the rest of the about page can stay simple and readable.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="idea-recap">
+          <p><strong>Why it works:</strong> it feels the most authored and emotionally grounded.</p>
+          <p><strong>Tradeoff:</strong> it is more atmospheric, so it needs discipline to avoid drifting away from the site’s practical tone.</p>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
