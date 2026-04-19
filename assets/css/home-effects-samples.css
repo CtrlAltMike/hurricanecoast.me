@@ -1,0 +1,397 @@
+.effects-preview-page {
+  background:
+    radial-gradient(circle at top right, rgba(194, 116, 43, 0.08), transparent 24rem),
+    linear-gradient(180deg, #f4ede2 0%, #fbf8f2 18rem);
+}
+
+.effects-preview-nav {
+  background: rgba(251, 248, 242, 0.88);
+  backdrop-filter: blur(10px);
+}
+
+.effects-preview-intro {
+  padding: 2.75rem 0 2.1rem;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.effects-preview-intro h1 {
+  margin-top: 0;
+  margin-bottom: 0.45rem;
+  font-size: clamp(2.3rem, 4vw, 3.5rem);
+}
+
+.effects-preview-intro .prose:last-of-type {
+  margin-bottom: 0;
+}
+
+.preview-eyebrow,
+.effect-sample-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+  padding: 0.34rem 0.72rem;
+  border-radius: 999px;
+  background: rgba(58, 107, 131, 0.08);
+  border: 1px solid rgba(58, 107, 131, 0.12);
+  color: var(--color-storm);
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.effects-preview-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
+.effects-preview-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.72rem;
+  border-radius: 999px;
+  border: 1px solid rgba(31, 42, 51, 0.12);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--color-ink);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.effects-preview-links a:hover {
+  border-color: rgba(58, 107, 131, 0.24);
+  color: var(--color-storm);
+}
+
+.effect-sample {
+  padding: 2.75rem 0 3rem;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.effect-sample:last-of-type {
+  border-bottom: 0;
+}
+
+.effect-sample-copy {
+  max-width: 44rem;
+  margin-bottom: 1.35rem;
+}
+
+.effect-sample-copy h2 {
+  margin-top: 0;
+  margin-bottom: 0.45rem;
+}
+
+.effect-sample-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.effect-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.9rem;
+}
+
+.effect-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.58rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(31, 42, 51, 0.1);
+  color: var(--color-ink-muted);
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.effect-chip--recommended {
+  background: rgba(194, 116, 43, 0.11);
+  border-color: rgba(194, 116, 43, 0.22);
+  color: var(--color-warm);
+}
+
+.effect-shell {
+  border: 1px solid rgba(31, 42, 51, 0.08);
+  border-radius: 1.55rem;
+  overflow: hidden;
+  background: rgba(255, 252, 247, 0.76);
+  box-shadow: 0 22px 48px rgba(31, 42, 51, 0.08);
+}
+
+.effect-shell .hero-home {
+  padding: 2.6rem 0 2.35rem;
+  border-bottom: 0;
+}
+
+.effect-shell .container-wide {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.effect-shell .hero-home-copy {
+  max-width: 34rem;
+}
+
+.effect-shell .hero-home .lede {
+  max-width: 31rem;
+}
+
+.effect-shell .hero-media {
+  position: relative;
+}
+
+.fx-stage {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  isolation: isolate;
+  background: linear-gradient(180deg, #f3ecdf 0%, #ddd5ca 100%);
+}
+
+.fx-stage .hero-media-image {
+  position: relative;
+  z-index: 0;
+  border-radius: 0;
+}
+
+.fx-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.fx-layer > div {
+  position: absolute;
+  inset: 0;
+}
+
+.fx-home-dawn-glow {
+  background:
+    radial-gradient(circle at 82% 15%, rgba(255, 205, 122, 0.34) 0%, rgba(255, 205, 122, 0.12) 15%, rgba(255, 205, 122, 0) 30%),
+    radial-gradient(circle at 69% 18%, rgba(255, 236, 203, 0.15) 0%, rgba(255, 236, 203, 0) 24%);
+  mix-blend-mode: screen;
+  animation: fx-home-dawn-pulse 14s ease-in-out infinite;
+}
+
+.fx-home-dawn-breeze {
+  inset: 4% -18% 48% 18%;
+  background:
+    repeating-linear-gradient(
+      171deg,
+      rgba(255, 247, 235, 0) 0 56px,
+      rgba(255, 247, 235, 0.18) 57px 80px,
+      rgba(255, 247, 235, 0) 81px 126px
+    );
+  opacity: 0.34;
+  filter: blur(1px);
+  mix-blend-mode: screen;
+  animation: fx-home-breeze-drift 22s linear infinite;
+}
+
+.fx-home-dawn-water {
+  inset: 56% -12% -4% -6%;
+  background:
+    linear-gradient(180deg, rgba(255, 247, 230, 0) 0%, rgba(255, 247, 230, 0.1) 34%, rgba(255, 247, 230, 0) 72%),
+    repeating-linear-gradient(
+      173deg,
+      rgba(255, 248, 236, 0) 0 16px,
+      rgba(255, 248, 236, 0.24) 17px 23px,
+      rgba(255, 248, 236, 0) 24px 44px
+    );
+  mix-blend-mode: screen;
+  opacity: 0.5;
+  animation: fx-home-water-shimmer 18s linear infinite;
+}
+
+[data-wind-gust="headline"] h1 {
+  will-change: transform;
+}
+
+[data-wind-gust="headline"] h1 {
+  transform-origin: left bottom;
+}
+
+.fx-home-band-field {
+  inset: -6% -18% 42% -4%;
+  background:
+    repeating-linear-gradient(
+      173deg,
+      rgba(31, 42, 51, 0) 0 44px,
+      rgba(31, 42, 51, 0.09) 45px 76px,
+      rgba(31, 42, 51, 0) 77px 126px
+    );
+  filter: blur(1.1px);
+  mix-blend-mode: multiply;
+  opacity: 0.72;
+  animation: fx-home-band-drift 24s linear infinite;
+}
+
+.fx-home-band-cool {
+  inset: -10% -14% 30% 12%;
+  background:
+    linear-gradient(145deg, rgba(58, 107, 131, 0.08) 8%, rgba(58, 107, 131, 0) 34%, rgba(31, 42, 51, 0.12) 62%, rgba(31, 42, 51, 0) 84%);
+  mix-blend-mode: multiply;
+  opacity: 0.72;
+  animation: fx-home-band-drift-reverse 28s linear infinite;
+}
+
+.fx-home-band-rain {
+  inset: 2% -12% 0 58%;
+  background:
+    linear-gradient(188deg, rgba(255, 255, 255, 0) 0%, rgba(214, 229, 238, 0.08) 28%, rgba(214, 229, 238, 0.18) 64%, rgba(214, 229, 238, 0) 100%),
+    repeating-linear-gradient(
+      192deg,
+      rgba(214, 229, 238, 0) 0 11px,
+      rgba(214, 229, 238, 0.18) 12px 14px,
+      rgba(214, 229, 238, 0) 15px 25px
+    );
+  mix-blend-mode: screen;
+  opacity: 0.28;
+  animation: fx-home-rain-sweep 18s linear infinite;
+}
+
+.fx-home-haze-field {
+  inset: 22% -20% 18% -12%;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='900' height='420'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.011 0.03' numOctaves='2' seed='6' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.82 0 0 0 0 0.88 0 0 0 0 0.92 0 0 0 0.24 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-repeat: repeat;
+  background-size: 900px 420px;
+  filter: blur(1.8px);
+  mix-blend-mode: screen;
+  opacity: 0.3;
+  animation: fx-home-haze-drift 30s linear infinite;
+}
+
+.fx-home-haze-light {
+  inset: 8% 10% 38% 46%;
+  background:
+    radial-gradient(circle at 72% 24%, rgba(255, 238, 204, 0.18) 0%, rgba(255, 238, 204, 0.08) 26%, rgba(255, 238, 204, 0) 58%);
+  mix-blend-mode: screen;
+  animation: fx-home-dawn-pulse 16s ease-in-out infinite;
+}
+
+.fx-home-haze-water {
+  inset: 58% -8% -2% -4%;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(235, 244, 247, 0.12) 38%, rgba(255, 247, 232, 0.12) 70%, rgba(255, 255, 255, 0) 100%),
+    radial-gradient(circle at 26% 16%, rgba(255, 240, 210, 0.2) 0%, rgba(255, 240, 210, 0) 24%);
+  mix-blend-mode: screen;
+  opacity: 0.5;
+  animation: fx-home-haze-breathe 18s ease-in-out infinite;
+}
+
+@keyframes fx-home-dawn-pulse {
+  0%, 100% {
+    opacity: 0.62;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes fx-home-breeze-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-110px);
+  }
+}
+
+@keyframes fx-home-water-shimmer {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(90px);
+  }
+}
+
+@keyframes fx-home-band-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-125px);
+  }
+}
+
+@keyframes fx-home-band-drift-reverse {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(90px);
+  }
+}
+
+@keyframes fx-home-rain-sweep {
+  from {
+    transform: translateX(18px);
+  }
+  to {
+    transform: translateX(-34px);
+  }
+}
+
+@keyframes fx-home-haze-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -180px 0;
+  }
+}
+
+@keyframes fx-home-haze-breathe {
+  0%, 100% {
+    opacity: 0.34;
+  }
+  50% {
+    opacity: 0.58;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-wind-gust="headline"] h1,
+  .fx-layer > div {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 860px) {
+  .effects-preview-intro {
+    padding: 2.25rem 0 1.8rem;
+  }
+
+  .effect-sample {
+    padding: 2.3rem 0 2.5rem;
+  }
+
+  .effect-shell .hero-home {
+    padding: 2.2rem 0 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .effects-preview-links {
+    gap: 0.45rem;
+  }
+
+  .effects-preview-links a {
+    font-size: 0.82rem;
+  }
+
+  .effect-shell .container-wide {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
