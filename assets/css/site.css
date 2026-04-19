@@ -1625,6 +1625,89 @@ hr {
   }
 }
 
+/* Prep timeline */
+.fx-prep {
+  background: #F2EDE3;
+  border-top: 3px solid var(--color-storm);
+  padding: 1.5rem 1.25rem 1.75rem;
+  margin: 0;
+}
+.fx-prep-title {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  margin: 0 0 1rem;
+}
+.fx-prep-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  background: linear-gradient(to right, #F2EDE3, #F4CC4F 33%, #E5673B 66%, #B8404C);
+  border-radius: 6px;
+  padding: 1rem 0.75rem;
+}
+.fx-prep-step {
+  background: rgba(255,255,255,0.82);
+  border-radius: 4px;
+  padding: 0.65rem 0.75rem 0.7rem;
+}
+.fx-prep-h {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 0.35rem;
+}
+.fx-prep-when {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.fx-prep-tag {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+.fx-prep-text {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--color-ink);
+  margin: 0;
+}
+.fx-prep-pulse {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #B8404C;
+  box-shadow: 0 0 0 0 rgba(184,64,76,0.5);
+  animation: fx-prep-pulse 1.6s ease-out infinite;
+}
+@keyframes fx-prep-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(184,64,76,0.55); }
+  70%  { box-shadow: 0 0 0 7px rgba(184,64,76,0); }
+  100% { box-shadow: 0 0 0 0 rgba(184,64,76,0); }
+}
+@media (max-width: 720px) {
+  .fx-prep-track { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 400px) {
+  .fx-prep-track { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fx-prep-pulse { animation: none; }
+}
+
 @media print {
   .nav-share-btn,
   .floating-share-btn {
