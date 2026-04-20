@@ -3,6 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{PAGE_TITLE}} — hurricanesupplylist.com</title>
 <meta name="description" content="{{META_DESCRIPTION}}">
+<meta name="author" content="Michael Hendrick">
 <link rel="canonical" href="https://hurricanesupplylist.com/{{CANONICAL_PATH}}">
 <link rel="icon" href="{{ASSET_PATH}}assets/img/favicon.ico">
 <link rel="icon" type="image/svg+xml" href="{{ASSET_PATH}}assets/img/favicon.svg">
@@ -16,32 +17,82 @@
 <meta property="og:description" content="{{META_DESCRIPTION}}">
 <meta property="og:url" content="https://hurricanesupplylist.com/{{CANONICAL_PATH}}">
 <meta property="og:image" content="https://hurricanesupplylist.com/assets/img/{{OG_IMAGE|og-default.png}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{PAGE_TITLE}}">
 <meta name="twitter:description" content="{{META_DESCRIPTION}}">
 <meta name="twitter:image" content="https://hurricanesupplylist.com/assets/img/{{OG_IMAGE|og-default.png}}">
+<meta name="twitter:image:alt" content="{{PAGE_TITLE}} on HurricaneSupplyList.com">
 
 <!-- Styles -->
 <link rel="stylesheet" href="{{ASSET_PATH}}assets/css/site.css">
+<script defer src="{{ASSET_PATH}}assets/js/canonicalize-url.js"></script>
 
 <!-- Cloudflare Web Analytics -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "ab045889ac1845719235f1f16e8f646f"}'></script>
 <!-- End Cloudflare Web Analytics -->
 
-<!-- JSON-LD — update type and content per page -->
+<!-- JSON-LD — update type, breadcrumbs, and language per page -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "{{PAGE_TITLE}}",
-  "description": "{{META_DESCRIPTION}}",
-  "url": "https://hurricanesupplylist.com/{{CANONICAL_PATH}}",
-  "publisher": {
-    "@type": "Person",
-    "name": "Mike",
-    "url": "https://hurricanesupplylist.com/about"
-  }
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://hurricanesupplylist.com/#organization",
+      "name": "HurricaneSupplyList.com",
+      "url": "https://hurricanesupplylist.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hurricanesupplylist.com/assets/img/{{OG_IMAGE|og-default.png}}"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://hurricanesupplylist.com/about#author",
+      "name": "Michael Hendrick",
+      "url": "https://hurricanesupplylist.com/about"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://hurricanesupplylist.com/#website",
+      "name": "HurricaneSupplyList.com",
+      "url": "https://hurricanesupplylist.com/",
+      "inLanguage": "{{PAGE_LANGUAGE|en-US}}",
+      "publisher": {
+        "@id": "https://hurricanesupplylist.com/#organization"
+      }
+    },
+    {
+      "@type": "{{SCHEMA_TYPE|Article}}",
+      "@id": "https://hurricanesupplylist.com/{{CANONICAL_PATH}}#page",
+      "url": "https://hurricanesupplylist.com/{{CANONICAL_PATH}}",
+      "name": "{{PAGE_TITLE}}",
+      "headline": "{{PAGE_TITLE}}",
+      "description": "{{META_DESCRIPTION}}",
+      "inLanguage": "{{PAGE_LANGUAGE|en-US}}",
+      "isPartOf": {
+        "@id": "https://hurricanesupplylist.com/#website"
+      },
+      "author": {
+        "@id": "https://hurricanesupplylist.com/about#author"
+      },
+      "publisher": {
+        "@id": "https://hurricanesupplylist.com/#organization"
+      },
+      "dateModified": "{{DATE_MODIFIED|2026-04-20}}",
+      "breadcrumb": {
+        "@id": "https://hurricanesupplylist.com/{{CANONICAL_PATH}}#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://hurricanesupplylist.com/{{CANONICAL_PATH}}#breadcrumb",
+      "itemListElement": {{BREADCRUMB_JSON}}
+    }
+  ]
 }
 </script>
