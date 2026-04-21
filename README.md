@@ -140,6 +140,12 @@ If you only want the HTML first, omit `--pdf`.
 
 ## How to deploy
 
+Before deploying, run:
+
+```bash
+node scripts/check-production-html.js
+```
+
 Push to `main`. GitHub Pages publishes automatically (usually within 60 seconds). Custom domain `hurricanesupplylist.com` is configured via the `CNAME` file.
 
 ## DNS
