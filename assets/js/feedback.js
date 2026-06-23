@@ -67,7 +67,7 @@
 
         <label class="feedback-widget-check">
           <input name="canQuote" type="checkbox">
-          <span>You may quote this publicly after review.</span>
+          <span>Quote may be used publicly.</span>
         </label>
 
         <div class="feedback-widget-actions">
