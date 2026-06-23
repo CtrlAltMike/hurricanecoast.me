@@ -581,6 +581,12 @@ function previousUtcDate(date) {
   return utcDate(copy);
 }
 
+function addUtcDays(date, days) {
+  const copy = new Date(`${date}T00:00:00.000Z`);
+  copy.setUTCDate(copy.getUTCDate() + days);
+  return utcDate(copy);
+}
+
 function utcDate(date) {
   return date.toISOString().slice(0, 10);
 }
