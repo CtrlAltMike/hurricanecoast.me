@@ -96,7 +96,7 @@ Then add the script near the existing footer scripts:
 
 If you later put the Worker on a same-origin route such as `https://hurricanesupplylist.com/traffic`, update the meta content accordingly.
 
-The scheduled digest currently runs at `08:15 UTC`, summarizing the previous UTC date. Adjust `triggers.crons` in `wrangler.jsonc` if you want a different reporting time.
+The scheduled digest currently runs at `13:35 UTC`, summarizing the previous UTC date. That is 6:35 AM Pacific during daylight time. Adjust `triggers.crons` in `wrangler.jsonc` if you want a different reporting time.
 
 ## Manual digest test
 
