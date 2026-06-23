@@ -1,0 +1,25 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "hurricane-slack-alerts",
+  "main": "src/index.js",
+  "compatibility_date": "2026-06-22",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "triggers": {
+    "crons": ["15 8 * * *"]
+  },
+  "vars": {
+    "TRAFFIC_ALLOWED_ORIGIN": "https://hurricanesupplylist.com",
+    "TRAFFIC_SITE_NAME": "HurricaneSupplyList.com"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "TRAFFIC_KV",
+      "id": "ed2920b751734e3e99b2a55d30c8c81f",
+      "preview_id": "e20ba9d698a94ff488a8d38d7502f9ca"
+    }
+  ]
+}
