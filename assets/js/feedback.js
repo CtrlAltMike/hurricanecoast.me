@@ -17,6 +17,7 @@
   let launcher;
   let panel;
   let status;
+  let widgetRoot;
   let previousFocus;
 
   function getEndpoint() {
@@ -34,8 +35,8 @@
       return;
     }
 
-    const root = document.createElement('div');
-    root.className = 'feedback-widget';
+    widgetRoot = document.createElement('div');
+    widgetRoot.className = 'feedback-widget';
 
     launcher = document.createElement('button');
     launcher.type = 'button';
@@ -76,9 +77,9 @@
       </form>
     `;
 
-    root.appendChild(launcher);
-    root.appendChild(panel);
-    document.body.appendChild(root);
+    widgetRoot.appendChild(launcher);
+    widgetRoot.appendChild(panel);
+    document.body.appendChild(widgetRoot);
 
     status = panel.querySelector('.feedback-widget-status');
     bindWidget(endpoint);
@@ -112,12 +113,14 @@
   function openPanel() {
     previousFocus = document.activeElement;
     panel.hidden = false;
+    widgetRoot.classList.add('is-open');
     launcher.setAttribute('aria-expanded', 'true');
     panel.querySelector('#feedback-widget-message').focus();
   }
 
   function closePanel() {
     panel.hidden = true;
+    widgetRoot.classList.remove('is-open');
     launcher.setAttribute('aria-expanded', 'false');
     if (previousFocus && previousFocus.focus) {
       previousFocus.focus();

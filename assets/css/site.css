@@ -1784,11 +1784,12 @@ hr {
   position: fixed;
   right: clamp(1rem, 2vw, 2rem);
   bottom: clamp(1rem, 2vw, 1.5rem);
-  z-index: 95;
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 0.65rem;
+  isolation: isolate;
   pointer-events: none;
 }
 
@@ -1845,7 +1846,7 @@ hr {
   padding: 1rem;
   border: 1px solid rgba(85, 98, 112, 0.2);
   border-radius: 8px;
-  background: rgba(251, 248, 242, 0.98);
+  background: var(--color-bg);
   color: var(--color-ink);
   box-shadow: 0 22px 60px rgba(31, 42, 51, 0.18);
 }
@@ -1943,7 +1944,13 @@ hr {
   font-weight: 400;
 }
 
+.feedback-widget-check span {
+  display: block;
+  line-height: 1.35;
+}
+
 .feedback-widget-check input {
+  flex: 0 0 auto;
   width: 1rem;
   height: 1rem;
   margin-top: 0.25rem;
@@ -1990,20 +1997,51 @@ hr {
 
 @media (max-width: 640px) {
   .feedback-widget {
-    right: 1rem;
-    bottom: 1rem;
-    left: 1rem;
+    right: 0.75rem;
+    bottom: max(0.75rem, env(safe-area-inset-bottom));
+    left: 0.75rem;
     align-items: stretch;
+    gap: 0.5rem;
   }
 
   .feedback-widget-launcher {
     align-self: flex-end;
   }
 
+  .feedback-widget.is-open .feedback-widget-launcher {
+    display: none;
+  }
+
   .feedback-widget-panel {
     width: 100%;
-    max-height: calc(100vh - 2rem);
-    overflow: auto;
+    max-height: calc(100dvh - 1.5rem);
+    padding: 0.9rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .feedback-widget-header {
+    margin-bottom: 0.75rem;
+  }
+
+  .feedback-widget-form {
+    gap: 0.55rem;
+  }
+
+  .feedback-widget input[type="text"] {
+    min-height: 2.35rem;
+  }
+
+  .feedback-widget textarea {
+    min-height: 5.75rem;
+  }
+
+  .feedback-widget-actions {
+    justify-content: stretch;
+  }
+
+  .feedback-widget-submit {
+    width: 100%;
   }
 }
 
