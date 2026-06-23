@@ -9,7 +9,7 @@
     "head_sampling_rate": 1
   },
   "triggers": {
-    "crons": ["35 13 * * *"]
+    "crons": ["35 13 * * *", "45 13 * * 1"]
   },
   "vars": {
     "TRAFFIC_ALLOWED_ORIGIN": "https://hurricanesupplylist.com",
