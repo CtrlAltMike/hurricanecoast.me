@@ -4,7 +4,7 @@ This Worker posts three kinds of messages into the `ebbline.slack.com` workspace
 
 - Ko-fi donation events to `#ko-fi-donations`
 - Reader feedback to `#hurricane-feedback`
-- Daily and weekly privacy-preserving traffic summaries to `#hurricane-traffic`
+- Daily and weekly Cloudflare Web Analytics traffic summaries to `#hurricane-traffic`
 
 The static site should never contain Slack webhook URLs, Ko-fi verification tokens, or Cloudflare API tokens. Keep all of those in Worker secrets.
 
@@ -12,7 +12,6 @@ The static site should never contain Slack webhook URLs, Ko-fi verification toke
 
 - `POST /kofi` receives Ko-fi webhook payloads.
 - `POST /feedback` receives first-party reader feedback submissions from the static site.
-- `POST /traffic` receives first-party page-view beacons from the static site.
 - `POST /traffic/digest` manually sends a daily or weekly digest for testing. Requires `Authorization: Bearer $ADMIN_TOKEN`.
 - `GET /health` returns a basic health response.
 
@@ -32,15 +31,16 @@ From this directory:
 
 ```sh
 npm install --save-dev wrangler
-npx wrangler kv namespace create TRAFFIC_KV
-npx wrangler kv namespace create TRAFFIC_KV --preview
 ```
 
-Copy the returned namespace IDs into `wrangler.jsonc`.
+`wrangler.jsonc` contains the Cloudflare account ID and `TRAFFIC_HOSTNAME` used by the traffic digest. The digest reads Cloudflare Web Analytics/RUM through the GraphQL Analytics API instead of storing its own page-view counter.
+
+Create a scoped Cloudflare API token with `Account Analytics: Read`, then store it as `CLOUDFLARE_API_TOKEN`.
 
 Then set secrets:
 
 ```sh
+npx wrangler secret put CLOUDFLARE_API_TOKEN
 npx wrangler secret put SLACK_DONATIONS_WEBHOOK_URL
 npx wrangler secret put SLACK_FEEDBACK_WEBHOOK_URL
 npx wrangler secret put SLACK_TRAFFIC_WEBHOOK_URL
@@ -80,21 +80,11 @@ Then add the script near the existing footer scripts:
 <script src="assets/js/feedback.js"></script>
 ```
 
-The Worker stores only aggregate counts by date, page path, referrer hostname, and `utm_source`. It does not store IP addresses, cookies, user agents, or per-visitor identifiers.
+## Traffic digest
 
-To enable the beacon on the static site, add this meta tag in the page `<head>`:
+The traffic digest does not collect browser events itself. It queries Cloudflare Web Analytics/RUM when the daily or weekly scheduled Worker runs, then posts an aggregate summary to Slack.
 
-```html
-<meta name="hurricane-traffic-endpoint" content="https://hurricane-slack-alerts.mike-551.workers.dev/traffic">
-```
-
-Then add the script near the existing footer scripts:
-
-```html
-<script src="assets/js/traffic.js"></script>
-```
-
-If you later put the Worker on a same-origin route such as `https://hurricanesupplylist.com/traffic`, update the meta content accordingly.
+The digest currently includes total page views, daily trend, top pages, and referrer hosts. UTM source breakdowns are omitted because Cloudflare Web Analytics pageload events do not expose request query strings through the RUM GraphQL dataset.
 
 The daily traffic digest currently runs at `13:35 UTC`, summarizing the previous UTC date. That is 6:35 AM Pacific during daylight time. The weekly summary runs Mondays at `13:45 UTC`, summarizing the previous seven UTC dates. Adjust `triggers.crons` in `wrangler.jsonc` if you want different reporting times.
 
@@ -114,4 +104,4 @@ curl -X POST "https://hurricane-slack-alerts.mike-551.workers.dev/traffic/digest
 
 ## Notes
 
-Traffic counts are stored in KV with read-modify-write updates. That is sufficient for low-volume daily trend monitoring, but it can lose increments during concurrent writes. If traffic grows materially, move the traffic endpoint to D1 or Workers Analytics Engine before using it for precise reporting.
+Cloudflare Web Analytics remains the source of truth. The Worker only queries aggregate data and sends Slack messages; it does not write traffic data to KV or maintain a separate counter.

@@ -12,14 +12,9 @@
     "crons": ["35 13 * * *", "45 13 * * 1"]
   },
   "vars": {
+    "CLOUDFLARE_ACCOUNT_ID": "55133253f683cbc04fc3a47ccdcb2906",
     "TRAFFIC_ALLOWED_ORIGIN": "https://hurricanesupplylist.com",
+    "TRAFFIC_HOSTNAME": "hurricanesupplylist.com",
     "TRAFFIC_SITE_NAME": "HurricaneSupplyList.com"
-  },
-  "kv_namespaces": [
-    {
-      "binding": "TRAFFIC_KV",
-      "id": "ed2920b751734e3e99b2a55d30c8c81f",
-      "preview_id": "e20ba9d698a94ff488a8d38d7502f9ca"
-    }
-  ]
+  }
 }

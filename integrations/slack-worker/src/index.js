@@ -2,16 +2,55 @@ const MAX_KOFI_BYTES = 64 * 1024;
 const MAX_FEEDBACK_BYTES = 4096;
 const MAX_FEEDBACK_MESSAGE_LENGTH = 400;
 const MAX_FEEDBACK_NAME_LENGTH = 40;
-const MAX_TRAFFIC_BYTES = 2048;
-const TOP_ITEM_LIMIT = 12;
 const DAILY_TRAFFIC_CRON = "35 13 * * *";
 const WEEKLY_TRAFFIC_CRON = "45 13 * * 1";
+const CLOUDFLARE_GRAPHQL_ENDPOINT = "https://api.cloudflare.com/client/v4/graphql";
+const TRAFFIC_DIGEST_QUERY = `
+  query TrafficDigest(
+    $accountTag: string,
+    $host: string,
+    $startDate: Date,
+    $endDate: Date
+  ) {
+    viewer {
+      accounts(filter: { accountTag: $accountTag }) {
+        daily: rumPageloadEventsAdaptiveGroups(
+          limit: 8,
+          orderBy: [date_ASC],
+          filter: { date_geq: $startDate, date_leq: $endDate, requestHost: $host }
+        ) {
+          count
+          dimensions { date }
+          sum { visits }
+        }
+        topPages: rumPageloadEventsAdaptiveGroups(
+          limit: 5,
+          orderBy: [count_DESC],
+          filter: { date_geq: $startDate, date_leq: $endDate, requestHost: $host }
+        ) {
+          count
+          sum { visits }
+          dimensions { requestPath }
+        }
+        topReferrers: rumPageloadEventsAdaptiveGroups(
+          limit: 20,
+          orderBy: [count_DESC],
+          filter: { date_geq: $startDate, date_leq: $endDate, requestHost: $host }
+        ) {
+          count
+          sum { visits }
+          dimensions { refererHost refererPath refererScheme }
+        }
+      }
+    }
+  }
+`;
 
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
-    if (request.method === "OPTIONS" && (url.pathname === "/traffic" || url.pathname === "/feedback")) {
+    if (request.method === "OPTIONS" && url.pathname === "/feedback") {
       return corsResponse(null, 204, env);
     }
 
@@ -29,15 +68,6 @@ export default {
       }
 
       return handleFeedback(request, env);
-    }
-
-    if (request.method === "POST" && url.pathname === "/traffic") {
-      if (!isAllowedOrigin(request, env)) {
-        return corsResponse({ error: "origin_not_allowed" }, 403, env);
-      }
-
-      ctx.waitUntil(recordTraffic(request, env));
-      return corsResponse(null, 204, env);
     }
 
     if (request.method === "POST" && url.pathname === "/traffic/digest") {
@@ -112,61 +142,124 @@ async function handleKofiWebhook(request, env) {
   return jsonResponse({ ok: true });
 }
 
-async function recordTraffic(request, env) {
-  if (!env.TRAFFIC_KV) {
-    console.warn(JSON.stringify({ event: "traffic_missing_kv" }));
-    return;
-  }
-
-  try {
-    const body = await readBoundedText(request, MAX_TRAFFIC_BYTES);
-    const event = JSON.parse(body);
-    const date = utcDate(new Date());
-    const key = `traffic:${date}`;
-    const current = (await env.TRAFFIC_KV.get(key, "json")) || emptyTrafficDay(date);
-
-    current.views += 1;
-    increment(current.pages, normalizePath(event.path));
-    increment(current.referrers, normalizeReferrer(event.referrer));
-    increment(current.sources, normalizeSource(event.search));
-    current.updatedAt = new Date().toISOString();
-
-    trimCounters(current.pages);
-    trimCounters(current.referrers);
-    trimCounters(current.sources);
-
-    await env.TRAFFIC_KV.put(key, JSON.stringify(current));
-  } catch (error) {
-    console.error(JSON.stringify({ event: "traffic_record_failed", message: error.message }));
-  }
-}
-
 async function sendTrafficDigest(env, date) {
-  if (!env.SLACK_TRAFFIC_WEBHOOK_URL || !env.TRAFFIC_KV) {
+  if (!hasTrafficDigestConfiguration(env)) {
     console.warn(JSON.stringify({ event: "traffic_digest_missing_configuration" }));
     return;
   }
 
-  const [traffic, previousDay, week] = await Promise.all([
-    getTrafficDay(env, date),
-    getTrafficDay(env, addUtcDays(date, -1)),
-    getTrafficDays(env, date, 7),
+  const [traffic, week] = await Promise.all([
+    fetchCloudflareTraffic(env, date, date),
+    fetchCloudflareTraffic(env, addUtcDays(date, -6), date),
   ]);
+  const previousDay = week.days.find((day) => day.date === addUtcDays(date, -1)) || emptyTrafficDay(addUtcDays(date, -1));
 
   await postToSlack(env.SLACK_TRAFFIC_WEBHOOK_URL, formatTrafficDigest(traffic, env, {
     previousDay,
-    week: aggregateTraffic(week),
+    week,
   }));
 }
 
 async function sendWeeklyTrafficDigest(env, endDate) {
-  if (!env.SLACK_TRAFFIC_WEBHOOK_URL || !env.TRAFFIC_KV) {
+  if (!hasTrafficDigestConfiguration(env)) {
     console.warn(JSON.stringify({ event: "traffic_weekly_missing_configuration" }));
     return;
   }
 
-  const days = await getTrafficDays(env, endDate, 7);
-  await postToSlack(env.SLACK_TRAFFIC_WEBHOOK_URL, formatWeeklyTrafficDigest(aggregateTraffic(days), env));
+  const traffic = await fetchCloudflareTraffic(env, addUtcDays(endDate, -6), endDate);
+  await postToSlack(env.SLACK_TRAFFIC_WEBHOOK_URL, formatWeeklyTrafficDigest(traffic, env));
+}
+
+function hasTrafficDigestConfiguration(env) {
+  return Boolean(env.SLACK_TRAFFIC_WEBHOOK_URL && env.CLOUDFLARE_API_TOKEN && env.CLOUDFLARE_ACCOUNT_ID);
+}
+
+async function fetchCloudflareTraffic(env, startDate, endDate) {
+  const host = trafficHostname(env);
+  const data = await queryCloudflareGraphQL(env, TRAFFIC_DIGEST_QUERY, {
+    accountTag: env.CLOUDFLARE_ACCOUNT_ID,
+    host,
+    startDate,
+    endDate,
+  });
+  const account = data?.viewer?.accounts?.[0];
+  if (!account) {
+    throw new Error("Cloudflare Analytics did not return an account result");
+  }
+
+  const days = buildTrafficDays(startDate, endDate, account.daily);
+  return {
+    date: startDate === endDate ? startDate : null,
+    startDate,
+    endDate,
+    views: days.reduce((total, day) => total + day.views, 0),
+    activeDays: days.filter((day) => day.views > 0).length,
+    pages: counterFromGroups(account.topPages, (group) => normalizePath(group.dimensions?.requestPath || "/")),
+    referrers: counterFromGroups(account.topReferrers, (group) => normalizeAnalyticsReferrer(group.dimensions, host)),
+    sources: {},
+    days,
+  };
+}
+
+async function queryCloudflareGraphQL(env, query, variables) {
+  const response = await fetch(CLOUDFLARE_GRAPHQL_ENDPOINT, {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${env.CLOUDFLARE_API_TOKEN}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ query, variables }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Cloudflare GraphQL failed with ${response.status}`);
+  }
+
+  const result = await response.json();
+  if (result.errors?.length) {
+    throw new Error(`Cloudflare GraphQL error: ${result.errors.map((error) => error.message).join("; ")}`);
+  }
+
+  return result.data;
+}
+
+function trafficHostname(env) {
+  if (env.TRAFFIC_HOSTNAME) {
+    return env.TRAFFIC_HOSTNAME;
+  }
+
+  try {
+    return new URL(env.TRAFFIC_ALLOWED_ORIGIN).hostname;
+  } catch {
+    return "hurricanesupplylist.com";
+  }
+}
+
+function buildTrafficDays(startDate, endDate, groups = []) {
+  const byDate = new Map(groups.map((group) => [group.dimensions?.date, group.count || 0]));
+  const days = [];
+  let date = startDate;
+
+  while (date <= endDate) {
+    days.push({ ...emptyTrafficDay(date), views: byDate.get(date) || 0 });
+    date = addUtcDays(date, 1);
+  }
+
+  return days;
+}
+
+function counterFromGroups(groups = [], labelForGroup) {
+  const counter = {};
+  for (const group of groups) {
+    const label = labelForGroup(group);
+    if (!label) {
+      continue;
+    }
+
+    counter[label] = (counter[label] || 0) + (group.count || 0);
+  }
+
+  return Object.fromEntries(Object.entries(counter).sort((a, b) => b[1] - a[1]).slice(0, 5));
 }
 
 function parseKofiPayload(body, contentType) {
@@ -251,9 +344,8 @@ function formatTrafficDigest(traffic, env, context = {}) {
   const siteName = env.TRAFFIC_SITE_NAME || "HurricaneSupplyList.com";
   const pageLines = topLines(traffic.pages);
   const referrerLines = topLines(traffic.referrers);
-  const sourceLines = topLines(traffic.sources);
   const previousViews = context.previousDay?.views || 0;
-  const week = context.week || aggregateTraffic([traffic]);
+  const week = context.week || traffic;
 
   return {
     text: `${siteName} traffic digest for ${traffic.date}`,
@@ -264,7 +356,7 @@ function formatTrafficDigest(traffic, env, context = {}) {
           type: "mrkdwn",
           text: [
             `*${siteName} traffic digest*`,
-            `${traffic.date}: *${traffic.views}* recorded page views`,
+            `${traffic.date}: *${traffic.views}* Cloudflare page views`,
             `Prior day: ${formatDelta(traffic.views, previousViews)}`,
             `Last 7 days: *${week.views}* views, ${formatAverage(week.views, 7)}/day average, ${week.activeDays}/7 active days`,
           ].join("\n"),
@@ -272,7 +364,6 @@ function formatTrafficDigest(traffic, env, context = {}) {
       },
       digestSection("Top pages", pageLines),
       digestSection("Referrers", referrerLines),
-      digestSection("UTM sources", sourceLines),
     ].filter(Boolean),
   };
 }
@@ -290,7 +381,7 @@ function formatWeeklyTrafficDigest(traffic, env) {
           type: "mrkdwn",
           text: [
             `*${siteName} weekly traffic summary*`,
-            `${traffic.startDate} to ${traffic.endDate}: *${traffic.views}* recorded page views`,
+            `${traffic.startDate} to ${traffic.endDate}: *${traffic.views}* Cloudflare page views`,
             `${formatAverage(traffic.views, traffic.days.length)}/day average across ${traffic.activeDays}/${traffic.days.length} active days`,
             busiest && busiest.views > 0 ? `Busiest day: ${busiest.date} with *${busiest.views}* views` : "No traffic recorded this week",
           ].join("\n"),
@@ -299,7 +390,6 @@ function formatWeeklyTrafficDigest(traffic, env) {
       digestSection("Daily views", traffic.days.map((day) => `- ${day.date}: ${day.views}`)),
       digestSection("Top pages", topLines(traffic.pages)),
       digestSection("Referrers", topLines(traffic.referrers)),
-      digestSection("UTM sources", topLines(traffic.sources)),
     ].filter(Boolean),
   };
 }
@@ -338,48 +428,6 @@ function topLines(counter) {
     .sort((a, b) => b[1] - a[1])
     .slice(0, 5)
     .map(([label, count]) => `- ${escapeSlack(label)}: ${count}`);
-}
-
-async function getTrafficDay(env, date) {
-  return (await env.TRAFFIC_KV.get(`traffic:${date}`, "json")) || emptyTrafficDay(date);
-}
-
-async function getTrafficDays(env, endDate, count) {
-  const dates = Array.from({ length: count }, (_, index) => addUtcDays(endDate, index - count + 1));
-  return Promise.all(dates.map((date) => getTrafficDay(env, date)));
-}
-
-function aggregateTraffic(days) {
-  const sortedDays = [...days].sort((a, b) => a.date.localeCompare(b.date));
-  const summary = {
-    startDate: sortedDays[0]?.date || null,
-    endDate: sortedDays[sortedDays.length - 1]?.date || null,
-    views: 0,
-    activeDays: 0,
-    pages: {},
-    referrers: {},
-    sources: {},
-    days: sortedDays,
-  };
-
-  for (const day of sortedDays) {
-    summary.views += day.views || 0;
-    if ((day.views || 0) > 0) {
-      summary.activeDays += 1;
-    }
-
-    mergeCounters(summary.pages, day.pages);
-    mergeCounters(summary.referrers, day.referrers);
-    mergeCounters(summary.sources, day.sources);
-  }
-
-  return summary;
-}
-
-function mergeCounters(target, source) {
-  for (const [key, count] of Object.entries(source || {})) {
-    target[key] = (target[key] || 0) + count;
-  }
 }
 
 function formatDelta(current, previous) {
@@ -520,27 +568,14 @@ function normalizePath(path) {
   return path.replace(/\/index\.html$/, "/").slice(0, 160);
 }
 
-function normalizeReferrer(referrer) {
-  if (!referrer) {
+function normalizeAnalyticsReferrer(dimensions = {}, hostname) {
+  const refererHost = dimensions.refererHost || "";
+  if (!refererHost || dimensions.refererScheme === "unknown") {
     return "(direct)";
   }
 
-  try {
-    const host = new URL(referrer).hostname.replace(/^www\./, "");
-    return host === "hurricanesupplylist.com" ? "(internal)" : host.slice(0, 80);
-  } catch {
-    return "(unknown)";
-  }
-}
-
-function normalizeSource(search) {
-  if (typeof search !== "string" || !search) {
-    return "(none)";
-  }
-
-  const params = new URLSearchParams(search.startsWith("?") ? search : `?${search}`);
-  const source = params.get("utm_source");
-  return source ? source.slice(0, 80) : "(none)";
+  const host = refererHost.replace(/^www\./, "");
+  return host === hostname.replace(/^www\./, "") ? "(internal)" : host.slice(0, 80);
 }
 
 function cleanSingleLine(value) {
@@ -553,22 +588,6 @@ function cleanMultiline(value) {
 
 function escapeSlack(value) {
   return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
-
-function increment(counter, key) {
-  counter[key] = (counter[key] || 0) + 1;
-}
-
-function trimCounters(counter) {
-  const entries = Object.entries(counter).sort((a, b) => b[1] - a[1]).slice(0, TOP_ITEM_LIMIT);
-
-  for (const key of Object.keys(counter)) {
-    delete counter[key];
-  }
-
-  for (const [key, value] of entries) {
-    counter[key] = value;
-  }
 }
 
 function truncate(value, limit) {
@@ -593,7 +612,11 @@ function utcDate(date) {
 
 function corsResponse(body, status, env) {
   const headers = new Headers();
-  headers.set("access-control-allow-origin", env.TRAFFIC_ALLOWED_ORIGIN || "*");
+  const allowedOrigin = env.TRAFFIC_ALLOWED_ORIGIN || "*";
+  headers.set("access-control-allow-origin", allowedOrigin);
+  if (allowedOrigin !== "*") {
+    headers.set("access-control-allow-credentials", "true");
+  }
   headers.set("access-control-allow-methods", "POST, OPTIONS");
   headers.set("access-control-allow-headers", "content-type");
 
