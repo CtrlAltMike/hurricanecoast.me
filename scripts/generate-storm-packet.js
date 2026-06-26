@@ -5,7 +5,8 @@ const fs = require('fs');
 const path = require('path');
 
 const REPO_ROOT = path.resolve(__dirname, '..');
-const DEFAULT_SITE_BASE = 'https://hurricanesupplylist.com';
+const SITE_NAME = 'Hurricane Coast';
+const DEFAULT_SITE_BASE = 'https://hurricanecoast.me';
 const DEFAULT_OUTPUT_DIR = path.join(REPO_ROOT, 'storms');
 const DEFAULT_CHROME_PATH = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 
@@ -267,7 +268,7 @@ function buildOfficialLinks(region, siteBase) {
   });
 
   links.push({
-    label: `${region.name} guide on hurricanesupplylist.com`,
+    label: `${region.name} guide on ${SITE_NAME}`,
     description: 'The longer-form regional context behind this fast checklist.',
     url: toAbsoluteUrl(siteBase, region.guideUrl)
   });
@@ -308,7 +309,7 @@ function buildHtml(data) {
     watchouts
   } = data;
 
-  const pageTitle = `${stormName} ${regionName} Prep Checklist — hurricanesupplylist.com`;
+  const pageTitle = `${stormName} ${regionName} Prep Checklist — ${SITE_NAME}`;
   const metaDescription = `A fast, sendable checklist for ${stormName} planning in ${regionName}: official links, first actions, and the best hurricane prep checklists to open now.`;
   const canonicalUrl = toAbsoluteUrl(siteBase, `/storms/${fileSlug}.html`);
   const ogImageUrl = toAbsoluteUrl(siteBase, '/assets/img/og-default.png');
@@ -322,7 +323,7 @@ function buildHtml(data) {
   <meta name="description" content="${escapeHtml(metaDescription)}">
   <link rel="canonical" href="${escapeHtml(canonicalUrl)}">
   <meta property="og:type" content="article">
-  <meta property="og:site_name" content="hurricanesupplylist.com">
+  <meta property="og:site_name" content="${SITE_NAME}">
   <meta property="og:title" content="${escapeHtml(pageTitle)}">
   <meta property="og:description" content="${escapeHtml(metaDescription)}">
   <meta property="og:url" content="${escapeHtml(canonicalUrl)}">
@@ -565,7 +566,7 @@ function buildHtml(data) {
   </ul>
 
   <p class="disclaimer">Use this checklist as a fast starting point, not a replacement for local orders. For official warnings, evacuation instructions, and shelter locations, use <a href="${escapeHtml(emergencyOfficeUrl)}" target="_blank" rel="noopener">${escapeHtml(emergencyOfficeName)}</a> and the <a href="https://www.nhc.noaa.gov" target="_blank" rel="noopener">National Hurricane Center</a>.</p>
-  <p class="site-line">hurricanesupplylist.com</p>
+  <p class="site-line">${SITE_NAME}</p>
 </body>
 </html>
 `;

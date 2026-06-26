@@ -1,6 +1,6 @@
-# hurricanesupplylist.com
+# Hurricane Coast
 
-A static preparedness reference for people in hurricane-prone areas. No ads. No affiliate links. Ko-fi tips welcome.
+A static preparedness reference for people in hurricane-prone areas, published at `hurricanecoast.me`. No ads. No affiliate links. Ko-fi tips welcome.
 
 ## What this is
 
@@ -15,7 +15,7 @@ Plain HTML/CSS/JavaScript hosted on GitHub Pages. No build step, no framework, n
 - Self-hosted fonts in `assets/fonts/`
 - Sitewide Cloudflare Web Analytics
 - Ventusky embeds on the coastal guide pages
-- Primary site navigation is `Home`, `Kit Guides`, `By State`, `About`
+- Primary site navigation is `Home`, `Kit Guides`, `Coastal Guides`, `FAQ`, `About`
 - `printables/` is a utility area for browser-printable checklist versions of the kit guides, not a primary navigation section
 
 ## How to add a new page
@@ -52,7 +52,7 @@ Each kit has two files that must be kept in sync:
 ### Printable (`/printables/<name>-kit.html`)
 
 1. Copy `printables/evacuation-kit.html` → rename.
-2. Update the `<title>` to: `[Kit Name] — hurricanesupplylist.com`
+2. Update the `<title>` to: `[Kit Name] — Hurricane Coast`
 3. Update the lede paragraph.
 4. Choose the right grouping scheme:
    - **Phase-grouped** (Before landfall / First 72 hours / Extended outage): Evacuation, Power Outage, Food/Water, First Aid
@@ -74,7 +74,7 @@ Each kit has two files that must be kept in sync:
 Add before `</urlset>`:
 ```xml
   <url>
-    <loc>https://hurricanesupplylist.com/<name>-kit</loc>
+    <loc>https://hurricanecoast.me/<name>-kit</loc>
     <lastmod>YYYY-MM-DD</lastmod>
     <priority>0.9</priority>
   </url>
@@ -146,13 +146,13 @@ Before deploying, run:
 node scripts/check-production-html.js
 ```
 
-Push to `main`. GitHub Pages publishes automatically (usually within 60 seconds). Custom domain `hurricanesupplylist.com` is configured via the `CNAME` file.
+Push to `main`. GitHub Pages publishes automatically (usually within 60 seconds). Custom domain `hurricanecoast.me` is configured via the `CNAME` file.
 
 ## DNS
 
 To point the domain at GitHub Pages:
-- Add four A records for `hurricanesupplylist.com`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-- Add a CNAME record for `www.hurricanesupplylist.com` → `<github-username>.github.io`
+- Add four A records for `hurricanecoast.me`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+- Add a CNAME record for `www.hurricanecoast.me` → `<github-username>.github.io`
 - After propagation, enable "Enforce HTTPS" in GitHub Pages settings.
 
 ## Voice

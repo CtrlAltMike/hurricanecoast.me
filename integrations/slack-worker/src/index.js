@@ -231,7 +231,7 @@ function trafficHostname(env) {
   try {
     return new URL(env.TRAFFIC_ALLOWED_ORIGIN).hostname;
   } catch {
-    return "hurricanesupplylist.com";
+    return "hurricanecoast.me";
   }
 }
 
@@ -280,13 +280,13 @@ function formatDonationMessage(payload) {
   const privateNote = payload.is_public === false ? "\nMarked private on Ko-fi." : "";
 
   return {
-    text: `New HurricaneSupplyList.com Ko-fi support from ${supporter}`,
+    text: `New Hurricane Coast Ko-fi support from ${supporter}`,
     blocks: [
       {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: `*New HurricaneSupplyList.com support*\n${supporter} sent ${amount || "a contribution"} via ${kind}.${message}${privateNote}`,
+          text: `*New Hurricane Coast support*\n${supporter} sent ${amount || "a contribution"} via ${kind}.${message}${privateNote}`,
         },
       },
       payload.url
@@ -311,13 +311,13 @@ function formatFeedbackMessage(feedback) {
   const page = feedback.pageTitle || feedback.path || "Unknown page";
 
   return {
-    text: `New HurricaneSupplyList.com feedback from ${displayName}`,
+    text: `New Hurricane Coast feedback from ${displayName}`,
     blocks: [
       {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: `*New HurricaneSupplyList.com feedback*\n*From:* ${escapeSlack(displayName)}\n*OK to quote after review:* ${permission}`,
+          text: `*New Hurricane Coast feedback*\n*From:* ${escapeSlack(displayName)}\n*OK to quote after review:* ${permission}`,
         },
       },
       {
@@ -341,7 +341,7 @@ function formatFeedbackMessage(feedback) {
 }
 
 function formatTrafficDigest(traffic, env, context = {}) {
-  const siteName = env.TRAFFIC_SITE_NAME || "HurricaneSupplyList.com";
+  const siteName = env.TRAFFIC_SITE_NAME || "Hurricane Coast";
   const pageLines = topLines(traffic.pages);
   const referrerLines = topLines(traffic.referrers);
   const previousViews = context.previousDay?.views || 0;
@@ -369,7 +369,7 @@ function formatTrafficDigest(traffic, env, context = {}) {
 }
 
 function formatWeeklyTrafficDigest(traffic, env) {
-  const siteName = env.TRAFFIC_SITE_NAME || "HurricaneSupplyList.com";
+  const siteName = env.TRAFFIC_SITE_NAME || "Hurricane Coast";
   const busiest = busiestDay(traffic.days);
 
   return {

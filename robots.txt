@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /docs/snippets/
 
-Sitemap: https://hurricanesupplylist.com/sitemap.xml
+Sitemap: https://hurricanecoast.me/sitemap.xml

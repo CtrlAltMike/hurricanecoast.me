@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow, noarchive">
-  <title>share.js tests (dev only) — hurricanesupplylist.com</title>
+  <title>share.js tests (dev only) — Hurricane Coast</title>
   <meta name="description" content="Share test description">
   <meta property="og:title" content="Share Test Title">
-  <link rel="canonical" href="https://hurricanesupplylist.com/share-test">
+  <link rel="canonical" href="https://hurricanecoast.me/share-test">
   <style>
     body { font-family: monospace; padding: 2rem; }
     .site-nav { margin-bottom: 2rem; }
@@ -20,7 +20,7 @@
 <body>
   <nav class="site-nav" aria-label="Test navigation">
     <div class="container-wide">
-      <a href="/" class="brand">HurricaneSupplyList.com</a>
+      <a href="/" class="brand">Hurricane Coast</a>
       <a href="/about">About</a>
     </div>
   </nav>
@@ -62,7 +62,7 @@
 
       assert('getShareData uses og:title', shareData.title === 'Share Test Title');
       assert('getShareData uses meta description', shareData.text === 'Share test description');
-      assert('getShareData uses canonical URL', shareData.url === 'https://hurricanesupplylist.com/share-test');
+      assert('getShareData uses canonical URL', shareData.url === 'https://hurricanecoast.me/share-test');
 
       assert('nav share button is injected', document.querySelector('.nav-share-btn') !== null);
       assert('floating share button is injected', document.querySelector('.floating-share-btn') !== null);

@@ -1,5 +1,5 @@
 /* ============================================================
-   HurricaneSupplyList.com — Feedback Widget
+   Hurricane Coast — Feedback Widget
    Private reader feedback queue for moderated testimonials
    ============================================================ */
 
@@ -26,7 +26,7 @@
   }
 
   function getPageTitle() {
-    return document.title.replace(/\s+[-—|]\s+hurricanesupplylist\.com$/i, '').trim();
+    return document.title.replace(/\s+[-—|]\s+(?:Hurricane Coast|hurricanecoast\.me)$/i, '').trim();
   }
 
   function createWidget() {

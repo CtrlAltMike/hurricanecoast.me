@@ -24,7 +24,7 @@
   function getShareTitle() {
     return (
       getMetaContent('meta[property="og:title"]') ||
-      document.title.replace(/\s+[-—–]\s+hurricanesupplylist\.com$/i, '').trim()
+      document.title.replace(/\s+[-—–]\s+(?:Hurricane Coast|hurricanecoast\.me)$/i, '').trim()
     );
   }
 

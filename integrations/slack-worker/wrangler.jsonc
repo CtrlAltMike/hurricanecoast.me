@@ -13,8 +13,8 @@
   },
   "vars": {
     "CLOUDFLARE_ACCOUNT_ID": "55133253f683cbc04fc3a47ccdcb2906",
-    "TRAFFIC_ALLOWED_ORIGIN": "https://hurricanesupplylist.com",
-    "TRAFFIC_HOSTNAME": "hurricanesupplylist.com",
-    "TRAFFIC_SITE_NAME": "HurricaneSupplyList.com"
+    "TRAFFIC_ALLOWED_ORIGIN": "https://hurricanecoast.me",
+    "TRAFFIC_HOSTNAME": "hurricanecoast.me",
+    "TRAFFIC_SITE_NAME": "Hurricane Coast"
   }
 }
