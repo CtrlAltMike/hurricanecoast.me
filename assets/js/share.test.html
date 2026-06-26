@@ -19,11 +19,18 @@
 </head>
 <body>
   <nav class="site-nav" aria-label="Test navigation">
-    <div class="container-wide">
-      <a href="/" class="brand">Hurricane Coast</a>
-      <a href="/about">About</a>
+  <div class="container-wide">
+    <a href="/" class="brand">Hurricane Coast</a>
+    <input class="nav-menu-toggle" id="site-nav-toggle" type="checkbox" aria-label="Toggle navigation menu">
+    <label class="nav-toggle" for="site-nav-toggle">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="nav-toggle-text">Menu</span>
+    </label>
+    <div class="nav-links">
+        <a href="/about">About</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <h2>share.js unit tests</h2>
   <div id="results"></div>

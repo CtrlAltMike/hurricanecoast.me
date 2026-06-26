@@ -142,13 +142,20 @@
       <div class="sg-label">Site nav preview</div>
       <div style="background: var(--color-bg); border: 1px solid var(--color-rule); border-radius: 6px; overflow: hidden;">
         <nav class="site-nav">
-          <div class="container-wide">
-            <a href="#" class="brand">Hurricane Coast</a>
-            <a href="#">Basic Kit</a>
-            <a href="#">By Household</a>
-            <a href="#">About</a>
-          </div>
-        </nav>
+  <div class="container-wide">
+    <a href="#" class="brand">Hurricane Coast</a>
+    <input class="nav-menu-toggle" id="site-nav-toggle" type="checkbox" aria-label="Toggle navigation menu">
+    <label class="nav-toggle" for="site-nav-toggle">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="nav-toggle-text">Menu</span>
+    </label>
+    <div class="nav-links">
+        <a href="#">Basic Kit</a>
+        <a href="#">By Household</a>
+        <a href="#">About</a>
+    </div>
+  </div>
+</nav>
       </div>
     </div>
 

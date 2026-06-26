@@ -248,6 +248,44 @@ tr { page-break-inside: avoid; }
     padding: 1.25rem;
   }
 
+  table {
+    table-layout: fixed;
+    font-size: 9.4pt;
+  }
+
+  thead th,
+  tbody td {
+    padding-left: 3pt;
+    padding-right: 3pt;
+    overflow-wrap: anywhere;
+  }
+
+  thead th {
+    font-size: 7.6pt;
+    letter-spacing: 0.03em;
+  }
+
+  tbody td:first-child {
+    width: 39%;
+  }
+
+  tbody td:nth-child(2) {
+    width: 31%;
+  }
+
+  tbody td:nth-child(3) {
+    width: 18%;
+    font-size: 7.2pt;
+    letter-spacing: 0.02em;
+  }
+
+  thead th:last-child,
+  tbody td:last-child {
+    width: 22pt;
+    padding-left: 2pt;
+    padding-right: 2pt;
+  }
+
   .print-bar .print-bar-actions {
     width: 100%;
     justify-content: space-between;

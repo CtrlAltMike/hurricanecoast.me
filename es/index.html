@@ -118,17 +118,24 @@
 <body>
 
   <nav class="site-nav" aria-label="Navegación del sitio">
-    <div class="container-wide">
-      <a href="./" class="brand">Hurricane Coast</a>
-      <a href="./" aria-current="page">Inicio</a>
-      <a href="kits">Guías de kits</a>
-      <a href="states">Guías costeras</a>
-      <a href="faq">Preguntas frecuentes</a>
-      <a href="about">Acerca de</a>
-      <a href="https://ko-fi.com/mikehen" target="_blank" rel="noopener">Apoyo</a>
-      <a href="../" class="lang-switch" hreflang="en">English</a>
+  <div class="container-wide">
+    <a href="./" class="brand">Hurricane Coast</a>
+    <input class="nav-menu-toggle" id="site-nav-toggle" type="checkbox" aria-label="Alternar menú de navegación">
+    <label class="nav-toggle" for="site-nav-toggle">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="nav-toggle-text">Menú</span>
+    </label>
+    <div class="nav-links">
+        <a href="./" aria-current="page">Inicio</a>
+        <a href="kits">Guías de kits</a>
+        <a href="states">Guías costeras</a>
+        <a href="faq">Preguntas frecuentes</a>
+        <a href="about">Acerca de</a>
+        <a href="https://ko-fi.com/mikehen" target="_blank" rel="noopener">Apoyo</a>
+        <a href="../" class="lang-switch" hreflang="en">English</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <aside class="live-alert-ticker" aria-label="Alertas tropicales en vivo del Servicio Meteorológico Nacional" data-live-alert-ticker>
     <a class="live-alert-ticker-label" href="https://www.weather.gov/alerts/active" target="_blank" rel="noopener">
