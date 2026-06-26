@@ -6,7 +6,10 @@
     "deploy": "wrangler deploy",
     "dev": "wrangler dev"
   },
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "devDependencies": {
-    "wrangler": "^3.114.17"
+    "wrangler": "^4.105.0"
   }
 }
