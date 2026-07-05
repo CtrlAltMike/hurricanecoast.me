@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="hurricane-feedback-endpoint" content="https://hurricane-slack-alerts.mike-551.workers.dev/feedback">
+  <title>Hurricane Atlas — Hurricane Coast</title>
+  <meta name="description" content="Explore selected historical Atlantic hurricane tracks from NOAA/NHC HURDAT2, with filters for decade, region, major hurricane points, and landfall markers.">
+  <meta name="author" content="Michael Hendrick">
+  <link rel="canonical" href="https://hurricanecoast.me/atlas">
+  <link rel="icon" href="assets/img/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Hurricane Coast">
+  <meta property="og:title" content="Hurricane Atlas">
+  <meta property="og:description" content="A calm historical storm-track atlas for selected Atlantic hurricanes, built from NOAA/NHC HURDAT2 best-track data.">
+  <meta property="og:url" content="https://hurricanecoast.me/atlas">
+  <meta property="og:image" content="https://hurricanecoast.me/assets/img/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hurricane Atlas">
+  <meta name="twitter:description" content="Explore selected historical Atlantic hurricane tracks from NOAA/NHC HURDAT2.">
+  <meta name="twitter:image" content="https://hurricanecoast.me/assets/img/og-default.png">
+  <meta name="twitter:image:alt" content="Hurricane Atlas on Hurricane Coast">
+
+  <!-- Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&display=swap">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script defer src="assets/js/canonicalize-url.js"></script>
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "ab045889ac1845719235f1f16e8f646f"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://hurricanecoast.me/#organization",
+        "name": "Hurricane Coast",
+        "url": "https://hurricanecoast.me/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://hurricanecoast.me/assets/img/og-default.png"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://hurricanecoast.me/about#author",
+        "name": "Michael Hendrick",
+        "url": "https://hurricanecoast.me/about"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://hurricanecoast.me/#website",
+        "name": "Hurricane Coast",
+        "url": "https://hurricanecoast.me/",
+        "inLanguage": "en-US",
+        "publisher": {
+          "@id": "https://hurricanecoast.me/#organization"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://hurricanecoast.me/atlas#page",
+        "url": "https://hurricanecoast.me/atlas",
+        "name": "Hurricane Atlas",
+        "headline": "Hurricane Atlas",
+        "description": "Explore selected historical Atlantic hurricane tracks from NOAA/NHC HURDAT2, with filters for decade, region, major hurricane points, and landfall markers.",
+        "inLanguage": "en-US",
+        "isPartOf": {
+          "@id": "https://hurricanecoast.me/#website"
+        },
+        "author": {
+          "@id": "https://hurricanecoast.me/about#author"
+        },
+        "publisher": {
+          "@id": "https://hurricanecoast.me/#organization"
+        },
+        "dateModified": "2026-07-05",
+        "about": "Historical Atlantic hurricane tracks",
+        "breadcrumb": {
+          "@id": "https://hurricanecoast.me/atlas#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://hurricanecoast.me/atlas#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://hurricanecoast.me/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Atlas",
+            "item": "https://hurricanecoast.me/atlas"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="hurricane-atlas-body">
+
+  <nav class="site-nav" aria-label="Site navigation">
+  <div class="container-wide">
+    <a href="./" class="brand">Hurricane Coast</a>
+    <input class="nav-menu-toggle" id="site-nav-toggle" type="checkbox" aria-label="Toggle navigation menu">
+    <label class="nav-toggle" for="site-nav-toggle">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="nav-toggle-text">Menu</span>
+    </label>
+    <div class="nav-links">
+        <a href="./">Home</a>
+        <a href="kits">Kit Guides</a>
+        <a href="states">Coastal Guides</a>
+        <a href="atlas" aria-current="page">Atlas</a>
+        <a href="faq">FAQ</a>
+        <a href="about">About</a>
+        <a href="https://ko-fi.com/mikehen" target="_blank" rel="noopener">Support</a>
+        <a href="es/" class="lang-switch" hreflang="es" lang="es">Español</a>
+    </div>
+  </div>
+</nav>
+
+  <main class="hurricane-atlas-page">
+    <section class="hurricane-atlas-section" data-hurricane-atlas>
+      <div class="container-wide hurricane-atlas-layout">
+        <aside class="hurricane-atlas-sidebar">
+          <div class="hurricane-atlas-copy">
+            <h1>Hurricane atlas</h1>
+            <p>Explore selected historical Atlantic storm tracks. Use the map to compare paths, landfall markers, and major-hurricane intensity points before you read a local coastal guide.</p>
+          </div>
+
+          <div class="hurricane-atlas-panel">
+            <h2>Storm layers</h2>
+            <div class="hurricane-atlas-toggles" role="group" aria-label="Storm map layers">
+              <label class="hurricane-atlas-toggle">
+                <span class="hurricane-atlas-swatch hurricane-atlas-swatch-track"></span>
+                <span class="hurricane-atlas-toggle-copy">
+                  <span class="hurricane-atlas-toggle-title">Historical tracks</span>
+                  <span class="hurricane-atlas-toggle-subtitle">Show the curated storm set</span>
+                </span>
+                <input type="checkbox" data-atlas-layer="tracks" checked>
+                <span class="hurricane-atlas-switch" aria-hidden="true"></span>
+              </label>
+
+              <label class="hurricane-atlas-toggle">
+                <span class="hurricane-atlas-swatch hurricane-atlas-swatch-major"></span>
+                <span class="hurricane-atlas-toggle-copy">
+                  <span class="hurricane-atlas-toggle-title">Major intensity</span>
+                  <span class="hurricane-atlas-toggle-subtitle">Category 3+ best-track points</span>
+                </span>
+                <input type="checkbox" data-atlas-layer="major" checked>
+                <span class="hurricane-atlas-switch" aria-hidden="true"></span>
+              </label>
+
+              <label class="hurricane-atlas-toggle">
+                <span class="hurricane-atlas-swatch hurricane-atlas-swatch-landfall"></span>
+                <span class="hurricane-atlas-toggle-copy">
+                  <span class="hurricane-atlas-toggle-title">Landfall focus</span>
+                  <span class="hurricane-atlas-toggle-subtitle">HURDAT landfall markers</span>
+                </span>
+                <input type="checkbox" data-atlas-layer="landfall" checked>
+                <span class="hurricane-atlas-switch" aria-hidden="true"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="hurricane-atlas-panel">
+            <h2>Filter storms</h2>
+            <div class="hurricane-atlas-fields">
+              <label class="hurricane-atlas-field">
+                <span>Decade</span>
+                <select data-atlas-decade aria-label="Storm decade">
+                  <option value="all">All decades</option>
+                </select>
+              </label>
+              <label class="hurricane-atlas-field">
+                <span>Region focus</span>
+                <select data-atlas-region aria-label="Storm region focus">
+                  <option value="all">All regions</option>
+                  <option value="gulf">Gulf Coast</option>
+                  <option value="florida">Florida</option>
+                  <option value="caribbean">Caribbean and Puerto Rico</option>
+                  <option value="atlantic">Atlantic and East Coast</option>
+                </select>
+              </label>
+              <label class="hurricane-atlas-field">
+                <span>Selected storm</span>
+                <select data-atlas-storm aria-label="Selected storm">
+                  <option value="AL122005">Katrina 2005</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="hurricane-atlas-selected">
+            <p class="hurricane-atlas-selected-label">Selected storm</p>
+            <h2 data-atlas-selected-title>Katrina 2005</h2>
+            <p data-atlas-selected-summary>A Gulf hurricane whose Louisiana and Mississippi landfall shaped modern evacuation planning.</p>
+            <p class="hurricane-atlas-selected-meta" data-atlas-selected-meta>Preparedness and evacuation reference</p>
+            <div class="hurricane-atlas-stat-grid" data-atlas-selected-stats>
+              <span><strong>Category 5</strong> peak</span>
+              <span><strong>150 kt</strong> max wind</span>
+              <span><strong>902 mb minimum pressure</strong></span>
+              <span><strong>3</strong> HURDAT landfall markers</span>
+            </div>
+          </div>
+
+          <div class="hurricane-atlas-panel hurricane-atlas-data-panel">
+            <h2>Data status</h2>
+            <div class="hurricane-atlas-loading-note" data-atlas-loading-note hidden>
+              <span class="hurricane-atlas-loading-spinner" aria-hidden="true"></span>
+              <span>Loading the interactive basemap.</span>
+            </div>
+            <p class="hurricane-atlas-status" data-atlas-status aria-live="polite">Preparing historical track data.</p>
+            <p class="hurricane-atlas-count" data-atlas-count>24 storms shown</p>
+            <p class="hurricane-atlas-source" data-atlas-source>Source: NOAA/NHC HURDAT2 Atlantic best-track. Curated local extract downloaded July 5, 2026.</p>
+            <p class="hurricane-atlas-note">Historical best tracks are not forecasts, evacuation zones, or live warnings. During an active storm, follow the National Hurricane Center, the National Weather Service, and local emergency management.</p>
+          </div>
+        </aside>
+
+        <div class="hurricane-atlas-map-panel" data-atlas-map-panel aria-label="Historical Atlantic hurricane track map">
+          <div class="hurricane-atlas-map" id="hurricane-atlas-map" role="region" aria-label="Interactive map of selected historical Atlantic hurricane tracks">
+            <div class="hurricane-atlas-placeholder" data-atlas-placeholder>
+              <h2>Historical storm tracks</h2>
+              <p>Loading selected NOAA/NHC HURDAT2 tracks across the Gulf, Caribbean, Florida, East Coast, and Atlantic.</p>
+            </div>
+            <div class="hurricane-atlas-map-legend" aria-label="Map legend">
+              <span><span class="hurricane-atlas-legend-track"></span> Track</span>
+              <span><span class="hurricane-atlas-legend-major"></span> Cat 3+</span>
+              <span><span class="hurricane-atlas-legend-landfall"></span> Landfall</span>
+            </div>
+            <div class="hurricane-atlas-map-detail" aria-live="polite">
+              <span data-atlas-selected-title>Katrina 2005</span>
+              <span data-atlas-selected-meta>Preparedness and evacuation reference · Aug 23-Aug 31, 2005</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hurricane-atlas-storm-list-wrap">
+          <h2>Storm roster</h2>
+          <div class="hurricane-atlas-storm-list" data-atlas-storm-list aria-label="Filtered storm roster"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container-wide">
+      <p>A supplement, not a replacement for your <a href="https://www.ready.gov/local">local emergency management office</a>.</p>
+      <p><a href="./">Hurricane Coast</a></p>
+      <p>Last reviewed: July 5, 2026</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/hurricane-atlas-data.js"></script>
+  <script src="assets/js/hurricane-atlas.js"></script>
+  <script src="assets/js/share.js"></script>
+  <script src="assets/js/feedback.js"></script>
+</body>
+</html>

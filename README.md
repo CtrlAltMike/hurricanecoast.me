@@ -15,7 +15,7 @@ Plain HTML/CSS/JavaScript hosted on GitHub Pages. No build step, no framework, n
 - Self-hosted fonts in `assets/fonts/`
 - Sitewide Cloudflare Web Analytics
 - Ventusky embeds on the coastal guide pages
-- Primary site navigation is `Home`, `Kit Guides`, `Coastal Guides`, `FAQ`, `About`
+- Primary site navigation is `Home`, `Kit Guides`, `Coastal Guides`, `Atlas`, `FAQ`, `About`
 - `printables/` is a utility area for browser-printable checklist versions of the kit guides, not a primary navigation section
 
 ## How to add a new page
@@ -106,6 +106,7 @@ If you add or remove items, update **both files**. Then:
 - `/index.html` is the homepage and orientation page
 - `/kits.html` is the landing page for all kit guides
 - `/states.html` is the landing page for all state and regional guides
+- `/atlas.html` is the historical Atlantic hurricane-track atlas
 - `/printables/index.html` is the checklist utility index that points back to the full guides
 - `/storms/` is reserved for generated named-storm packets and PDFs
 - Printable detail pages should use the utility header pattern, not the full site nav
