@@ -1,0 +1,19 @@
+# Guards the NowWePlan feeder-link contract.
+name: NowWePlan link contract
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - run: node scripts/check-nowweplan-links.mjs
