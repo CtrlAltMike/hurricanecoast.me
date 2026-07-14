@@ -11,7 +11,7 @@ Plain HTML/CSS/JavaScript hosted on GitHub Pages. No build step, no framework, n
 - One `site.css` for all web pages
 - One `printables.css` for printable checklists
 - Shared HTML fragments in `docs/snippets/` — copy and paste into each page
-- Shared hero artwork in `assets/img/heroes/`
+- Shared hero artwork in `assets/img/heroes/` (22 illustrated hero assets plus a static Atlas map preview)
 - Self-hosted fonts in `assets/fonts/`
 - Sitewide Cloudflare Web Analytics
 - Ventusky embeds on the coastal guide pages

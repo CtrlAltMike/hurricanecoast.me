@@ -132,11 +132,12 @@ const heroFiles = [
   "assets/img/heroes/faq-still-life.webp",
   "assets/img/heroes/directories/kits-library.webp",
   "assets/img/heroes/directories/states-atlas.webp",
+  "assets/img/heroes/directories/storm-atlas.webp",
   ...["baby-child-medical-kit", "car-kit", "documents-kit", "evacuation-kit", "first-aid-kit", "food-water-kit", "pet-kit", "power-outage-kit", "senior-medical-kit"].map((name) => `assets/img/heroes/kits/${name}.webp`),
   ...["alabama", "carolinas", "florida", "georgia", "gulf-coast", "louisiana", "mississippi", "puerto-rico", "texas"].map((name) => `assets/img/heroes/states/${name}.webp`)
 ];
 
-if (heroFiles.length !== 22) fail(`Expected 22 illustrated hero assets; found ${heroFiles.length}.`);
+if (heroFiles.length !== 23) fail(`Expected 22 illustrated hero assets and one Atlas map preview; found ${heroFiles.length}.`);
 for (const relativePath of heroFiles) {
   const fullPath = path.join(root, relativePath);
   if (!fs.existsSync(fullPath)) {
@@ -164,4 +165,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log("Living Coast theme check passed: 68 pages, 18 regional guides, and 22 illustrated hero assets.");
+console.log("Living Coast theme check passed: 68 pages, 18 regional guides, 22 illustrated hero assets, and one Atlas map preview.");
