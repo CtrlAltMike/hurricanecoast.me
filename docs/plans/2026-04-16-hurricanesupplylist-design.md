@@ -223,7 +223,7 @@ User supplies images later. Every image slot in every template ships with a **de
 - **Domain:** hurricanesupplylist.com, owned on Namecheap, parked. DNS update deferred until site is ready.
 - **Repo:** Private GitHub repo. GitHub Pages serves a public site from a private repo on Free tier (supported since 2021).
 - **Ko-fi URL:** TBD — user needs to change existing URL. Use placeholder / single-point-of-edit until provided.
-- **Author byline:** "Michael." Richer bio lives on Ko-fi, not on-site.
+- **Publisher byline:** "Hurricane Coast." Personal profile details live on Ko-fi, not on-site.
 - **Sister-site cross-link:** none.
 
 ## Explicitly rejected / not doing

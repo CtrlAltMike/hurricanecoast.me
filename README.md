@@ -163,7 +163,7 @@ To point the domain at GitHub Pages:
 ## Voice
 
 - Kit and state pages: editorial, neutral voice. No "I".
-- About page: first-person. "I'm Mike, I did the homework."
+- About page: first-person and candid about the publisher's limits, without a personal byline.
 - Never publish evacuation routes, shelter addresses, or phone numbers. Link to the authoritative source instead.
 - Tone: care, not fear. Useful, not just informative. Honest about limits.
 - More detail in `docs/plans/2026-04-16-hurricanesupplylist-design.md`.

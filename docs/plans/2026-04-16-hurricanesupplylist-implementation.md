@@ -411,7 +411,7 @@ Verify in browser → commit.
 
 **Files:** Create `about.html`.
 
-Personal "I" voice. Sections: "Who I am" (Michael, not a meteorologist, has done the homework), "Why this site exists", "What I don't know", "How I keep it current", "Tip jar" (Ko-fi button, contextual framing, `{{KOFI_URL}}` placeholder until URL is provided).
+Personal "I" voice without a personal byline. Sections: "Who maintains this" (an independent publisher, not a meteorologist, has done the homework), "Why this site exists", "What I don't know", "How I keep it current", "Tip jar" (Ko-fi button, contextual framing, `{{KOFI_URL}}` placeholder until URL is provided).
 
 Verify in browser → commit.
 

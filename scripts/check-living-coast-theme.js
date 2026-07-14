@@ -69,6 +69,13 @@ for (const relativePath of productionPages) {
   if (!/assets\/css\/living-coast\.css/i.test(html)) fail(`${relativePath}: missing Living Coast stylesheet.`);
   if (/fonts\.googleapis\.com|fonts\.gstatic\.com|card-wind-tilt\.js/i.test(html)) fail(`${relativePath}: contains a retired font or motion dependency.`);
   if (!/<link\s+rel=["']canonical["']/i.test(html)) fail(`${relativePath}: missing canonical link.`);
+  if (/Michael Hendrick|AboutMe\.(?:png|webp)|about#author/i.test(html)) fail(`${relativePath}: contains retired personal attribution.`);
+  if (!/<meta\s+name=["']author["']\s+content=["']Hurricane Coast["']/i.test(html)) fail(`${relativePath}: author metadata must name Hurricane Coast.`);
+  if (relativePath !== "404.html" && !/"dateModified":\s*"2026-07-14"/.test(html)) fail(`${relativePath}: dateModified must be 2026-07-14.`);
+  const reviewDate = isSpanish
+    ? /(?:Última revisión:|Revisado el)\s*(?:<[^>]+>)?14 de julio de 2026/i
+    : /(?:Last reviewed:|Reviewed)\s*(?:<[^>]+>)?July 14, 2026/i;
+  if (!reviewDate.test(html)) fail(`${relativePath}: visible review date must be July 14, 2026.`);
 
   if (/\bdata-region=["'][^"']+["']/i.test(html)) regions += 1;
   if (/<nav\b[^>]*class=["'][^"']*\bsite-nav\b/i.test(html)) {

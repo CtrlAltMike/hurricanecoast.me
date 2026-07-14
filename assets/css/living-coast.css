@@ -999,6 +999,15 @@ body.living-coast.about-variant-page {
   box-shadow: none;
 }
 
+.living-coast .about-hero-notes .about-hero-panel--text {
+  width: min(100%, 820px);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.living-coast .about-hero-panel--text .about-notes-copy {
+  max-width: 720px;
+}
+
 .living-coast .about-notes-visual {
   min-height: 520px;
   border: 1px solid var(--almanac-rule);
