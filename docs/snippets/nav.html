@@ -1,7 +1,7 @@
-<!-- Paste as first element inside <body>. Add aria-current="page" to the active link. -->
+<!-- Paste as first element inside <body class="living-coast">. Set body data-page; region guides also need data-region. Add aria-current="page" to the active link. Localize labels and use "Atlas (EN)" on Spanish pages. -->
 <nav class="site-nav" aria-label="Site navigation">
   <div class="container-wide">
-    <a href="./" class="brand">Hurricane Coast</a>
+    <a href="./" class="brand"><span class="brand-mark" aria-hidden="true"></span><span class="brand-name">Hurricane Coast</span></a>
     <input class="nav-menu-toggle" id="site-nav-toggle" type="checkbox" aria-label="Toggle navigation menu">
     <label class="nav-toggle" for="site-nav-toggle">
       <span class="nav-toggle-icon" aria-hidden="true"></span>
@@ -15,6 +15,7 @@
         <a href="faq">FAQ</a>
         <a href="about">About</a>
         <a href="https://ko-fi.com/mikehen" target="_blank" rel="noopener">Support</a>
+        <a href="{{LANGUAGE_PATH}}" class="lang-switch" hreflang="{{LANGUAGE_CODE}}" lang="{{LANGUAGE_CODE}}">{{LANGUAGE_LABEL}}</a>
     </div>
   </div>
 </nav>

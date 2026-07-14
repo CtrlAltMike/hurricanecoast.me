@@ -20,7 +20,7 @@
 <body>
   <nav class="site-nav" aria-label="Test navigation">
   <div class="container-wide">
-    <a href="/" class="brand">Hurricane Coast</a>
+    <a href="/" class="brand"><span class="brand-mark" aria-hidden="true"></span><span class="brand-name">Hurricane Coast</span></a>
     <input class="nav-menu-toggle" id="site-nav-toggle" type="checkbox" aria-label="Toggle navigation menu">
     <label class="nav-toggle" for="site-nav-toggle">
       <span class="nav-toggle-icon" aria-hidden="true"></span>
@@ -32,8 +32,12 @@
   </div>
 </nav>
 
-  <h2>share.js unit tests</h2>
-  <div id="results"></div>
+  <div class="share-sticky-wrap">
+    <article class="container">
+      <h2>share.js unit tests</h2>
+      <div id="results"></div>
+    </article>
+  </div>
 
   <script src="share.js"></script>
   <script>
@@ -72,7 +76,9 @@
       assert('getShareData uses canonical URL', shareData.url === 'https://hurricanecoast.me/share-test');
 
       assert('nav share button is injected', document.querySelector('.nav-share-btn') !== null);
-      assert('floating share button is injected', document.querySelector('.floating-share-btn') !== null);
+      assert('article share button is injected', document.querySelector('article .inline-share-btn') !== null);
+      assert('floating share UI is not injected', document.querySelector('.floating-share-btn') === null);
+      assert('decorative radar UI is not injected', document.querySelector('.fx-radar') === null);
 
       const testButton = share.createShareButton('test-share-btn');
       document.body.appendChild(testButton);

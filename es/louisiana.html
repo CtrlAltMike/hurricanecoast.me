@@ -35,10 +35,8 @@
   <meta name="twitter:image:alt" content="Prepararse para huracanes en Luisiana en Hurricane Coast">
 
   <!-- Styles -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&display=swap">
   <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/living-coast.css">
   <script defer src="../assets/js/canonicalize-url.js"></script>
 
   <!-- Cloudflare Web Analytics -->
@@ -126,12 +124,12 @@
   }
   </script>
 </head>
-<body>
+<body data-page="region" data-region="louisiana" class="living-coast">
 
   <!-- Site nav -->
   <nav class="site-nav" aria-label="Navegación del sitio">
   <div class="container-wide">
-    <a href="./" class="brand">Hurricane Coast</a>
+    <a href="./" class="brand"><span class="brand-mark" aria-hidden="true"></span><span class="brand-name">Hurricane Coast</span></a>
     <input class="nav-menu-toggle" id="site-nav-toggle" type="checkbox" aria-label="Alternar menú de navegación">
     <label class="nav-toggle" for="site-nav-toggle">
       <span class="nav-toggle-icon" aria-hidden="true"></span>
@@ -141,7 +139,7 @@
         <a href="./">Inicio</a>
         <a href="kits">Guías de kits</a>
         <a href="states" aria-current="page">Guías costeras</a>
-        <a href="../atlas">Atlas</a>
+        <a href="../atlas">Atlas (EN)</a>
         <a href="faq">Preguntas frecuentes</a>
         <a href="about">Acerca de</a>
         <a href="https://ko-fi.com/mikehen" target="_blank" rel="noopener">Apoyo</a>
@@ -162,9 +160,10 @@
         <a href="printables/evacuation-kit" class="btn btn-secondary">Lista de evacuación</a>
       </div>
       </div>
-      <div class="hero-media-wrap" aria-hidden="true">
+      <div class="hero-media-wrap">
         <figure class="hero-media">
-          <img src="../assets/img/heroes/states/louisiana.webp" alt="" class="hero-media-image" loading="eager" fetchpriority="high" decoding="async" width="1536" height="1024">
+          <img src="../assets/img/heroes/states/louisiana.webp" alt="Vecinos de Luisiana colocan agua, documentos, un radio y linternas en un lugar alto mientras revisan un desagüe y una bomba." class="hero-media-image" loading="eager" fetchpriority="high" decoding="async" width="1536" height="1024">
+            <figcaption>Los suministros suben, el desagüe queda libre y los vecinos comparten el trabajo que puede traer el agua lenta.</figcaption>
         </figure>
       </div>
     </div>

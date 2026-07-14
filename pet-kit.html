@@ -34,10 +34,8 @@
   <meta name="twitter:image:alt" content="Pet Kit on Hurricane Coast">
 
   <!-- Styles -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&display=swap">
   <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/living-coast.css">
   <script defer src="assets/js/canonicalize-url.js"></script>
 
   <!-- Cloudflare Web Analytics -->
@@ -125,12 +123,12 @@
   }
   </script>
 </head>
-<body>
+<body data-page="kit" class="living-coast">
 
   <!-- Site nav -->
   <nav class="site-nav" aria-label="Site navigation">
   <div class="container-wide">
-    <a href="./" class="brand">Hurricane Coast</a>
+    <a href="./" class="brand"><span class="brand-mark" aria-hidden="true"></span><span class="brand-name">Hurricane Coast</span></a>
     <input class="nav-menu-toggle" id="site-nav-toggle" type="checkbox" aria-label="Toggle navigation menu">
     <label class="nav-toggle" for="site-nav-toggle">
       <span class="nav-toggle-icon" aria-hidden="true"></span>
@@ -163,9 +161,10 @@
           <a href="kits" class="btn btn-secondary">All kit guides</a>
         </div>
         </div>
-        <div class="hero-media-wrap" aria-hidden="true">
+        <div class="hero-media-wrap">
           <figure class="hero-media">
-            <img src="assets/img/heroes/kits/pet-kit.webp" alt="" class="hero-media-image" loading="eager" fetchpriority="high" decoding="async" width="1536" height="1024">
+            <img src="assets/img/heroes/kits/pet-kit.webp" alt="A family fits a dog’s harness and prepares a cat carrier, pet food, water, records, medication, and identification." class="hero-media-image" loading="eager" fetchpriority="high" decoding="async" width="1536" height="1024">
+            <figcaption>Familiar bedding, current records, and a practiced carrier routine make leaving easier for animals and people.</figcaption>
           </figure>
         </div>
       </div>

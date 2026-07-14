@@ -36,10 +36,8 @@
 
   <!-- Styles -->
   <link rel="preload" as="image" href="../assets/img/heroes/home-coast.webp" fetchpriority="high">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&display=swap">
   <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/living-coast.css">
   <script defer src="../assets/js/canonicalize-url.js"></script>
 
   <!-- Cloudflare Web Analytics -->
@@ -115,11 +113,11 @@
   }
   </script>
 </head>
-<body>
+<body data-page="home" class="living-coast">
 
   <nav class="site-nav" aria-label="Navegación del sitio">
   <div class="container-wide">
-    <a href="./" class="brand">Hurricane Coast</a>
+    <a href="./" class="brand"><span class="brand-mark" aria-hidden="true"></span><span class="brand-name">Hurricane Coast</span></a>
     <input class="nav-menu-toggle" id="site-nav-toggle" type="checkbox" aria-label="Alternar menú de navegación">
     <label class="nav-toggle" for="site-nav-toggle">
       <span class="nav-toggle-icon" aria-hidden="true"></span>
@@ -129,7 +127,7 @@
         <a href="./" aria-current="page">Inicio</a>
         <a href="kits">Guías de kits</a>
         <a href="states">Guías costeras</a>
-        <a href="../atlas">Atlas</a>
+        <a href="../atlas">Atlas (EN)</a>
         <a href="faq">Preguntas frecuentes</a>
         <a href="about">Acerca de</a>
         <a href="https://ko-fi.com/mikehen" target="_blank" rel="noopener">Apoyo</a>
@@ -138,7 +136,7 @@
   </div>
 </nav>
 
-  <aside class="live-alert-ticker" aria-label="Alertas tropicales en vivo del Servicio Meteorológico Nacional" data-live-alert-ticker>
+  <aside class="live-alert-ticker" aria-label="Alertas tropicales en vivo del Servicio Meteorológico Nacional" data-live-alert-ticker data-state="loading">
     <a class="live-alert-ticker-label" href="https://www.weather.gov/alerts/active" target="_blank" rel="noopener">
       <span class="live-alert-ticker-label-dot" aria-hidden="true"></span>
       En vivo · Alertas tropicales del NWS
@@ -146,7 +144,7 @@
     <div class="live-alert-ticker-track" aria-live="polite">
       <div class="live-alert-ticker-track-inner" data-live-alert-items>
         <span class="live-alert-ticker-empty">Cargando alertas tropicales del NWS…</span>
-        <span class="live-alert-ticker-empty">Cargando alertas tropicales del NWS…</span>
+        <span class="live-alert-ticker-empty" aria-hidden="true">Cargando alertas tropicales del NWS…</span>
       </div>
     </div>
     <span class="live-alert-ticker-readout" data-live-alert-updated>NWS · Conectando…</span>
@@ -166,9 +164,10 @@
           </div>
         </div>
 
-        <div class="hero-media-wrap" aria-hidden="true">
+        <div class="hero-media-wrap">
           <figure class="hero-media">
-            <img src="../assets/img/heroes/home-coast.webp" alt="" class="hero-media-image" loading="eager" fetchpriority="high" decoding="async" width="1536" height="1024">
+            <img src="../assets/img/heroes/home-coast.webp" alt="Un hogar costero multigeneracional revisa agua, medicamentos, suministros para mascotas y bolsas de evacuación en el porche." class="hero-media-image" loading="eager" fetchpriority="high" decoding="async" width="1536" height="1024">
+            <figcaption>La preparación toma forma en decisiones cotidianas del hogar, tomadas mientras todavía hay tiempo.</figcaption>
           </figure>
         </div>
       </div>
@@ -177,18 +176,37 @@
     <section class="home-state-shortcuts" aria-label="Accesos rápidos a estados y regiones">
       <div class="container-wide">
         <div class="home-state-shortcuts-panel">
-          <p class="home-state-shortcuts-label">Guías costeras</p>
-          <div class="state-grid">
-            <a href="florida" class="state-card">Florida</a>
-            <a href="texas" class="state-card">Texas</a>
-            <a href="louisiana" class="state-card">Luisiana</a>
-            <a href="gulf-coast" class="state-card">Costa del Golfo</a>
-            <a href="carolinas" class="state-card">Carolinas</a>
-            <a href="georgia" class="state-card">Georgia</a>
-            <a href="alabama" class="state-card">Alabama</a>
-            <a href="mississippi" class="state-card">Misisipi</a>
-            <a href="puerto-rico" class="state-card">Puerto Rico</a>
+          <div class="home-state-shortcuts-heading">
+            <p class="home-state-shortcuts-kicker">Guías costeras</p>
+            <h2 class="home-state-shortcuts-label">Empiece con su costa.</h2>
+            <p>El riesgo local cambia el kit estándar. Elija una guía regional para conocer las agencias, los peligros y las adiciones que importan donde vive.</p>
           </div>
+          <div class="state-spotlight-grid">
+            <a href="florida" class="state-spotlight state-spotlight--florida">
+              <img src="../assets/img/heroes/states/florida.webp" alt="" width="1536" height="1024" loading="lazy" decoding="async">
+              <span class="state-spotlight-copy"><strong>Florida</strong><span>Manglares, costas de barrera y una larga península.</span></span>
+            </a>
+            <a href="gulf-coast" class="state-spotlight state-spotlight--gulf-coast">
+              <img src="../assets/img/heroes/states/gulf-coast.webp" alt="" width="1536" height="1024" loading="lazy" decoding="async">
+              <span class="state-spotlight-copy"><strong>Costa del Golfo</strong><span>Bahías, espigones y puertos de trabajo.</span></span>
+            </a>
+            <a href="carolinas" class="state-spotlight state-spotlight--carolinas">
+              <img src="../assets/img/heroes/states/carolinas.webp" alt="" width="1536" height="1024" loading="lazy" decoding="async">
+              <span class="state-spotlight-copy"><strong>Carolinas</strong><span>Arroyos de marea, dunas y casas elevadas.</span></span>
+            </a>
+            <a href="puerto-rico" class="state-spotlight state-spotlight--puerto-rico">
+              <img src="../assets/img/heroes/states/puerto-rico.webp" alt="" width="1536" height="1024" loading="lazy" decoding="async">
+              <span class="state-spotlight-copy"><strong>Puerto Rico</strong><span>Topografía insular, hormigón y persianas.</span></span>
+            </a>
+          </div>
+          <nav class="state-compact-links" aria-label="Más guías costeras">
+            <span>Más guías costeras</span>
+            <a href="texas">Texas</a>
+            <a href="louisiana">Luisiana</a>
+            <a href="georgia">Georgia</a>
+            <a href="alabama">Alabama</a>
+            <a href="mississippi">Misisipi</a>
+          </nav>
         </div>
       </div>
     </section>
@@ -245,6 +263,18 @@
               </div>
               <p class="directory-card-actions">
                 <a href="states" class="directory-card-link">Ver guías costeras</a>
+              </p>
+            </div>
+          </article>
+          <article class="directory-card">
+            <img src="../assets/img/heroes/directories/states-atlas.webp" alt="" class="directory-card-image" loading="lazy" decoding="async" width="1536" height="1024">
+            <div class="directory-card-body">
+              <div>
+                <h3 class="directory-card-title">Atlas (EN)</h3>
+                <p class="directory-card-desc">Compare trayectorias históricas seleccionadas del Atlántico con datos de mejor trayectoria de NOAA/NHC.</p>
+              </div>
+              <p class="directory-card-actions">
+                <a href="../atlas" class="directory-card-link" lang="en">Open Atlas (EN)</a>
               </p>
             </div>
           </article>
@@ -351,7 +381,6 @@
     })();
   </script>
   <script src="../assets/js/live-alert-ticker.js?v=20260418c" onerror="window.HSLLiveAlertTickerScriptError && window.HSLLiveAlertTickerScriptError()"></script>
-  <script src="../assets/js/card-wind-tilt.js?v=20260418c"></script>
   <script src="../assets/js/share.js"></script>
   <script src="../assets/js/feedback.js"></script>
 </body>

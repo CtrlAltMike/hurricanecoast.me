@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="brand-title brand-desc">
+  <title id="brand-title">Hurricane Coast</title>
+  <desc id="brand-desc">An HC monogram built from a sturdy H and three colorful horizon louvers.</desc>
+  <rect width="160" height="160" rx="34" fill="#102A43"/>
+  <path d="M22 32h18v38h26V32h18v96H66V88H40v40H22Z" fill="#FFF9EE"/>
+  <path d="M136 34h-25c-18 0-30 11-30 29v3h20v-2c0-8 5-12 13-12h22Z" fill="#F6B82E"/>
+  <path d="M81 66h20v30H81Z" fill="#EF5D72"/>
+  <path d="M81 96h20v2c0 8 5 12 13 12h22v18h-25c-18 0-30-11-30-30Z" fill="#11B7B3"/>
+</svg>

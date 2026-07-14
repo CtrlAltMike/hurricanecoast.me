@@ -34,10 +34,8 @@
   <meta name="twitter:image:alt" content="Coastal Guides on Hurricane Coast">
 
   <!-- Styles -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&display=swap">
   <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/living-coast.css">
   <script defer src="assets/js/canonicalize-url.js"></script>
 
   <!-- Cloudflare Web Analytics -->
@@ -119,11 +117,11 @@
   }
   </script>
 </head>
-<body>
+<body data-page="directory" class="living-coast">
 
   <nav class="site-nav" aria-label="Site navigation">
   <div class="container-wide">
-    <a href="./" class="brand">Hurricane Coast</a>
+    <a href="./" class="brand"><span class="brand-mark" aria-hidden="true"></span><span class="brand-name">Hurricane Coast</span></a>
     <input class="nav-menu-toggle" id="site-nav-toggle" type="checkbox" aria-label="Toggle navigation menu">
     <label class="nav-toggle" for="site-nav-toggle">
       <span class="nav-toggle-icon" aria-hidden="true"></span>
@@ -133,6 +131,7 @@
         <a href="./">Home</a>
         <a href="kits">Kit Guides</a>
         <a href="states" aria-current="page">Coastal Guides</a>
+        <a href="atlas">Atlas</a>
         <a href="faq">FAQ</a>
         <a href="about">About</a>
         <a href="https://ko-fi.com/mikehen" target="_blank" rel="noopener">Support</a>
@@ -153,9 +152,10 @@
             <a href="kits" class="btn btn-secondary">Browse kit guides</a>
           </div>
         </div>
-        <div class="hero-media-wrap" aria-hidden="true">
+        <div class="hero-media-wrap">
           <figure class="hero-media">
-            <img src="assets/img/heroes/directories/states-atlas.webp" alt="" class="hero-media-image" loading="eager" fetchpriority="high" decoding="async" width="1536" height="1024">
+            <img src="assets/img/heroes/directories/states-atlas.webp" alt="Two coastal residents study a paper map beside a working bay, marsh, homes, and evacuation routes." class="hero-media-image" loading="eager" fetchpriority="high" decoding="async" width="1536" height="1024">
+            <figcaption>A useful coastal plan begins with the water, roads, and distances around your own home.</figcaption>
           </figure>
         </div>
       </div>
@@ -291,7 +291,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/card-wind-tilt.js?v=20260418c"></script>
   <script>
     (function () {
       var el = document.getElementById('season-countdown');

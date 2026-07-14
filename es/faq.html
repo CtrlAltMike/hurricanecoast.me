@@ -35,11 +35,9 @@
   <meta name="twitter:image:alt" content="Preguntas frecuentes sobre huracanes en Hurricane Coast">
 
   <!-- Styles -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&display=swap">
   <link rel="stylesheet" href="../assets/css/site.css">
   <link rel="stylesheet" href="../assets/css/faq.css">
+  <link rel="stylesheet" href="../assets/css/living-coast.css">
   <script defer src="../assets/js/canonicalize-url.js"></script>
 
   <!-- Cloudflare Web Analytics -->
@@ -121,11 +119,11 @@
   }
   </script>
 </head>
-<body>
+<body data-page="faq" class="living-coast">
 
   <nav class="site-nav" aria-label="Navegación del sitio">
   <div class="container-wide">
-    <a href="./" class="brand">Hurricane Coast</a>
+    <a href="./" class="brand"><span class="brand-mark" aria-hidden="true"></span><span class="brand-name">Hurricane Coast</span></a>
     <input class="nav-menu-toggle" id="site-nav-toggle" type="checkbox" aria-label="Alternar menú de navegación">
     <label class="nav-toggle" for="site-nav-toggle">
       <span class="nav-toggle-icon" aria-hidden="true"></span>
@@ -135,7 +133,7 @@
         <a href="./">Inicio</a>
         <a href="kits">Guías de kits</a>
         <a href="states">Guías costeras</a>
-        <a href="../atlas">Atlas</a>
+        <a href="../atlas">Atlas (EN)</a>
         <a href="faq" aria-current="page">Preguntas frecuentes</a>
         <a href="about">Acerca de</a>
         <a href="https://ko-fi.com/mikehen" target="_blank" rel="noopener">Apoyo</a>
@@ -146,11 +144,19 @@
 
   <main>
 
-    <header class="page-hero">
-      <div class="container">
-        <div class="hero-eyebrow">Preguntas frecuentes</div>
-        <h1>Las preguntas que surgen cuando llega la tormenta.</h1>
-        <p class="lede">Cuando un huracán está a días, horas o ya está encima, las preguntas se vuelven urgentes. Estas son las que la gente realmente busca — respondidas con claridad, en el orden en que probablemente las necesitará.</p>
+    <header class="page-hero page-hero--split">
+      <div class="container-wide hero-layout">
+        <div class="hero-copy">
+          <div class="hero-eyebrow">Preguntas frecuentes</div>
+          <h1>Las preguntas que surgen cuando llega la tormenta.</h1>
+          <p class="lede prose">Cuando un huracán está a días, horas o ya está encima, las preguntas se vuelven urgentes. Estas son las que la gente realmente busca — respondidas con claridad, en el orden en que probablemente las necesitará.</p>
+        </div>
+        <div class="hero-media-wrap">
+          <figure class="hero-media">
+            <img src="../assets/img/heroes/faq-still-life.webp" alt="Un radio, una linterna, baterías, medicamentos, una bolsa impermeable, notas y herramientas básicas sobre una mesa costera desgastada." class="hero-media-image" loading="eager" fetchpriority="high" decoding="async" width="1536" height="1024">
+            <figcaption>Las preguntas cambian cuando la tormenta se acerca; las respuestas útiles siguen siendo específicas.</figcaption>
+          </figure>
+        </div>
       </div>
     </header>
 

@@ -7,14 +7,14 @@
 
 /* Jump nav */
 .faq-jump-nav {
-  background: #F0EBE0;
+  background: var(--civic-plaster);
   border: 1px solid var(--color-rule);
   border-radius: 6px;
   padding: 1.25rem 1.5rem 1.4rem;
   margin: 2rem 0 0;
 }
 .faq-jump-nav-label {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Work Sans', system-ui, sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -43,7 +43,7 @@
 }
 .faq-jump-nav li a::before {
   content: counter(jumpcount, decimal-leading-zero) " ";
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Work Sans', system-ui, sans-serif;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -67,7 +67,7 @@
   margin-bottom: 2rem;
 }
 .faq-phase-label {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Work Sans', system-ui, sans-serif;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -76,7 +76,7 @@
   margin-bottom: 0.4rem;
 }
 .faq-phase-title {
-  font-family: 'Newsreader', Georgia, serif;
+  font-family: 'Bricolage Grotesque', 'Arial Black', sans-serif;
   font-size: clamp(1.5rem, 2.8vw, 2rem);
   font-weight: 600;
   line-height: 1.2;
@@ -107,7 +107,7 @@ details.qa > summary {
   font-weight: 600;
   color: var(--color-ink);
   line-height: 1.35;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Work Sans', system-ui, sans-serif;
   transition: color 0.15s;
 }
 details.qa > summary::-webkit-details-marker { display: none; }
@@ -121,11 +121,11 @@ details.qa > summary::after {
   width: 1.5rem;
   height: 1.5rem;
   flex: none;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Work Sans', system-ui, sans-serif;
   font-size: 1.25rem;
   font-weight: 300;
   color: var(--color-storm);
-  border: 1px solid rgba(58,107,131,.35);
+  border: 1px solid rgba(22,73,184,.35);
   border-radius: 50%;
   line-height: 1;
   transition: transform 0.18s ease;
@@ -151,13 +151,13 @@ details.qa[open] > summary::after {
 .callout {
   margin: 0.9rem 0;
   padding: 0.85rem 1.1rem;
-  background: #F0EBE0;
+  background: var(--civic-plaster);
   border-left: 3px solid var(--color-storm);
   font-size: 0.93rem;
   line-height: 1.6;
 }
 .callout-label {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Work Sans', system-ui, sans-serif;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -193,4 +193,80 @@ details.qa[open] > summary::after {
   details.qa > summary::after { display: none; }
   details.qa:not([open]) .qa-body { display: block !important; }
   details.qa:not([open]) { padding-bottom: 1.6rem; }
+}
+
+/* Sunwashed Civic Modernism — quiet long-form treatment */
+.faq-jump-wrap {
+  padding-top: 2.25rem;
+}
+
+.faq-jump-nav {
+  padding: 1.35rem 1.5rem;
+  border: 2px solid var(--civic-ink);
+  border-radius: var(--radius-card);
+  background:
+    url('../img/patterns/tile-grid.svg') right center / 11rem auto no-repeat,
+    var(--civic-plaster);
+  box-shadow: 0.35rem 0.35rem 0 rgba(16, 42, 67, 0.14);
+}
+
+.faq-jump-nav li a::before,
+.faq-phase-label,
+.callout-label {
+  color: var(--civic-ultramarine);
+  font-weight: 700;
+}
+
+.faq-phase {
+  border-top: 2px solid var(--civic-ink);
+}
+
+.faq-phase-title {
+  font-size: clamp(1.8rem, 3vw, 2.45rem);
+  font-weight: 800;
+}
+
+details.qa {
+  margin: 0 0 0.7rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(16, 42, 67, 0.28);
+  border-left: 0.42rem solid var(--civic-turquoise);
+  border-radius: 0.35rem;
+  background: var(--civic-surface);
+}
+
+details.qa:nth-of-type(3n + 2) { border-left-color: var(--civic-mango); }
+details.qa:nth-of-type(3n) { border-left-color: var(--civic-guava); }
+details.qa[open] { padding-bottom: 1.3rem; }
+
+details.qa > summary {
+  font-weight: 700;
+}
+
+details.qa > summary::after {
+  border: 2px solid currentColor;
+  border-radius: var(--radius-control);
+  color: var(--civic-ultramarine);
+}
+
+.callout {
+  border: 2px solid var(--civic-ink);
+  border-left: 0.55rem solid var(--civic-mango);
+  border-radius: var(--radius-card);
+  background: var(--civic-plaster);
+}
+
+.faq-closer {
+  border-top: 2px solid var(--civic-ink);
+}
+
+@media (max-width: 640px) {
+  .faq-jump-nav {
+    padding: 1rem;
+    box-shadow: 0.25rem 0.25rem 0 rgba(16, 42, 67, 0.14);
+  }
+
+  details.qa {
+    padding: 0.9rem;
+  }
 }

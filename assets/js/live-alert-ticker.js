@@ -15,6 +15,28 @@
     return;
   }
 
+  var language = (document.documentElement.lang || 'en').toLowerCase();
+  var isSpanish = language === 'es' || language.indexOf('es-') === 0;
+  var strings = isSpanish ? {
+    alert: 'Alerta',
+    affectedArea: 'Zona afectada',
+    empty: 'No hay alertas tropicales activas del NWS en este momento.',
+    loading: 'Cargando alertas tropicales activas del NWS…',
+    connecting: 'NWS · Conectando…',
+    updated: 'NWS · Actualizado ',
+    failure: 'No se pudieron cargar las alertas tropicales en vivo del NWS en este momento.',
+    unavailable: 'NWS · No disponible'
+  } : {
+    alert: 'Alert',
+    affectedArea: 'Affected area',
+    empty: 'No active NWS tropical alerts right now.',
+    loading: 'Loading live NWS tropical alerts…',
+    connecting: 'NWS · Connecting…',
+    updated: 'NWS · Updated ',
+    failure: 'Unable to load live NWS tropical alerts right now.',
+    unavailable: 'NWS · Unavailable'
+  };
+
   var tropicalEvents = [
     'Hurricane Warning',
     'Storm Surge Warning',
@@ -29,6 +51,15 @@
     return map;
   }, Object.create(null));
 
+  var eventLabels = isSpanish ? {
+    'Hurricane Warning': 'Aviso de huracán',
+    'Storm Surge Warning': 'Aviso de marejada ciclónica',
+    'Tropical Storm Warning': 'Aviso de tormenta tropical',
+    'Hurricane Watch': 'Vigilancia de huracán',
+    'Storm Surge Watch': 'Vigilancia de marejada ciclónica',
+    'Tropical Storm Watch': 'Vigilancia de tormenta tropical'
+  } : Object.create(null);
+
   var endpoint = 'https://api.weather.gov/alerts/active?'
     + tropicalEvents.map(function (eventName) {
       return 'event=' + encodeURIComponent(eventName);
@@ -41,6 +72,9 @@
   var inFlight = false;
 
   if (!window.XMLHttpRequest) {
+    setTickerState('error');
+    appendMessage(strings.failure);
+    readout.textContent = strings.unavailable;
     return;
   }
 
@@ -71,6 +105,10 @@
     track.classList.remove('is-static');
   }
 
+  function setTickerState(state) {
+    ticker.dataset.state = state;
+  }
+
   function appendMessage(text) {
     clearTrack();
     setStaticState();
@@ -92,6 +130,7 @@
     second.className = 'live-alert-ticker-empty';
     first.textContent = text;
     second.textContent = text;
+    second.setAttribute('aria-hidden', 'true');
 
     track.appendChild(first);
     track.appendChild(second);
@@ -105,13 +144,14 @@
     var area = document.createElement('span');
 
     item.className = 'live-alert-ticker-item';
+    item.dataset.level = /Watch$/.test(properties.event || '') ? 'watch' : 'warning';
     dot.className = 'live-alert-ticker-item-dot';
     dot.setAttribute('aria-hidden', 'true');
     event.className = 'live-alert-ticker-item-event';
     area.className = 'live-alert-ticker-item-area';
 
-    event.textContent = properties.event || 'Alert';
-    area.textContent = properties.areaDesc || 'Affected area';
+    event.textContent = eventLabels[properties.event] || properties.event || strings.alert;
+    area.textContent = properties.areaDesc || strings.affectedArea;
 
     item.appendChild(dot);
     item.appendChild(event);
@@ -123,10 +163,12 @@
     clearTrack();
 
     if (!features.length) {
-      appendScrollingMessage('No active NWS tropical alerts right now.');
+      setTickerState('empty');
+      appendScrollingMessage(strings.empty);
       return;
     }
 
+    setTickerState('ready');
     setScrollingState();
 
     var fragment = document.createDocumentFragment();
@@ -138,7 +180,9 @@
     });
 
     items.forEach(function (item) {
-      fragment.appendChild(item.cloneNode(true));
+      var visualClone = item.cloneNode(true);
+      visualClone.setAttribute('aria-hidden', 'true');
+      fragment.appendChild(visualClone);
     });
 
     track.appendChild(fragment);
@@ -190,15 +234,17 @@
   }
 
   function updateReadout() {
-    readout.textContent = 'NWS · Updated ' + formatUtc(new Date());
+    readout.textContent = strings.updated + formatUtc(new Date());
   }
 
   function handleFailure(error) {
     inFlight = false;
-    var reason = error && error.message ? error.message : 'Unknown error';
-    appendMessage('Unable to load live NWS tropical alerts right now. ' + reason + '.');
-    readout.textContent = 'NWS · ' + reason;
-    window.console.warn('Live tropical alerts ticker fetch failed:', error);
+    setTickerState('error');
+    appendMessage(strings.failure);
+    readout.textContent = strings.unavailable;
+    if (window.console && window.console.warn) {
+      window.console.warn('Live tropical alerts ticker fetch failed:', error);
+    }
   }
 
   function handleSuccess(data) {
@@ -220,8 +266,9 @@
 
     inFlight = true;
     lastRefreshStartedAt = now;
-    appendScrollingMessage('Loading live NWS tropical alerts…');
-    readout.textContent = 'NWS · Connecting…';
+    setTickerState('loading');
+    appendScrollingMessage(strings.loading);
+    readout.textContent = strings.connecting;
 
     var request = new XMLHttpRequest();
 

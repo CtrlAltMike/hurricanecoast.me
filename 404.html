@@ -33,10 +33,8 @@
 
   <!-- Styles -->
   <link rel="preload" as="image" href="/assets/img/heroes/home-coast.webp" fetchpriority="high">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&display=swap">
   <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/living-coast.css">
   <script defer src="/assets/js/canonicalize-url.js"></script>
   <style>
     .not-found-actions {
@@ -70,11 +68,11 @@
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "ab045889ac1845719235f1f16e8f646f"}'></script>
   <!-- End Cloudflare Web Analytics -->
 </head>
-<body>
+<body data-page="error" class="living-coast">
 
   <nav class="site-nav" aria-label="Site navigation">
   <div class="container-wide">
-    <a href="/" class="brand">Hurricane Coast</a>
+    <a href="/" class="brand"><span class="brand-mark" aria-hidden="true"></span><span class="brand-name">Hurricane Coast</span></a>
     <input class="nav-menu-toggle" id="site-nav-toggle" type="checkbox" aria-label="Toggle navigation menu">
     <label class="nav-toggle" for="site-nav-toggle">
       <span class="nav-toggle-icon" aria-hidden="true"></span>
@@ -105,9 +103,10 @@
             <a href="/states" class="btn btn-secondary">Find coastal guides</a>
           </div>
         </div>
-        <div class="hero-media-wrap" aria-hidden="true">
+        <div class="hero-media-wrap">
           <figure class="hero-media">
-            <img src="/assets/img/heroes/home-coast.webp" alt="" class="hero-media-image" loading="eager" fetchpriority="high" decoding="async" width="1536" height="1024">
+            <img src="/assets/img/heroes/home-coast.webp" alt="A multigenerational coastal household checks preparedness supplies together on a porch." class="hero-media-image" loading="eager" fetchpriority="high" decoding="async" width="1536" height="1024">
+            <figcaption>The page moved; the preparation guides are still close by.</figcaption>
           </figure>
         </div>
       </div>

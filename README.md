@@ -110,7 +110,9 @@ If you add or remove items, update **both files**. Then:
 - `/printables/index.html` is the checklist utility index that points back to the full guides
 - `/storms/` is reserved for generated named-storm packets and PDFs
 - Printable detail pages should use the utility header pattern, not the full site nav
-- `scripts/generate-hero-svgs.sh` regenerates the shared SVG hero illustrations if the visual system changes
+- `style-guide.html` is the noindex reference for the Living Coast Almanac design system
+- The production illustration family uses 22 optimized 1536×1024 WebPs: home, two directories, nine kits, nine regions, and the FAQ still life
+- `scripts/check-living-coast-theme.js` validates production page contracts, regional modifiers, local assets, self-hosted fonts, and hero dimensions/budgets
 
 ## Named storm packets
 
@@ -145,6 +147,8 @@ Before deploying, run:
 
 ```bash
 node scripts/check-production-html.js
+node scripts/check-living-coast-theme.js
+node --test tests/runtime-ui.test.js
 ```
 
 Push to `main`. GitHub Pages publishes automatically (usually within 60 seconds). Custom domain `hurricanecoast.me` is configured via the `CNAME` file.

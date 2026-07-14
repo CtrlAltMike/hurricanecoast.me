@@ -34,11 +34,9 @@
   <meta name="twitter:image:alt" content="Hurricane FAQ on Hurricane Coast">
 
   <!-- Styles -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&display=swap">
   <link rel="stylesheet" href="assets/css/site.css">
   <link rel="stylesheet" href="assets/css/faq.css">
+  <link rel="stylesheet" href="assets/css/living-coast.css">
   <script defer src="assets/js/canonicalize-url.js"></script>
 
   <!-- Cloudflare Web Analytics -->
@@ -120,11 +118,11 @@
   }
   </script>
 </head>
-<body>
+<body data-page="faq" class="living-coast">
 
   <nav class="site-nav" aria-label="Site navigation">
   <div class="container-wide">
-    <a href="./" class="brand">Hurricane Coast</a>
+    <a href="./" class="brand"><span class="brand-mark" aria-hidden="true"></span><span class="brand-name">Hurricane Coast</span></a>
     <input class="nav-menu-toggle" id="site-nav-toggle" type="checkbox" aria-label="Toggle navigation menu">
     <label class="nav-toggle" for="site-nav-toggle">
       <span class="nav-toggle-icon" aria-hidden="true"></span>
@@ -145,11 +143,19 @@
 
   <main>
 
-    <header class="page-hero">
-      <div class="container">
-        <div class="hero-eyebrow">Frequently asked</div>
-        <h1>The questions that show up when a storm does.</h1>
-        <p class="lede">When a hurricane is days out, hours out, or already overhead, the questions narrow fast. These are the ones people actually search for — answered plainly, in the order you're likely to need them.</p>
+    <header class="page-hero page-hero--split">
+      <div class="container-wide hero-layout">
+        <div class="hero-copy">
+          <div class="hero-eyebrow">Frequently asked</div>
+          <h1>The questions that show up when a storm does.</h1>
+          <p class="lede prose">When a hurricane is days out, hours out, or already overhead, the questions narrow fast. These are the ones people actually search for — answered plainly, in the order you're likely to need them.</p>
+        </div>
+        <div class="hero-media-wrap">
+          <figure class="hero-media">
+            <img src="assets/img/heroes/faq-still-life.webp" alt="A radio, flashlight, batteries, medicine, waterproof pouch, notes, and basic tools arranged on a worn coastal table." class="hero-media-image" loading="eager" fetchpriority="high" decoding="async" width="1536" height="1024">
+            <figcaption>The questions change as the storm gets closer; useful answers stay specific.</figcaption>
+          </figure>
+        </div>
       </div>
     </header>
 

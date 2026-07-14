@@ -8,6 +8,41 @@
 
   const MAX_MESSAGE_LENGTH = 400;
 
+  const STRINGS = {
+    en: {
+      launcher: 'Feedback',
+      title: 'Share feedback',
+      close: 'Close feedback form',
+      name: 'First name or initials',
+      optional: 'optional',
+      namePlaceholder: 'Alex or A.R.',
+      message: 'Your feedback',
+      messagePlaceholder: 'What helped, what was unclear, or what should be added?',
+      canQuote: 'Quote may be used publicly.',
+      submit: 'Send feedback',
+      missingMessage: 'Please add a short note before sending.',
+      sending: 'Sending…',
+      success: 'Thanks. Your note was sent for review.',
+      failure: 'Sorry, that did not send. Please try again.'
+    },
+    es: {
+      launcher: 'Comentarios',
+      title: 'Comparta sus comentarios',
+      close: 'Cerrar el formulario de comentarios',
+      name: 'Nombre o iniciales',
+      optional: 'opcional',
+      namePlaceholder: 'Alex o A.R.',
+      message: 'Sus comentarios',
+      messagePlaceholder: '¿Qué le ayudó, qué no quedó claro o qué debería añadirse?',
+      canQuote: 'Sus comentarios pueden citarse públicamente.',
+      submit: 'Enviar comentarios',
+      missingMessage: 'Escriba una nota breve antes de enviarla.',
+      sending: 'Enviando…',
+      success: 'Gracias. Su nota se envió para revisión.',
+      failure: 'Lo sentimos, no se pudo enviar. Inténtelo de nuevo.'
+    }
+  };
+
   const icon = `
     <svg class="feedback-widget-icon" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M5 6.5A3.5 3.5 0 0 1 8.5 3h7A3.5 3.5 0 0 1 19 6.5v4A3.5 3.5 0 0 1 15.5 14H12l-4.5 4v-4A3.5 3.5 0 0 1 4 10.5z"></path>
@@ -19,6 +54,15 @@
   let status;
   let widgetRoot;
   let previousFocus;
+
+  function getLanguage() {
+    const language = (document.documentElement.lang || 'en').toLowerCase();
+    return language === 'es' || language.indexOf('es-') === 0 ? 'es' : 'en';
+  }
+
+  function getStrings() {
+    return STRINGS[getLanguage()];
+  }
 
   function getEndpoint() {
     const endpointMeta = document.querySelector('meta[name="hurricane-feedback-endpoint"]');
@@ -35,6 +79,8 @@
       return;
     }
 
+    const strings = getStrings();
+
     widgetRoot = document.createElement('div');
     widgetRoot.className = 'feedback-widget';
 
@@ -43,7 +89,8 @@
     launcher.className = 'feedback-widget-launcher';
     launcher.setAttribute('aria-expanded', 'false');
     launcher.setAttribute('aria-controls', 'feedback-widget-panel');
-    launcher.innerHTML = `${icon}<span>Feedback</span>`;
+    launcher.setAttribute('aria-label', strings.launcher);
+    launcher.innerHTML = `${icon}<span>${strings.launcher}</span>`;
 
     panel = document.createElement('section');
     panel.className = 'feedback-widget-panel';
@@ -54,24 +101,24 @@
     panel.hidden = true;
     panel.innerHTML = `
       <div class="feedback-widget-header">
-        <h2 id="feedback-widget-title">Share feedback</h2>
-        <button type="button" class="feedback-widget-close" aria-label="Close feedback form">&times;</button>
+        <h2 id="feedback-widget-title">${strings.title}</h2>
+        <button type="button" class="feedback-widget-close" aria-label="${strings.close}">&times;</button>
       </div>
       <form class="feedback-widget-form">
-        <label for="feedback-widget-name">First name or initials <span>optional</span></label>
-        <input id="feedback-widget-name" name="name" type="text" maxlength="40" autocomplete="given-name" placeholder="Alex or A.R.">
+        <label for="feedback-widget-name">${strings.name} <span>${strings.optional}</span></label>
+        <input id="feedback-widget-name" name="name" type="text" maxlength="40" autocomplete="given-name" placeholder="${strings.namePlaceholder}">
 
-        <label for="feedback-widget-message">Your feedback</label>
-        <textarea id="feedback-widget-message" name="message" maxlength="${MAX_MESSAGE_LENGTH}" required placeholder="What helped, what was unclear, or what should be added?"></textarea>
+        <label for="feedback-widget-message">${strings.message}</label>
+        <textarea id="feedback-widget-message" name="message" maxlength="${MAX_MESSAGE_LENGTH}" required placeholder="${strings.messagePlaceholder}"></textarea>
         <div class="feedback-widget-count" aria-live="polite">0/${MAX_MESSAGE_LENGTH}</div>
 
         <label class="feedback-widget-check">
           <input name="canQuote" type="checkbox">
-          <span>Quote may be used publicly.</span>
+          <span>${strings.canQuote}</span>
         </label>
 
         <div class="feedback-widget-actions">
-          <button type="submit" class="feedback-widget-submit">Send feedback</button>
+          <button type="submit" class="feedback-widget-submit">${strings.submit}</button>
         </div>
         <p class="feedback-widget-status" aria-live="polite"></p>
       </form>
@@ -133,14 +180,15 @@
     const submit = form.querySelector('.feedback-widget-submit');
     const data = new FormData(form);
     const message = String(data.get('message') || '').trim();
+    const strings = getStrings();
 
     if (!message) {
-      setStatus('Please add a short note before sending.', 'error');
+      setStatus(strings.missingMessage, 'error');
       return;
     }
 
     submit.disabled = true;
-    setStatus('Sending...', '');
+    setStatus(strings.sending, '');
 
     try {
       const response = await window.fetch(endpoint, {
@@ -162,9 +210,9 @@
 
       form.reset();
       form.querySelector('.feedback-widget-count').textContent = `0/${MAX_MESSAGE_LENGTH}`;
-      setStatus('Thanks. Your note was sent for review.', 'success');
+      setStatus(strings.success, 'success');
     } catch (error) {
-      setStatus('Sorry, that did not send. Please try again.', 'error');
+      setStatus(strings.failure, 'error');
     } finally {
       submit.disabled = false;
     }
@@ -175,5 +223,9 @@
     status.dataset.state = type;
   }
 
-  document.addEventListener('DOMContentLoaded', createWidget);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', createWidget);
+  } else {
+    createWidget();
+  }
 })();

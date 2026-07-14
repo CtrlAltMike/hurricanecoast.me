@@ -4,182 +4,141 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow, noarchive">
-  <title>Style guide · Hurricane Coast (dev only)</title>
+  <title>Living Coast Almanac · Hurricane Coast style guide</title>
   <link rel="icon" href="assets/img/favicon.ico">
-  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/living-coast.css">
   <style>
-    /* Dev-only chrome — not part of site.css */
-    body { padding: 2rem 0 6rem; }
-    .sg-section { margin-bottom: 3rem; }
-    .sg-label { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--color-ink-muted); margin-bottom: 1rem; }
-    .sg-swatches { display: flex; gap: .5rem; flex-wrap: wrap; }
-    .sg-swatch { width: 120px; border-radius: 4px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
-    .sg-swatch-color { height: 60px; }
-    .sg-swatch-label { font-size: 11px; font-family: monospace; padding: .35rem .5rem; background: white; }
+    .sg-intro { padding: clamp(3rem, 7vw, 6.5rem) 0; border-bottom: 1px solid var(--almanac-rule); }
+    .sg-intro-grid { display: grid; grid-template-columns: minmax(0,.8fr) minmax(420px,1.2fr); align-items: center; gap: clamp(2rem,5vw,5rem); }
+    .sg-intro h1 { max-width: 10ch; margin: .35rem 0 1rem; font-size: clamp(3.2rem,6vw,5.2rem); line-height: .94; }
+    .sg-intro figure { margin: 0; }
+    .sg-intro img { display: block; width: 100%; height: auto; border: 1px solid var(--almanac-rule); }
+    .sg-intro figcaption { margin-top: .6rem; color: var(--almanac-muted); font-size: .78rem; line-height: 1.5; }
+    .sg-main { padding-block: 4.5rem 7rem; }
+    .sg-section { margin-bottom: 5rem; padding-top: 2rem; border-top: 1px solid var(--almanac-rule); }
+    .sg-label { margin: 0 0 .8rem; color: var(--almanac-satsuma); font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .sg-section > h2 { max-width: 18ch; margin: 0 0 1.2rem; font-size: clamp(2.2rem,4vw,3.5rem); line-height: 1; }
+    .sg-two { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: clamp(2rem,5vw,5rem); }
+    .sg-swatches { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: .8rem; }
+    .sg-swatch { border: 1px solid var(--almanac-rule); background: var(--almanac-clean); }
+    .sg-swatch-color { height: 6.5rem; border-bottom: 1px solid var(--almanac-rule); }
+    .sg-swatch-label { padding: .7rem; font-size: .72rem; line-height: 1.45; }
+    .sg-type-display { max-width: 11ch; margin: 0 0 1rem; font: 650 clamp(3rem,6vw,5rem)/.96 "Newsreader",Georgia,serif; letter-spacing: -.035em; }
+    .sg-image-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
+    .sg-image-grid figure { margin: 0; }
+    .sg-image-grid img { display: block; width: 100%; aspect-ratio: 3/2; object-fit: cover; }
+    .sg-image-grid figcaption { padding-top: .55rem; color: var(--almanac-muted); font-size: .76rem; line-height: 1.45; }
+    .sg-card-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
+    .sg-card { padding: 1.25rem; border: 1px solid var(--almanac-rule); background: var(--almanac-clean); }
+    .sg-card h3 { margin-top: 0; font-size: 1.65rem; }
+    .sg-alerts { display: grid; gap: .8rem; }
+    .sg-alert { display: grid; grid-template-columns: auto 1fr; gap: .8rem; padding: .85rem 1rem; border: 1px solid var(--almanac-rule); border-left: .35rem solid currentColor; background: var(--almanac-clean); }
+    .sg-alert strong { display: block; }
+    .sg-alert--watch { color: #7a5900; }
+    .sg-alert--warning { color: #992f34; }
+    .sg-alert--success { color: #27634b; }
+    .sg-reading { max-width: 66ch; font-size: 1rem; line-height: 1.7; }
+    .sg-reading h3 { margin: 2.2rem 0 .8rem; font-size: 2rem; }
+    .sg-rule-list { margin: 0; padding-left: 1.2rem; }
+    .sg-rule-list li + li { margin-top: .65rem; }
+    @media (max-width: 900px) {
+      .sg-intro-grid { grid-template-columns: 1fr; }
+      .sg-swatches { grid-template-columns: repeat(3,minmax(0,1fr)); }
+      .sg-image-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .sg-two,.sg-card-grid,.sg-image-grid { grid-template-columns: 1fr; }
+      .sg-swatches { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    }
   </style>
 </head>
-<body>
-  <div class="container">
-    <h1>Style guide</h1>
-    <p class="prose" style="color: var(--color-ink-muted)">Development reference — open in a browser to verify the design system. Not part of the shipping site.</p>
+<body data-page="style-guide" class="living-coast">
+  <nav class="site-nav" aria-label="Style guide navigation">
+    <div class="container-wide">
+      <a href="index.html" class="brand"><span class="brand-mark" aria-hidden="true"></span><span class="brand-name">Hurricane Coast</span></a>
+      <div class="nav-links"><a href="#foundations">Foundations</a><a href="#imagery">Imagery</a><a href="#components">Components</a><a href="#bilingual">Bilingual</a></div>
+    </div>
+  </nav>
 
-    <!-- 1. Palette swatches -->
-    <div class="sg-section">
-      <div class="sg-label">Palette swatches</div>
+  <header class="sg-intro">
+    <div class="container-wide sg-intro-grid">
+      <div>
+        <p class="sg-label">Hurricane Coast design system · 2026</p>
+        <h1>Living Coast Almanac</h1>
+        <p class="prose">A quiet, useful coastal field book. Painterly scenes carry the feeling; the interface stays calm enough for people to hear the guidance.</p>
+      </div>
+      <figure>
+        <img src="assets/img/heroes/home-coast.webp" width="1536" height="1024" alt="A multigenerational coastal household calmly organizes water, food, medicine, and pet supplies on a porch.">
+        <figcaption>Preparation is shown as ordinary care: people making decisions together while there is still time.</figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <main class="container-wide sg-main">
+    <section class="sg-section" id="foundations">
+      <p class="sg-label">01 · Foundations</p>
+      <h2>Paper, ink, water, and one warm note.</h2>
       <div class="sg-swatches">
-        <div class="sg-swatch">
-          <div class="sg-swatch-color" style="background: #FBF8F2"></div>
-          <div class="sg-swatch-label">#FBF8F2<br>--color-bg</div>
-        </div>
-        <div class="sg-swatch">
-          <div class="sg-swatch-color" style="background: #1F2A33"></div>
-          <div class="sg-swatch-label">#1F2A33<br>--color-ink</div>
-        </div>
-        <div class="sg-swatch">
-          <div class="sg-swatch-color" style="background: #556270"></div>
-          <div class="sg-swatch-label">#556270<br>--color-ink-muted</div>
-        </div>
-        <div class="sg-swatch">
-          <div class="sg-swatch-color" style="background: #3A6B83"></div>
-          <div class="sg-swatch-label">#3A6B83<br>--color-storm</div>
-        </div>
-        <div class="sg-swatch">
-          <div class="sg-swatch-color" style="background: #C2742B"></div>
-          <div class="sg-swatch-label">#C2742B<br>--color-warm</div>
-        </div>
-        <div class="sg-swatch">
-          <div class="sg-swatch-color" style="background: #E6DFD0"></div>
-          <div class="sg-swatch-label">#E6DFD0<br>--color-rule</div>
-        </div>
+        <div class="sg-swatch"><div class="sg-swatch-color" style="background:#f7f0e3"></div><div class="sg-swatch-label">Warm paper<br>#F7F0E3</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-color" style="background:#fffdf7"></div><div class="sg-swatch-label">Clean paper<br>#FFFDF7</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-color" style="background:#eee4d4"></div><div class="sg-swatch-label">Deep paper<br>#EEE4D4</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-color" style="background:#213b3d"></div><div class="sg-swatch-label">Coastal ink<br>#213B3D</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-color" style="background:#2f6d72"></div><div class="sg-swatch-label">Estuary teal<br>#2F6D72</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-color" style="background:#aa5529"></div><div class="sg-swatch-label">Satsuma<br>#AA5529</div></div>
       </div>
-    </div>
+    </section>
 
-    <!-- 2. Type scale -->
-    <div class="sg-section">
-      <div class="sg-label">Type scale</div>
-      <h1>H1 — Fraunces 700, 2.25rem</h1>
-      <h2>H2 — Fraunces 700, 1.75rem</h2>
-      <h3>H3 — Fraunces 500, 1.35rem</h3>
-      <h4>H4 — Fraunces 500, 1.1rem</h4>
-      <p class="prose">Body paragraph — Inter 400, 18px/1.7. The quick brown fox jumps over the lazy dog. Supply kits should be reviewed and refreshed every 12 months to keep food, water, and batteries current.</p>
-      <p style="font-size: 0.875rem; color: var(--color-ink-muted)">Small / muted text — Inter 400, 0.875rem, color-ink-muted. Use for footnotes, timestamps, and secondary labels.</p>
-    </div>
-
-    <!-- 3. Link states -->
-    <div class="sg-section">
-      <div class="sg-label">Link states</div>
-      <p>
-        <a href="#">Default link</a> — storm blue underline, offset 3px.
-        <br>
-        Hover: color shifts to <code>--color-ink</code> (darken). Move pointer over link to verify.
-        <br>
-        Focus-visible: 2px solid <code>--color-warm</code> outline, offset 2px, radius 2px. Tab to the link below to verify.
-        <br>
-        <a href="#">Tab to this link to see focus ring</a>
-      </p>
-    </div>
-
-    <!-- 4. List variants -->
-    <div class="sg-section">
-      <div class="sg-label">List variants</div>
-
-      <p style="font-size: 0.875rem; color: var(--color-ink-muted); margin-bottom: 0.25rem;">Unordered list</p>
-      <ul>
-        <li>Water (one gallon per person per day)</li>
-        <li>Non-perishable food</li>
-        <li>First-aid kit</li>
-        <li>Flashlight with extra batteries</li>
-      </ul>
-
-      <p style="font-size: 0.875rem; color: var(--color-ink-muted); margin-bottom: 0.25rem;">Ordered list</p>
-      <ol>
-        <li>Assess your household's specific needs.</li>
-        <li>Gather supplies listed in your kit plan.</li>
-        <li>Store in a cool, dark, accessible location.</li>
-        <li>Review and rotate stock every 12 months.</li>
-      </ol>
-
-      <p style="font-size: 0.875rem; color: var(--color-ink-muted); margin-bottom: 0.25rem;">Checklist — ochre bullet markers, <code>.why</code> note text in muted ink</p>
-      <ul class="checklist">
-        <li>One gallon of water per person per day <span class="why">— three days minimum per person.</span></li>
-        <li>Non-perishable food <span class="why">— shelf-stable, no cooking required.</span></li>
-        <li>A manual can opener <span class="why">— the one thing people forget every time.</span></li>
-        <li>Flashlight with extra batteries <span class="why">— one per person, not shared.</span></li>
-      </ul>
-    </div>
-
-    <!-- 5. Button variants -->
-    <div class="sg-section">
-      <div class="sg-label">Button variants</div>
-      <div class="btn-row">
-        <a href="#" class="btn btn-primary">Primary button</a>
-        <a href="#" class="btn btn-secondary">Secondary button</a>
+    <section class="sg-section">
+      <p class="sg-label">Typography</p>
+      <div class="sg-two">
+        <div><p class="sg-type-display">Ready looks like care.</p><p><strong>Newsreader 600–700</strong> carries the masthead and headings. It should feel like a well-used reference book, not a campaign poster.</p></div>
+        <div><h2>Plain language, comfortable measure.</h2><p class="prose"><strong>Work Sans 400–700</strong> carries guidance, navigation, forms, captions, Spanish, and data. Long-form prose is 18px/1.7 and stays within 60–68 characters per line.</p></div>
       </div>
-      <p style="font-size: 0.875rem; color: var(--color-ink-muted)">Hover reduces opacity to 0.85. Both share <code>.btn</code> base; variants are <code>.btn-primary</code> (warm/ochre fill) and <code>.btn-secondary</code> (storm outline).</p>
-    </div>
+    </section>
 
-    <!-- 6. Callout block -->
-    <div class="sg-section">
-      <div class="sg-label">Callout block</div>
-      <div class="callout">
-        <strong>Before the storm arrives:</strong> Authorities may issue evacuation orders with little notice. Keep your go-bag packed and your vehicle fueled during active watches.
+    <section class="sg-section" id="imagery">
+      <p class="sg-label">02 · Illustration language</p>
+      <h2>Observed places, not postcards.</h2>
+      <div class="sg-image-grid">
+        <figure><img src="assets/img/heroes/kits/food-water-kit.webp" width="1536" height="1024" alt="A family measures and dates water storage containers."><figcaption>Kit scenes show usable actions, household relationships, and familiar objects.</figcaption></figure>
+        <figure><img src="assets/img/heroes/states/florida.webp" width="1536" height="1024" alt="A Florida household fits storm panels and clears a drain."><figcaption>Regional identity comes from buildings, ecology, infrastructure, and the work being done.</figcaption></figure>
+        <figure><img src="assets/img/heroes/states/puerto-rico.webp" width="1536" height="1024" alt="A Puerto Rico household prepares water, medicine, and backup power."><figcaption>People remain specific and dignified. No spectacle, panic, or souvenir shorthand.</figcaption></figure>
       </div>
-    </div>
+    </section>
 
-    <!-- 7. Image placeholder -->
-    <div class="sg-section">
-      <div class="sg-label">Image placeholder</div>
-      <div class="img-placeholder" style="height: 300px;">
-        Hero image — replace <code>assets/img/hero.jpg</code>
+    <section class="sg-section" id="components">
+      <p class="sg-label">03 · Components</p>
+      <h2>One clear action at a time.</h2>
+      <div class="btn-row"><a class="btn btn-primary" href="#components">Browse kit guides</a><a class="btn btn-secondary" href="#components">Explore coastal guides</a></div>
+      <div class="sg-card-grid" style="margin-top:2rem">
+        <article class="sg-card"><h3>Guide card</h3><p>A short destination description, one useful image, and an unambiguous link.</p><a href="food-water-kit.html">Food &amp; water</a></article>
+        <article class="sg-card"><h3>Regional guide</h3><p>Place changes the advice. Color does not stand in for local knowledge.</p><a href="florida.html">Florida</a></article>
+        <article class="sg-card"><h3>Trust note</h3><p>Sources, review dates, and limits remain visible without interrupting the reading path.</p><a href="about.html">Editorial approach</a></article>
       </div>
-    </div>
+    </section>
 
-    <!-- 8. Site nav preview -->
-    <div class="sg-section">
-      <div class="sg-label">Site nav preview</div>
-      <div style="background: var(--color-bg); border: 1px solid var(--color-rule); border-radius: 6px; overflow: hidden;">
-        <nav class="site-nav">
-  <div class="container-wide">
-    <a href="#" class="brand">Hurricane Coast</a>
-    <input class="nav-menu-toggle" id="site-nav-toggle" type="checkbox" aria-label="Toggle navigation menu">
-    <label class="nav-toggle" for="site-nav-toggle">
-      <span class="nav-toggle-icon" aria-hidden="true"></span>
-      <span class="nav-toggle-text">Menu</span>
-    </label>
-    <div class="nav-links">
-        <a href="#">Basic Kit</a>
-        <a href="#">By Household</a>
-        <a href="#">About</a>
-    </div>
-  </div>
-</nav>
+    <section class="sg-section">
+      <p class="sg-label">Semantic states</p>
+      <div class="sg-alerts">
+        <div class="sg-alert sg-alert--watch"><span aria-hidden="true">◷</span><span><strong>Watch · Prepare to act</strong>Conditions are possible. Review the plan and official sources.</span></div>
+        <div class="sg-alert sg-alert--warning"><span aria-hidden="true">!</span><span><strong>Warning · Take action</strong>Urgency is stated in text and with an icon, never by color alone.</span></div>
+        <div class="sg-alert sg-alert--success"><span aria-hidden="true">✓</span><span><strong>Saved</strong>Your feedback was sent successfully.</span></div>
       </div>
-    </div>
+    </section>
 
-    <!-- 9. Site footer preview -->
-    <div class="sg-section">
-      <div class="sg-label">Site footer preview</div>
-      <div style="background: var(--color-bg); border: 1px solid var(--color-rule); border-radius: 6px; overflow: hidden;">
-        <footer class="site-footer">
-          <div class="container">
-            A supplement, not a replacement for your local emergency management office. · <a href="#">Hurricane Coast</a>
-          </div>
-        </footer>
+    <section class="sg-section">
+      <p class="sg-label">Reading endurance</p>
+      <div class="sg-reading"><h3>Decoration stops after the opening image.</h3><p>Long-form guidance uses generous paper space, clear subheads, restrained rules, and short callouts only where the action truly changes. Not every idea becomes a card.</p><ul class="sg-rule-list"><li>Lists keep their natural rhythm.</li><li>Captions sound observed and specific.</li><li>Printables remain monochrome and low-ink.</li><li>Motion is limited to a small hover response and the operational alert ticker.</li></ul></div>
+    </section>
+
+    <section class="sg-section" id="bilingual">
+      <p class="sg-label">04 · Bilingual contract</p>
+      <div class="sg-two">
+        <div><h2>Be ready before the storm.</h2><p>English and Spanish share imagery and structure. Each language keeps natural phrasing and room for longer labels.</p></div>
+        <div lang="es"><h2>Prepárese antes de la tormenta.</h2><p>El Atlas sigue siendo una herramienta solo en inglés y se identifica como <strong>Atlas (EN)</strong> en la navegación en español.</p></div>
       </div>
-    </div>
-
-    <!-- 10. Share buttons -->
-    <div class="sg-section">
-      <div class="sg-label">Share buttons</div>
-      <p class="prose" style="color: var(--color-ink-muted); margin-bottom: 0;">
-        Share controls are now injected by <code>assets/js/share.js</code>: one round button in the nav and one floating desktop button with native share plus copy-link fallback.
-      </p>
-    </div>
-
-  </div>
-<script src="assets/js/share.js"></script>
+    </section>
+  </main>
 </body>
 </html>

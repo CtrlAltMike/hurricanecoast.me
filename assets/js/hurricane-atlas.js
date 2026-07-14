@@ -16,24 +16,151 @@
   var OPENFREEMAP_STYLE = 'https://tiles.openfreemap.org/styles/liberty';
   var ATLANTIC_BOUNDS = [[-103.5, 5.2], [-48.2, 47.8]];
   var DEFAULT_STORM_ID = 'AL122005';
-  var STATUS_LABELS = {
-    TD: 'Tropical depression',
-    TS: 'Tropical storm',
-    HU: 'Hurricane',
-    EX: 'Extratropical',
-    SD: 'Subtropical depression',
-    SS: 'Subtropical storm',
-    LO: 'Low',
-    WV: 'Wave',
-    DB: 'Disturbance'
+  var documentLanguage = (document.documentElement.lang || 'en').toLowerCase();
+  var isSpanish = documentLanguage === 'es' || documentLanguage.indexOf('es-') === 0;
+  var COPY = isSpanish ? {
+    statusLabels: {
+      TD: 'Depresión tropical',
+      TS: 'Tormenta tropical',
+      HU: 'Huracán',
+      EX: 'Extratropical',
+      SD: 'Depresión subtropical',
+      SS: 'Tormenta subtropical',
+      LO: 'Baja presión',
+      WV: 'Onda tropical',
+      DB: 'Perturbación'
+    },
+    stormPoint: 'Punto de la tormenta',
+    tropical: 'Tropical',
+    category: 'Cat.',
+    categoryLong: 'Categoría',
+    minimumPressure: 'presión mínima',
+    pressureUnavailable: 'Presión no disponible',
+    peak: 'máxima',
+    maxWind: 'viento máximo',
+    landfallMarker: 'marcador de toque de tierra HURDAT',
+    landfallMarkers: 'marcadores de toque de tierra HURDAT',
+    stormShown: 'tormenta mostrada',
+    stormsShown: 'tormentas mostradas',
+    source: 'Fuente:',
+    sourceLink: 'trayectoria óptima atlántica HURDAT2 de NOAA/NHC',
+    sourceExtract: 'Extracto local seleccionado, descargado el',
+    mapReady: 'Mapa de trayectorias históricas cargado.',
+    mapFailure: 'No se cargaron los mosaicos del mapa. Los controles y los datos de la trayectoria seleccionada siguen disponibles.',
+    placeholderFailure: 'No se pudo cargar el mapa base interactivo. Use los controles de tormentas para consultar los resúmenes de trayectorias históricas.',
+    mapLoading: 'Cargando el mapa interactivo y las trayectorias HURDAT seleccionadas.'
+  } : {
+    statusLabels: {
+      TD: 'Tropical depression',
+      TS: 'Tropical storm',
+      HU: 'Hurricane',
+      EX: 'Extratropical',
+      SD: 'Subtropical depression',
+      SS: 'Subtropical storm',
+      LO: 'Low',
+      WV: 'Wave',
+      DB: 'Disturbance'
+    },
+    stormPoint: 'Storm point',
+    tropical: 'Tropical',
+    category: 'Cat',
+    categoryLong: 'Category',
+    minimumPressure: 'minimum pressure',
+    pressureUnavailable: 'Pressure not available',
+    peak: 'peak',
+    maxWind: 'max wind',
+    landfallMarker: 'HURDAT landfall marker',
+    landfallMarkers: 'HURDAT landfall markers',
+    stormShown: 'storm shown',
+    stormsShown: 'storms shown',
+    source: 'Source:',
+    sourceLink: 'NOAA/NHC HURDAT2 Atlantic best-track',
+    sourceExtract: 'Curated local extract downloaded',
+    mapReady: 'Historical track map loaded.',
+    mapFailure: 'Map tiles did not load. Storm controls and selected-track data are still available.',
+    placeholderFailure: 'The interactive basemap could not load. Use the storm controls for the historical track summaries.',
+    mapLoading: 'Loading interactive map and selected HURDAT tracks.'
   };
+
+  var ATLAS_COLOR_FALLBACKS = {
+    mapBackground: '#FFF0D8',
+    mapWater: '#A6DEDA',
+    mapLand: '#FFF9EE',
+    mapPark: '#DCE9B5',
+    mapBuilding: '#F1D4BC',
+    mapWaterLine: '#11B7B3',
+    mapRoad: '#C7A98A',
+    mapBoundary: '#64778A',
+    mapText: '#102A43',
+    mapTextHalo: '#FFF9EE',
+    trackCasing: '#FFF9EE',
+    selectedTrack: '#1649B8',
+    landfallFill: '#FFF9EE',
+    landfallStroke: '#EF5D72',
+    category0: '#11B7B3',
+    category1: '#4B9BE8',
+    category2: '#86B83E',
+    category3: '#E5A400',
+    category4: '#E57843',
+    category5: '#D63D65'
+  };
+
+  var ATLAS_COLOR_PROPERTIES = {
+    mapBackground: '--atlas-map-background',
+    mapWater: '--atlas-map-water',
+    mapLand: '--atlas-map-land',
+    mapPark: '--atlas-map-park',
+    mapBuilding: '--atlas-map-building',
+    mapWaterLine: '--atlas-map-water-line',
+    mapRoad: '--atlas-map-road',
+    mapBoundary: '--atlas-map-boundary',
+    mapText: '--atlas-map-text',
+    mapTextHalo: '--atlas-map-text-halo',
+    trackCasing: '--atlas-track-casing',
+    selectedTrack: '--atlas-selected-track',
+    landfallFill: '--atlas-landfall-fill',
+    landfallStroke: '--atlas-landfall-stroke',
+    category0: '--atlas-category-0',
+    category1: '--atlas-category-1',
+    category2: '--atlas-category-2',
+    category3: '--atlas-category-3',
+    category4: '--atlas-category-4',
+    category5: '--atlas-category-5'
+  };
+
+  function readAtlasColor(propertyName, fallback) {
+    var value = '';
+
+    if (window.getComputedStyle) {
+      value = window.getComputedStyle(root).getPropertyValue(propertyName).trim();
+    }
+
+    if (!value) {
+      return fallback;
+    }
+
+    if (window.CSS && typeof window.CSS.supports === 'function' && !window.CSS.supports('color', value)) {
+      return fallback;
+    }
+
+    return value;
+  }
+
+  function readAtlasColors() {
+    return Object.keys(ATLAS_COLOR_PROPERTIES).reduce(function (colors, key) {
+      colors[key] = readAtlasColor(ATLAS_COLOR_PROPERTIES[key], ATLAS_COLOR_FALLBACKS[key]);
+      return colors;
+    }, {});
+  }
+
+  var ATLAS_COLORS = readAtlasColors();
   var CATEGORY_COLORS = {
-    0: '#3A6B83',
-    1: '#477F8B',
-    2: '#6C9B8D',
-    3: '#D9A441',
-    4: '#C2742B',
-    5: '#B8404C'
+    0: ATLAS_COLORS.category0,
+    1: ATLAS_COLORS.category1,
+    2: ATLAS_COLORS.category2,
+    3: ATLAS_COLORS.category3,
+    4: ATLAS_COLORS.category4,
+    5: ATLAS_COLORS.category5
   };
 
   var mapNode = root.querySelector('#hurricane-atlas-map');
@@ -136,43 +263,43 @@
       layer.paint = layer.paint || {};
 
       if (layer.type === 'background') {
-        layer.paint['background-color'] = '#E7DFD0';
+        layer.paint['background-color'] = ATLAS_COLORS.mapBackground;
       }
 
       if (layer.type === 'fill') {
         if (/water|ocean|lake|river|reservoir/.test(id)) {
-          layer.paint['fill-color'] = '#86A7B1';
+          layer.paint['fill-color'] = ATLAS_COLORS.mapWater;
           layer.paint['fill-opacity'] = 0.95;
         } else if (/land|earth/.test(id)) {
-          layer.paint['fill-color'] = '#E6D9C2';
+          layer.paint['fill-color'] = ATLAS_COLORS.mapLand;
         } else if (/park|wood|forest|landcover|grass|scrub|national/.test(id)) {
-          layer.paint['fill-color'] = '#B7BE9B';
+          layer.paint['fill-color'] = ATLAS_COLORS.mapPark;
           layer.paint['fill-opacity'] = 0.66;
         } else if (/building/.test(id)) {
-          layer.paint['fill-color'] = '#D3C6AF';
+          layer.paint['fill-color'] = ATLAS_COLORS.mapBuilding;
           layer.paint['fill-opacity'] = 0.5;
         }
       }
 
       if (layer.type === 'line') {
         if (/water|river|stream|canal/.test(id)) {
-          layer.paint['line-color'] = '#558AA0';
+          layer.paint['line-color'] = ATLAS_COLORS.mapWaterLine;
           layer.paint['line-opacity'] = 0.8;
         } else if (/road|bridge|tunnel|path|rail/.test(id)) {
-          layer.paint['line-color'] = '#B5A68D';
+          layer.paint['line-color'] = ATLAS_COLORS.mapRoad;
           layer.paint['line-opacity'] = 0.54;
         } else if (/boundary|admin/.test(id)) {
-          layer.paint['line-color'] = '#847762';
+          layer.paint['line-color'] = ATLAS_COLORS.mapBoundary;
           layer.paint['line-opacity'] = 0.46;
         }
       }
 
       if (layer.type === 'symbol') {
         if (layer.paint['text-color'] !== undefined) {
-          layer.paint['text-color'] = '#2F3438';
+          layer.paint['text-color'] = ATLAS_COLORS.mapText;
         }
         if (layer.paint['text-halo-color'] !== undefined) {
-          layer.paint['text-halo-color'] = '#F2EBDD';
+          layer.paint['text-halo-color'] = ATLAS_COLORS.mapTextHalo;
           layer.paint['text-halo-width'] = 1.2;
         }
         if (/poi|airport|transit/.test(id)) {
@@ -225,8 +352,8 @@
   }
 
   function pointDescription(point) {
-    var status = STATUS_LABELS[point.status] || point.status || 'Storm point';
-    var category = point.category > 0 ? ', Cat ' + point.category : '';
+    var status = COPY.statusLabels[point.status] || point.status || COPY.stormPoint;
+    var category = point.category > 0 ? ', ' + COPY.category + ' ' + point.category : '';
     var pressure = point.pressure ? ', ' + point.pressure + ' mb' : '';
     return status + category + ', ' + point.wind + ' kt' + pressure;
   }
@@ -346,7 +473,7 @@
   }
 
   function popupHtml(properties) {
-    var category = Number(properties.category) > 0 ? 'Cat ' + properties.category : 'Tropical';
+    var category = Number(properties.category) > 0 ? COPY.category + ' ' + properties.category : COPY.tropical;
     var detail = properties.description || properties.summary || '';
     return '<div class="hurricane-atlas-popup">'
       + '<h4>' + escapeHtml(properties.name) + ' ' + escapeHtml(properties.year) + '</h4>'
@@ -396,7 +523,8 @@
 
   function updateSelectedCopy() {
     var storm = findStorm(selectedStormId);
-    var pressure = storm.minPressure ? storm.minPressure + ' mb minimum pressure' : 'Pressure not available';
+    var categoryLabel = isSpanish ? COPY.categoryLong + ' ' + storm.category : storm.categoryLabel;
+    var pressure = storm.minPressure ? storm.minPressure + ' mb ' + COPY.minimumPressure : COPY.pressureUnavailable;
 
     selectedTitles.forEach(function (node) {
       node.textContent = storm.displayName + ' ' + storm.year;
@@ -409,10 +537,10 @@
     });
     if (selectedStats) {
       selectedStats.innerHTML = ''
-        + '<span><strong>' + storm.categoryLabel + '</strong> peak</span>'
-        + '<span><strong>' + storm.maxWind + ' kt</strong> max wind</span>'
-        + '<span><strong>' + pressure + '</strong></span>'
-        + '<span><strong>' + storm.landfallCount + '</strong> HURDAT landfall marker' + (storm.landfallCount === 1 ? '' : 's') + '</span>';
+        + '<span><strong>' + escapeHtml(categoryLabel) + '</strong> ' + COPY.peak + '</span>'
+        + '<span><strong>' + escapeHtml(storm.maxWind) + ' kt</strong> ' + COPY.maxWind + '</span>'
+        + '<span><strong>' + escapeHtml(pressure) + '</strong></span>'
+        + '<span><strong>' + escapeHtml(storm.landfallCount) + '</strong> ' + (storm.landfallCount === 1 ? COPY.landfallMarker : COPY.landfallMarkers) + '</span>';
     }
   }
 
@@ -431,7 +559,7 @@
       button.className = 'hurricane-atlas-storm-button';
       button.dataset.stormId = storm.id;
       button.setAttribute('aria-pressed', storm.id === selectedStormId ? 'true' : 'false');
-      button.innerHTML = '<span>' + escapeHtml(storm.displayName) + '</span><small>' + storm.year + ' · Cat ' + storm.category + '</small>';
+      button.innerHTML = '<span>' + escapeHtml(storm.displayName) + '</span><small>' + storm.year + ' · ' + COPY.category + ' ' + storm.category + '</small>';
       button.addEventListener('click', function () {
         selectedStormId = storm.id;
         syncControls();
@@ -459,7 +587,7 @@
   function updateCount() {
     if (!countNode) return;
     var count = filteredStorms().length;
-    countNode.textContent = count + ' storm' + (count === 1 ? '' : 's') + ' shown';
+    countNode.textContent = count + ' ' + (count === 1 ? COPY.stormShown : COPY.stormsShown);
   }
 
   function updateAtlas(shouldFit) {
@@ -508,7 +636,7 @@
     }
 
     if (sourceNode) {
-      sourceNode.innerHTML = 'Source: <a href="' + escapeHtml(data.source.url) + '" target="_blank" rel="noopener">NOAA/NHC HURDAT2 Atlantic best-track</a>. Curated local extract downloaded ' + escapeHtml(data.source.downloaded) + '.';
+      sourceNode.innerHTML = COPY.source + ' <a href="' + escapeHtml(data.source.url) + '" target="_blank" rel="noopener">' + COPY.sourceLink + '</a>. ' + COPY.sourceExtract + ' ' + escapeHtml(data.source.downloaded) + '.';
     }
   }
 
@@ -557,7 +685,7 @@
       type: 'line',
       source: 'atlas-tracks',
       paint: {
-        'line-color': '#FBF8F2',
+        'line-color': ATLAS_COLORS.trackCasing,
         'line-width': ['interpolate', ['linear'], ['zoom'], 2, 2.2, 5, 5.8],
         'line-opacity': 0.68
       },
@@ -587,7 +715,7 @@
       type: 'line',
       source: 'atlas-selected-track',
       paint: {
-        'line-color': '#FBF8F2',
+        'line-color': ATLAS_COLORS.trackCasing,
         'line-width': ['interpolate', ['linear'], ['zoom'], 2, 5, 5, 9.5],
         'line-opacity': 0.96
       },
@@ -602,7 +730,7 @@
       type: 'line',
       source: 'atlas-selected-track',
       paint: {
-        'line-color': '#C2742B',
+        'line-color': ATLAS_COLORS.selectedTrack,
         'line-width': ['interpolate', ['linear'], ['zoom'], 2, 2.7, 5, 6.2],
         'line-opacity': 0.98
       },
@@ -620,7 +748,7 @@
         'circle-radius': ['interpolate', ['linear'], ['get', 'wind'], 96, 3, 165, 8],
         'circle-color': ['get', 'color'],
         'circle-opacity': 0.82,
-        'circle-stroke-color': '#FBF8F2',
+        'circle-stroke-color': ATLAS_COLORS.trackCasing,
         'circle-stroke-width': 1.2
       }
     });
@@ -631,9 +759,9 @@
       source: 'atlas-landfall-points',
       paint: {
         'circle-radius': ['case', ['boolean', ['get', 'selected'], false], 6, 4.5],
-        'circle-color': '#FBF8F2',
+        'circle-color': ATLAS_COLORS.landfallFill,
         'circle-opacity': 0.96,
-        'circle-stroke-color': '#B8404C',
+        'circle-stroke-color': ATLAS_COLORS.landfallStroke,
         'circle-stroke-width': ['case', ['boolean', ['get', 'selected'], false], 2.4, 1.6]
       }
     });
@@ -661,15 +789,18 @@
     updateAtlas(false);
     fitSelectedStorm();
     setLoading(false);
-    setStatus('Historical track map loaded.', 'ready');
+    setStatus(COPY.mapReady, 'ready');
   }
 
   function handleMapFailure(error) {
     setLoading(false);
-    setStatus('Map tiles did not load. Storm controls and selected-track data are still available.', 'error');
+    setStatus(COPY.mapFailure, 'error');
     if (placeholder) {
       placeholder.hidden = false;
-      placeholder.querySelector('p').textContent = 'The interactive basemap could not load. Use the storm controls for the historical track summaries.';
+      var placeholderCopy = placeholder.querySelector('p');
+      if (placeholderCopy) {
+        placeholderCopy.textContent = COPY.placeholderFailure;
+      }
     }
     if (window.console && window.console.warn) {
       window.console.warn('Hurricane atlas map failed:', error);
@@ -683,7 +814,7 @@
     }
 
     setLoading(true);
-    setStatus('Loading interactive map and selected HURDAT tracks.', 'loading');
+    setStatus(COPY.mapLoading, 'loading');
 
     Promise.all([
       loadStylesheet(MAPLIBRE_CSS),

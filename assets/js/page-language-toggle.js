@@ -15,6 +15,11 @@
     return value === 'es' ? 'es' : 'en';
   }
 
+  function getDocumentLanguage() {
+    const language = (document.documentElement.lang || 'en').toLowerCase();
+    return language === 'es' || language.indexOf('es-') === 0 ? 'es' : 'en';
+  }
+
   function setLanguage(lang) {
     const activeLanguage = normalizeLanguage(lang);
 
@@ -25,7 +30,9 @@
     });
 
     getPanels().forEach(function (panel) {
-      const isActive = panel.getAttribute('data-page-language-panel') === activeLanguage;
+      const panelLanguage = normalizeLanguage(panel.getAttribute('data-page-language-panel'));
+      const isActive = panelLanguage === activeLanguage;
+      panel.setAttribute('lang', panelLanguage);
       panel.hidden = !isActive;
       panel.classList.toggle('is-active', isActive);
     });
@@ -33,8 +40,8 @@
     if (window.history && window.history.replaceState) {
       const url = new URL(window.location.href);
 
-      if (activeLanguage === 'es') {
-        url.searchParams.set('lang', 'es');
+      if (activeLanguage !== getDocumentLanguage()) {
+        url.searchParams.set('lang', activeLanguage);
       } else {
         url.searchParams.delete('lang');
       }
@@ -45,7 +52,13 @@
 
   function getInitialLanguage() {
     const url = new URL(window.location.href);
-    return normalizeLanguage(url.searchParams.get('lang'));
+    const requestedLanguage = url.searchParams.get('lang');
+
+    if (requestedLanguage === 'en' || requestedLanguage === 'es') {
+      return requestedLanguage;
+    }
+
+    return getDocumentLanguage();
   }
 
   function init() {

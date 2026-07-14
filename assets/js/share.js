@@ -1,7 +1,44 @@
-/* share.js — native share buttons plus guide-end support prompts */
+/* share.js — native share controls plus guide-end support prompts */
 
 (function () {
   'use strict';
+
+  const STRINGS = {
+    en: {
+      share: 'Share',
+      sharePage: 'Share this page',
+      shareOptions: 'Page sharing options',
+      copied: 'Copied',
+      linkCopied: 'Link copied',
+      linkCopiedAnnouncement: 'Link copied to clipboard',
+      copyPrompt: 'Copy this link:',
+      emailPage: 'Share this page by email',
+      smsPage: 'Share this page by text message',
+      copyPage: 'Copy link to this page',
+      supportLabel: 'Support this site',
+      supportEyebrow: 'Support this site',
+      supportTitle: 'If this guide helped, keep it going.',
+      supportCopy: 'No ads. No affiliate links. If this made your hurricane prep clearer, you can help keep the site free and up to date.',
+      supportAction: 'Support on Ko-fi'
+    },
+    es: {
+      share: 'Compartir',
+      sharePage: 'Compartir esta página',
+      shareOptions: 'Opciones para compartir la página',
+      copied: 'Copiado',
+      linkCopied: 'Enlace copiado',
+      linkCopiedAnnouncement: 'Enlace copiado al portapapeles',
+      copyPrompt: 'Copie este enlace:',
+      emailPage: 'Compartir esta página por correo electrónico',
+      smsPage: 'Compartir esta página por mensaje de texto',
+      copyPage: 'Copiar el enlace de esta página',
+      supportLabel: 'Apoye este sitio',
+      supportEyebrow: 'Apoye este sitio',
+      supportTitle: 'Si esta guía le ayudó, ayude a mantenerla disponible.',
+      supportCopy: 'Sin anuncios ni enlaces de afiliados. Si esta guía aclaró su preparación para huracanes, puede ayudar a mantener el sitio gratuito y actualizado.',
+      supportAction: 'Apoyar en Ko-fi'
+    }
+  };
 
   const shareIcon = [
     '<svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true">',
@@ -10,11 +47,19 @@
     '  <circle cx="18" cy="19" r="2.5"></circle>',
     '  <path d="M8.2 10.9L15.8 6.1"></path>',
     '  <path d="M8.2 13.1L15.8 17.9"></path>',
-    '</svg>',
-    '<span class="sr-only">Share this page</span>'
+    '</svg>'
   ].join('');
 
   let liveRegion;
+
+  function getLanguage() {
+    const language = (document.documentElement.lang || 'en').toLowerCase();
+    return language === 'es' || language.indexOf('es-') === 0 ? 'es' : 'en';
+  }
+
+  function getStrings() {
+    return STRINGS[getLanguage()];
+  }
 
   function getMetaContent(selector) {
     const element = document.querySelector(selector);
@@ -54,6 +99,14 @@
     return shareData;
   }
 
+  function buildEmailURL(title, url) {
+    return 'mailto:?subject=' + encodeURIComponent(title) + '&body=' + encodeURIComponent(url);
+  }
+
+  function buildSmsURL(title, url) {
+    return 'sms:?body=' + encodeURIComponent(title + ' ' + url);
+  }
+
   function ensureLiveRegion() {
     if (liveRegion) {
       return liveRegion;
@@ -62,6 +115,7 @@
     liveRegion = document.createElement('div');
     liveRegion.className = 'sr-only';
     liveRegion.setAttribute('aria-live', 'polite');
+    liveRegion.setAttribute('aria-atomic', 'true');
     document.body.appendChild(liveRegion);
     return liveRegion;
   }
@@ -74,18 +128,28 @@
     }, 30);
   }
 
+  function setButtonLabel(button, label, visibleLabel) {
+    button.setAttribute('aria-label', label);
+    button.setAttribute('title', label);
+
+    const text = button.querySelector('.share-button-text');
+    if (text) {
+      text.textContent = visibleLabel || label;
+    }
+  }
+
   function setConfirmedState() {
+    const strings = getStrings();
+
     document.querySelectorAll('.share-button').forEach(function (button) {
       button.classList.add('is-confirmed');
-      button.setAttribute('aria-label', 'Link copied');
-      button.setAttribute('title', 'Link copied');
+      setButtonLabel(button, strings.linkCopied, strings.copied);
     });
 
     window.setTimeout(function () {
       document.querySelectorAll('.share-button').forEach(function (button) {
         button.classList.remove('is-confirmed');
-        button.setAttribute('aria-label', 'Share this page');
-        button.setAttribute('title', 'Share this page');
+        setButtonLabel(button, strings.sharePage, strings.share);
       });
     }, 1600);
   }
@@ -107,11 +171,17 @@
 
     const copied = document.execCommand('copy');
     document.body.removeChild(field);
-    return copied;
+
+    if (!copied) {
+      throw new Error('copy_failed');
+    }
+
+    return true;
   }
 
   async function handleShare() {
     const shareData = getShareData();
+    const strings = getStrings();
 
     try {
       if (navigator.share) {
@@ -127,78 +197,110 @@
     try {
       await copyLink(shareData.url);
       setConfirmedState();
-      announce('Link copied to clipboard');
+      announce(strings.linkCopiedAnnouncement);
     } catch (error) {
-      window.prompt('Copy this link:', shareData.url);
+      window.prompt(strings.copyPrompt, shareData.url);
     }
   }
 
-  function createShareButton(className) {
+  function createShareButton(className, showText) {
+    const strings = getStrings();
     const button = document.createElement('button');
+    const textClass = showText ? 'share-button-text' : 'share-button-text sr-only';
+
     button.type = 'button';
     button.className = 'share-button ' + className;
-    button.setAttribute('aria-label', 'Share this page');
-    button.setAttribute('title', 'Share this page');
-    button.innerHTML = shareIcon;
+    button.setAttribute('aria-label', strings.sharePage);
+    button.setAttribute('title', strings.sharePage);
+    button.innerHTML = shareIcon + '<span class="' + textClass + '">' + strings.share + '</span>';
     button.addEventListener('click', handleShare);
     return button;
   }
 
   function createSupportCard() {
+    const strings = getStrings();
     const card = document.createElement('section');
     card.className = 'support-card';
-    card.setAttribute('aria-label', 'Support this site');
+    card.setAttribute('aria-label', strings.supportLabel);
     card.innerHTML = [
-      '<p class="support-card-eyebrow">Support this site</p>',
-      '<h3>If this guide helped, keep it going.</h3>',
-      '<p>No ads. No affiliate links. If this made your hurricane prep clearer, you can help keep the site free and up to date.</p>',
-      '<div class="btn-row"><a href="https://ko-fi.com/mikehen" class="btn btn-secondary" target="_blank" rel="noopener">Support on Ko-fi</a></div>'
+      '<p class="support-card-eyebrow">' + strings.supportEyebrow + '</p>',
+      '<h3>' + strings.supportTitle + '</h3>',
+      '<p>' + strings.supportCopy + '</p>',
+      '<div class="btn-row"><a href="https://ko-fi.com/mikehen" class="btn btn-secondary" target="_blank" rel="noopener">' + strings.supportAction + '</a></div>'
     ].join('');
     return card;
   }
 
-  function createRadar() {
-    const el = document.createElement('div');
-    el.className = 'fx-radar';
-    el.setAttribute('aria-hidden', 'true');
-    el.innerHTML = [
-      '<svg viewBox="-50 -50 100 100">',
-      '<circle r="48" fill="rgba(58,107,131,.05)" stroke="rgba(58,107,131,.32)" stroke-width="1"/>',
-      '<circle r="34" fill="none" stroke="rgba(58,107,131,.32)" stroke-width=".6" stroke-dasharray="2 3"/>',
-      '<circle r="20" fill="none" stroke="rgba(58,107,131,.32)" stroke-width=".6" stroke-dasharray="2 3"/>',
-      '<g stroke="rgba(58,107,131,.22)" stroke-width=".5">',
-        '<line x1="-48" y1="0" x2="48" y2="0"/>',
-        '<line x1="0" y1="-48" x2="0" y2="48"/>',
-      '</g>',
-      '<defs><linearGradient id="fxSweepGrad" x1="0" y1="0" x2="48" y2="0" gradientUnits="userSpaceOnUse">',
-        '<stop offset="0" stop-color="#3A6B83" stop-opacity="0"/>',
-        '<stop offset=".55" stop-color="#3A6B83" stop-opacity=".25"/>',
-        '<stop offset="1" stop-color="#3A6B83" stop-opacity=".9"/>',
-      '</linearGradient></defs>',
-      '<g class="fx-sweep">',
-        '<path d="M 0 0 L 48 0" stroke="url(#fxSweepGrad)" stroke-width="2.6" stroke-linecap="round"/>',
-        '<animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="3.5s" repeatCount="indefinite"/>',
-      '</g>',
-      '<circle r="1.5" fill="#3A6B83" fill-opacity=".55"/>',
-      '</svg>'
-    ].join('');
-    return el;
+  function initShareRow(row) {
+    if (!row || row.dataset.shareReady === 'true') {
+      return;
+    }
+
+    const strings = getStrings();
+    const shareData = getShareData();
+    const email = row.querySelector('[data-share="email"]');
+    const sms = row.querySelector('[data-share="sms"]');
+    const copy = row.querySelector('[data-share="copy"]');
+
+    if (email) {
+      email.href = buildEmailURL(shareData.title, shareData.url);
+      email.setAttribute('aria-label', strings.emailPage);
+    }
+
+    if (sms) {
+      sms.href = buildSmsURL(shareData.title, shareData.url);
+      sms.setAttribute('aria-label', strings.smsPage);
+    }
+
+    if (copy) {
+      copy.setAttribute('aria-label', strings.copyPage);
+      copy.addEventListener('click', function (event) {
+        event.preventDefault();
+        copyLink(shareData.url).then(function () {
+          setConfirmedState();
+          announce(strings.linkCopiedAnnouncement);
+        }).catch(function () {
+          window.prompt(strings.copyPrompt, shareData.url);
+        });
+      });
+    }
+
+    row.dataset.shareReady = 'true';
+  }
+
+  function removeDeprecatedShareUI() {
+    document.querySelectorAll('.floating-share-btn, .fx-radar').forEach(function (element) {
+      element.remove();
+    });
+  }
+
+  function initInlineShareButtons() {
+    const strings = getStrings();
+
+    document.querySelectorAll('.share-sticky-wrap article.container').forEach(function (article) {
+      if (article.querySelector('.inline-share-row')) {
+        return;
+      }
+
+      const row = document.createElement('div');
+      row.className = 'inline-share-row';
+      row.setAttribute('aria-label', strings.shareOptions);
+      row.appendChild(createShareButton('inline-share-btn', true));
+      article.insertBefore(row, article.firstChild);
+    });
   }
 
   function initShareButtons() {
     const navContainer = document.querySelector('.site-nav .container-wide');
 
+    removeDeprecatedShareUI();
+
     if (navContainer && !navContainer.querySelector('.nav-share-btn')) {
-      navContainer.appendChild(createShareButton('nav-share-btn'));
+      navContainer.appendChild(createShareButton('nav-share-btn', false));
     }
 
-    if (document.body && !document.querySelector('.floating-share-btn')) {
-      document.body.appendChild(createShareButton('floating-share-btn'));
-    }
-
-    if (document.body && !document.querySelector('.fx-radar')) {
-      document.body.appendChild(createRadar());
-    }
+    initInlineShareButtons();
+    document.querySelectorAll('.share-row').forEach(initShareRow);
   }
 
   function initGuideSupportCard() {
@@ -220,22 +322,28 @@
   }
 
   window.HurricaneShare = {
+    buildEmailURL: buildEmailURL,
+    buildSmsURL: buildSmsURL,
     copyLink: copyLink,
     createSupportCard: createSupportCard,
     createShareButton: createShareButton,
+    getLanguage: getLanguage,
     getShareData: getShareData,
     initGuideSupportCard: initGuideSupportCard,
+    initInlineShareButtons: initInlineShareButtons,
     initShareButtons: initShareButtons,
+    initShareRow: initShareRow,
     setConfirmedState: setConfirmedState
   };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () {
-      initShareButtons();
-      initGuideSupportCard();
-    });
-  } else {
+  function init() {
     initShareButtons();
     initGuideSupportCard();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 })();

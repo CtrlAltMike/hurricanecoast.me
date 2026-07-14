@@ -35,10 +35,8 @@
 
   <!-- Styles -->
   <link rel="preload" as="image" href="assets/img/heroes/home-coast.webp" fetchpriority="high">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&display=swap">
   <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/living-coast.css">
   <script defer src="assets/js/canonicalize-url.js"></script>
 
   <!-- Cloudflare Web Analytics -->
@@ -114,11 +112,11 @@
   }
   </script>
 </head>
-<body>
+<body data-page="home" class="living-coast">
 
   <nav class="site-nav" aria-label="Site navigation">
   <div class="container-wide">
-    <a href="./" class="brand">Hurricane Coast</a>
+    <a href="./" class="brand"><span class="brand-mark" aria-hidden="true"></span><span class="brand-name">Hurricane Coast</span></a>
     <input class="nav-menu-toggle" id="site-nav-toggle" type="checkbox" aria-label="Toggle navigation menu">
     <label class="nav-toggle" for="site-nav-toggle">
       <span class="nav-toggle-icon" aria-hidden="true"></span>
@@ -137,7 +135,7 @@
   </div>
 </nav>
 
-  <aside class="live-alert-ticker" aria-label="Live National Weather Service tropical alerts" data-live-alert-ticker>
+  <aside class="live-alert-ticker" aria-label="Live National Weather Service tropical alerts" data-live-alert-ticker data-state="loading">
     <a class="live-alert-ticker-label" href="https://www.weather.gov/alerts/active" target="_blank" rel="noopener">
       <span class="live-alert-ticker-label-dot" aria-hidden="true"></span>
       Live · NWS tropical alerts
@@ -145,7 +143,7 @@
     <div class="live-alert-ticker-track" aria-live="polite">
       <div class="live-alert-ticker-track-inner" data-live-alert-items>
         <span class="live-alert-ticker-empty">Loading live NWS tropical alerts…</span>
-        <span class="live-alert-ticker-empty">Loading live NWS tropical alerts…</span>
+        <span class="live-alert-ticker-empty" aria-hidden="true">Loading live NWS tropical alerts…</span>
       </div>
     </div>
     <span class="live-alert-ticker-readout" data-live-alert-updated>NWS · Connecting…</span>
@@ -165,9 +163,10 @@
           </div>
         </div>
 
-        <div class="hero-media-wrap" aria-hidden="true">
+        <div class="hero-media-wrap">
           <figure class="hero-media">
-            <img src="assets/img/heroes/home-coast.webp" alt="" class="hero-media-image" loading="eager" fetchpriority="high" decoding="async" width="1536" height="1024">
+            <img src="assets/img/heroes/home-coast.webp" alt="A multigenerational coastal household checks water, medicines, pet supplies, and evacuation bags together on a porch." class="hero-media-image" loading="eager" fetchpriority="high" decoding="async" width="1536" height="1024">
+            <figcaption>Preparation takes shape as ordinary household decisions made while there is still time.</figcaption>
           </figure>
         </div>
       </div>
@@ -176,18 +175,37 @@
     <section class="home-state-shortcuts" aria-label="State and regional shortcuts">
       <div class="container-wide">
         <div class="home-state-shortcuts-panel">
-          <p class="home-state-shortcuts-label">Coastal Guides</p>
-          <div class="state-grid">
-            <a href="florida" class="state-card">Florida</a>
-            <a href="texas" class="state-card">Texas</a>
-            <a href="louisiana" class="state-card">Louisiana</a>
-            <a href="gulf-coast" class="state-card">Gulf Coast</a>
-            <a href="carolinas" class="state-card">Carolinas</a>
-            <a href="georgia" class="state-card">Georgia</a>
-            <a href="alabama" class="state-card">Alabama</a>
-            <a href="mississippi" class="state-card">Mississippi</a>
-            <a href="puerto-rico" class="state-card">Puerto Rico</a>
+          <div class="home-state-shortcuts-heading">
+            <p class="home-state-shortcuts-kicker">Coastal guides</p>
+            <h2 class="home-state-shortcuts-label">Start with your coast.</h2>
+            <p>Local risk changes the standard kit. Choose a regional guide for the agencies, hazards, and additions that matter where you live.</p>
           </div>
+          <div class="state-spotlight-grid">
+            <a href="florida" class="state-spotlight state-spotlight--florida">
+              <img src="assets/img/heroes/states/florida.webp" alt="" width="1536" height="1024" loading="lazy" decoding="async">
+              <span class="state-spotlight-copy"><strong>Florida</strong><span>Mangroves, barrier coasts, and a long peninsula.</span></span>
+            </a>
+            <a href="gulf-coast" class="state-spotlight state-spotlight--gulf-coast">
+              <img src="assets/img/heroes/states/gulf-coast.webp" alt="" width="1536" height="1024" loading="lazy" decoding="async">
+              <span class="state-spotlight-copy"><strong>Gulf Coast</strong><span>Bays, jetties, and working waterfronts.</span></span>
+            </a>
+            <a href="carolinas" class="state-spotlight state-spotlight--carolinas">
+              <img src="assets/img/heroes/states/carolinas.webp" alt="" width="1536" height="1024" loading="lazy" decoding="async">
+              <span class="state-spotlight-copy"><strong>Carolinas</strong><span>Tidal creeks, sea oats, and raised cottages.</span></span>
+            </a>
+            <a href="puerto-rico" class="state-spotlight state-spotlight--puerto-rico">
+              <img src="assets/img/heroes/states/puerto-rico.webp" alt="" width="1536" height="1024" loading="lazy" decoding="async">
+              <span class="state-spotlight-copy"><strong>Puerto Rico</strong><span>Island topography, concrete, and louvers.</span></span>
+            </a>
+          </div>
+          <nav class="state-compact-links" aria-label="More coastal guides">
+            <span>More coastal guides</span>
+            <a href="texas">Texas</a>
+            <a href="louisiana">Louisiana</a>
+            <a href="georgia">Georgia</a>
+            <a href="alabama">Alabama</a>
+            <a href="mississippi">Mississippi</a>
+          </nav>
         </div>
       </div>
     </section>
@@ -361,7 +379,6 @@
     })();
   </script>
   <script src="assets/js/live-alert-ticker.js?v=20260418c" onerror="window.HSLLiveAlertTickerScriptError && window.HSLLiveAlertTickerScriptError()"></script>
-  <script src="assets/js/card-wind-tilt.js?v=20260418c"></script>
   <script src="assets/js/share.js"></script>
   <script src="assets/js/feedback.js"></script>
 </body>

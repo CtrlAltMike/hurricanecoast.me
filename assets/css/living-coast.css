@@ -1,0 +1,1336 @@
+/* Living Coast Almanac — quiet editorial production layer.
+   Applied incrementally with the `living-coast` body class during rollout. */
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("../fonts/newsreader-latin-ext.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600 700;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("../fonts/newsreader-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600 700;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+body.living-coast {
+  --almanac-paper: #f7f0e3;
+  --almanac-clean: #fffdf7;
+  --almanac-deep: #eee4d4;
+  --almanac-ink: #213b3d;
+  --almanac-muted: #526562;
+  --almanac-estuary: #2f6d72;
+  --almanac-estuary-dark: #1f565b;
+  --almanac-satsuma: #aa5529;
+  --almanac-rule: #d7c8b2;
+  --almanac-focus: #175e9d;
+  --color-bg: var(--almanac-paper);
+  --color-surface: var(--almanac-clean);
+  --color-ink: var(--almanac-ink);
+  --color-ink-muted: var(--almanac-muted);
+  --color-storm: var(--almanac-estuary-dark);
+  --color-warm: var(--almanac-satsuma);
+  --color-rule: var(--almanac-rule);
+  --color-focus: var(--almanac-focus);
+  margin: 0;
+  color: var(--almanac-ink);
+  background: var(--almanac-paper);
+  font-family: "Work Sans", system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.living-coast h1,
+.living-coast h2,
+.living-coast h3,
+.living-coast h4 {
+  color: var(--almanac-ink);
+  font-family: "Newsreader", Georgia, serif;
+  font-weight: 650;
+  letter-spacing: -0.025em;
+}
+
+.living-coast a {
+  color: var(--almanac-estuary-dark);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.living-coast :focus-visible {
+  outline: 3px solid var(--almanac-focus);
+  outline-offset: 4px;
+}
+
+.living-coast .container-wide {
+  max-width: 1360px;
+  padding-inline: 2rem;
+}
+
+/* Quiet book masthead */
+.living-coast .site-nav {
+  position: relative;
+  top: auto;
+  z-index: 60;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid rgba(215, 200, 178, 0.72);
+  background: rgba(255, 253, 247, 0.98);
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.living-coast .site-nav .container-wide {
+  min-height: 86px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.living-coast .site-nav .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-right: auto;
+  color: var(--almanac-ink);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: clamp(28px, 2.5vw, 42px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.living-coast .brand-mark {
+  position: relative;
+  width: 62px;
+  height: 44px;
+  flex: 0 0 62px;
+  background: none;
+}
+
+.living-coast .brand-mark::before {
+  position: absolute;
+  top: 0;
+  left: 21px;
+  width: 27px;
+  height: 27px;
+  border: 2px solid #cf6136;
+  border-radius: 50%;
+  content: "";
+}
+
+.living-coast .brand-mark::after {
+  position: absolute;
+  top: 13px;
+  left: 1px;
+  width: 59px;
+  height: 11px;
+  border-bottom: 3px solid var(--almanac-estuary-dark);
+  border-radius: 0 0 52% 52%;
+  box-shadow: 0 8px 0 -5px var(--almanac-clean), 0 11px 0 -3px var(--almanac-estuary-dark), 0 19px 0 -5px var(--almanac-clean), 0 22px 0 -3px var(--almanac-estuary-dark);
+  content: "";
+  transform: rotate(-3deg);
+}
+
+.living-coast .brand-name {
+  max-width: none;
+  white-space: nowrap;
+}
+
+.living-coast .nav-links {
+  gap: clamp(1.1rem, 2vw, 2rem);
+}
+
+.living-coast .site-nav a {
+  color: var(--almanac-ink);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.living-coast .site-nav .brand {
+  font-size: clamp(28px, 2.5vw, 42px);
+  letter-spacing: -0.025em;
+  text-transform: none;
+}
+
+.living-coast .nav-links a:hover,
+.living-coast .nav-links a[aria-current="page"] {
+  color: var(--almanac-estuary-dark);
+  text-decoration-color: var(--almanac-estuary);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 7px;
+}
+
+.living-coast .lang-switch {
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--almanac-ink) !important;
+}
+
+.living-coast .share-button.nav-share-btn {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--almanac-rule);
+  color: var(--almanac-ink);
+  background: transparent;
+  box-shadow: none;
+}
+
+.living-coast .share-button.nav-share-btn:hover {
+  border-color: var(--almanac-estuary);
+  color: var(--almanac-estuary-dark);
+  background: transparent;
+  box-shadow: none;
+  transform: translateY(-1px);
+}
+
+/* Illustrated opening */
+.living-coast .hero,
+.living-coast .hero--split {
+  padding: 54px 0 48px;
+  border-bottom: 1px solid var(--almanac-rule);
+  background: var(--almanac-paper);
+}
+
+.living-coast .hero-layout {
+  display: grid;
+  grid-template-columns: minmax(350px, 0.83fr) minmax(520px, 1.17fr);
+  align-items: center;
+  gap: clamp(38px, 5vw, 72px);
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
+}
+
+.living-coast .hero-layout:not(.hero-home-layout) .hero-copy {
+  max-width: 610px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.living-coast .hero-eyebrow {
+  display: block;
+  margin: 0 0 12px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--almanac-satsuma);
+  background: transparent;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.living-coast .hero h1 {
+  max-width: 10ch;
+  margin: 0 0 21px;
+  font-size: clamp(52px, 5.2vw, 66px);
+  font-weight: 650;
+  line-height: 0.99;
+  letter-spacing: -0.035em;
+}
+
+.living-coast .hero .prose {
+  max-width: 55ch;
+  margin-bottom: 26px;
+  color: var(--almanac-muted);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.living-coast .hero .btn-row {
+  gap: 0.8rem 1.35rem;
+}
+
+.living-coast .btn {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.66rem 1.15rem;
+  border: 1px solid var(--almanac-estuary-dark);
+  border-radius: 2px;
+  font-family: "Work Sans", system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  transition: color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.living-coast .btn:hover {
+  box-shadow: none;
+  transform: translateY(-2px);
+}
+
+.living-coast .btn-primary {
+  border-color: var(--almanac-estuary-dark);
+  color: var(--almanac-clean);
+  background: var(--almanac-estuary-dark);
+}
+
+.living-coast .btn-primary:hover {
+  border-color: var(--almanac-ink);
+  color: var(--almanac-clean);
+  background: var(--almanac-ink);
+}
+
+.living-coast .btn-secondary {
+  color: var(--almanac-estuary-dark);
+  background: transparent;
+}
+
+.living-coast .btn-secondary:hover {
+  color: var(--almanac-ink);
+  background: var(--almanac-deep);
+}
+
+.living-coast .hero-media-wrap {
+  width: 100%;
+}
+
+.living-coast .hero-media {
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.living-coast .hero-media-image {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid rgba(33, 59, 61, 0.14);
+  border-radius: 0;
+  background: var(--almanac-deep);
+}
+
+.living-coast .hero-media figcaption {
+  max-width: 68ch;
+  margin-top: 9px;
+  color: var(--almanac-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* Reading pages deliberately lose decoration after the opening image. */
+.living-coast .share-sticky-wrap > article.container {
+  width: min(720px, calc(100vw - 64px));
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 68px 0 76px;
+  color: var(--almanac-ink);
+  background: transparent;
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+.living-coast .share-sticky-wrap article.container > section + section {
+  margin-top: 62px;
+}
+
+.living-coast .share-sticky-wrap article.container h2 {
+  max-width: 19ch;
+  margin: 0 0 18px;
+  font-size: clamp(34px, 4vw, 44px);
+  line-height: 1.08;
+}
+
+.living-coast .share-sticky-wrap article.container h3 {
+  margin-bottom: 13px;
+  font-size: 27px;
+  line-height: 1.15;
+}
+
+.living-coast .share-sticky-wrap article.container p {
+  max-width: 66ch;
+  margin-bottom: 21px;
+}
+
+.living-coast ul.checklist {
+  margin: 26px 0 0;
+  padding: 0;
+}
+
+.living-coast ul.checklist li {
+  position: relative;
+  padding: 13px 0 14px 34px;
+  border-top: 1px solid rgba(215, 200, 178, 0.78);
+  border-bottom: 0;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.living-coast ul.checklist li:last-child {
+  border-bottom: 1px solid rgba(215, 200, 178, 0.78);
+}
+
+.living-coast ul.checklist li::before {
+  top: 19px;
+  left: 2px;
+  width: 13px;
+  height: 13px;
+  border: 1.5px solid var(--almanac-estuary);
+  border-radius: 50%;
+  background: transparent;
+  transform: none;
+}
+
+.living-coast ul.checklist li .why {
+  color: var(--almanac-muted);
+  font-size: 1em;
+}
+
+.living-coast .callout {
+  margin: 30px 0 4px;
+  padding: 2px 0 2px 24px;
+  border: 0;
+  border-left: 3px solid var(--almanac-satsuma);
+  border-radius: 0;
+  color: var(--almanac-ink);
+  background: transparent;
+  box-shadow: none;
+  font-size: 17px;
+}
+
+.living-coast .callout p:last-child {
+  margin-bottom: 0;
+}
+
+.living-coast .related-kits {
+  margin-top: 70px;
+  padding-top: 28px;
+  border-top: 1px solid var(--almanac-rule);
+}
+
+.living-coast .related-kits h3 {
+  margin: 0 0 13px;
+  color: var(--almanac-ink);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 27px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
+
+.living-coast .related-kits-list {
+  gap: 9px 22px;
+}
+
+.living-coast .related-kits-list a {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--almanac-estuary-dark);
+  background: transparent;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.living-coast .support-card {
+  margin-top: 36px;
+  padding: 28px 0 0;
+  border: 0;
+  border-top: 1px solid var(--almanac-rule);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.living-coast .support-card::after {
+  display: none;
+}
+
+.living-coast .support-card-eyebrow,
+.living-coast .editorial-note-eyebrow {
+  color: var(--almanac-satsuma);
+  font-size: 11px;
+  letter-spacing: 0.11em;
+}
+
+.living-coast .inline-share-btn {
+  border: 1px solid var(--almanac-rule);
+  border-radius: 2px;
+  color: var(--almanac-estuary-dark);
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Evacuation timeline: an explanatory sequence, not a dashboard. */
+.living-coast .fx-prep {
+  width: min(1120px, calc(100vw - 64px));
+  margin: 0 auto 56px;
+  padding: 24px 0 0;
+  border: 0;
+  background: transparent;
+}
+
+.living-coast .fx-prep-title {
+  margin-bottom: 14px;
+  color: var(--almanac-satsuma);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.living-coast .fx-prep-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  padding: 0;
+  border-top: 2px solid var(--almanac-estuary);
+  border-radius: 0;
+  background: transparent;
+}
+
+.living-coast .fx-prep-step {
+  min-height: 150px;
+  padding: 17px 18px 10px 0;
+  border-right: 1px solid var(--almanac-rule);
+  border-radius: 0;
+  background: transparent;
+}
+
+.living-coast .fx-prep-step + .fx-prep-step {
+  padding-left: 18px;
+}
+
+.living-coast .fx-prep-step:last-child {
+  border-right: 0;
+}
+
+.living-coast .fx-prep-when {
+  color: var(--almanac-ink);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 24px;
+  font-weight: 650;
+}
+
+.living-coast .fx-prep-tag {
+  color: var(--almanac-satsuma);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.living-coast .fx-prep-text {
+  color: var(--almanac-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.living-coast .fx-prep-pulse {
+  background: var(--almanac-satsuma);
+  box-shadow: none;
+  animation: none;
+}
+
+.living-coast .editorial-note-block {
+  padding: 55px 0 58px;
+  border-top: 1px solid var(--almanac-rule);
+  background: var(--almanac-deep);
+}
+
+.living-coast .editorial-note {
+  width: min(720px, calc(100vw - 64px));
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.living-coast .editorial-note::after {
+  display: none;
+}
+
+.living-coast .editorial-note h2 {
+  margin: 0 0 16px;
+  font-size: 36px;
+  line-height: 1.1;
+}
+
+.living-coast .editorial-note p {
+  color: var(--almanac-muted);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.living-coast .palm-footer-scene {
+  display: none;
+}
+
+.living-coast .site-footer {
+  margin: 0;
+  padding: 36px 0;
+  border: 0;
+  color: #dbe6e1;
+  background: var(--almanac-ink);
+}
+
+.living-coast .site-footer .container-wide {
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.living-coast .site-footer a,
+.living-coast .site-footer a:hover {
+  color: var(--almanac-clean);
+}
+
+.living-coast .feedback-widget-launcher {
+  border: 1px solid rgba(255, 253, 247, 0.38);
+  border-radius: 2px;
+  color: var(--almanac-clean);
+  background: var(--almanac-ink);
+  box-shadow: none;
+}
+
+.living-coast .feedback-widget-launcher:hover {
+  color: var(--almanac-clean);
+  background: var(--almanac-estuary-dark);
+  box-shadow: none;
+  transform: translateY(-1px);
+}
+
+.living-coast .feedback-widget-panel {
+  border: 1px solid var(--almanac-rule);
+  border-radius: 2px;
+  background: var(--almanac-clean);
+  box-shadow: 0 14px 34px rgba(33, 59, 61, 0.12);
+}
+
+/* Shared production families */
+.living-coast .live-alert-ticker {
+  min-height: 42px;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 253, 247, 0.16);
+  background: var(--almanac-ink);
+  box-shadow: none;
+}
+
+.living-coast .live-alert-ticker-label,
+.living-coast .live-alert-ticker-readout,
+.living-coast .live-alert-ticker-item,
+.living-coast .live-alert-ticker-empty {
+  font-size: 12px;
+  letter-spacing: 0.03em;
+}
+
+.living-coast .hero-home,
+.living-coast .page-hero,
+.living-coast .page-hero--split {
+  padding: 54px 0 48px;
+  border-bottom: 1px solid var(--almanac-rule);
+  background: var(--almanac-paper);
+}
+
+.living-coast .hero-home-layout {
+  display: grid;
+  grid-template-columns: minmax(350px, 0.83fr) minmax(520px, 1.17fr);
+  align-items: center;
+  gap: clamp(38px, 5vw, 72px);
+  padding: 0 2rem;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
+  box-shadow: none;
+}
+
+.living-coast .hero-home-copy {
+  min-height: 0;
+  padding: 0;
+  color: var(--almanac-ink);
+  background: transparent;
+}
+
+.living-coast .hero-home h1,
+.living-coast .page-hero h1 {
+  max-width: 11ch;
+  margin: 0 0 21px;
+  color: var(--almanac-ink);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: clamp(52px, 5.2vw, 66px);
+  font-weight: 650;
+  line-height: 0.99;
+  letter-spacing: -0.035em;
+}
+
+.living-coast .hero-home .lede,
+.living-coast .page-hero .lede,
+.living-coast .page-hero .prose {
+  max-width: 57ch;
+  color: var(--almanac-muted);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.living-coast .hero-home .hero-media,
+.living-coast .page-hero .hero-media {
+  border: 0;
+  background: transparent;
+}
+
+.living-coast .hero-home .hero-media-image,
+.living-coast .page-hero .hero-media-image {
+  min-height: 0;
+  height: auto;
+}
+
+.living-coast .home-state-shortcuts {
+  margin: 0;
+  padding: 58px 0;
+  border-bottom: 1px solid var(--almanac-rule);
+  background: var(--almanac-clean);
+}
+
+.living-coast .home-state-shortcuts-heading {
+  display: block;
+  max-width: 760px;
+  margin-bottom: 27px;
+}
+
+.living-coast .home-state-shortcuts-kicker,
+.living-coast .home-state-shortcuts-label,
+.living-coast .state-compact-links > span {
+  color: var(--almanac-satsuma);
+  font-family: "Work Sans", system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.living-coast .home-state-shortcuts-label {
+  margin: 5px 0 8px;
+  color: var(--almanac-ink);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: clamp(35px, 4vw, 48px);
+  font-weight: 650;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  text-transform: none;
+}
+
+.living-coast .state-spotlight-grid {
+  gap: 22px;
+}
+
+.living-coast .state-spotlight,
+.living-coast .directory-card,
+.living-coast .kit-card,
+.living-coast .printable-card {
+  border: 1px solid var(--almanac-rule);
+  border-radius: 0;
+  color: var(--almanac-ink);
+  background: var(--almanac-clean);
+  box-shadow: none;
+  transition: color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.living-coast .state-spotlight:hover,
+.living-coast .directory-card:hover,
+.living-coast .kit-card:hover,
+.living-coast .printable-card:hover {
+  border-color: var(--almanac-estuary);
+  color: var(--almanac-ink);
+  background: var(--almanac-clean);
+  box-shadow: none;
+  transform: translateY(-3px);
+}
+
+.living-coast .state-spotlight img,
+.living-coast .directory-card-image,
+.living-coast .kit-card-image {
+  border: 0;
+  border-bottom: 1px solid var(--almanac-rule);
+  background: var(--almanac-deep);
+}
+
+.living-coast .state-spotlight-copy,
+.living-coast .directory-card-body,
+.living-coast .kit-card-body {
+  padding: 18px 19px 20px;
+  border: 0;
+  background: transparent;
+}
+
+.living-coast .state-spotlight-copy strong,
+.living-coast .directory-card-title,
+.living-coast .kit-card-title,
+.living-coast .printable-card-title,
+.living-coast .printable-row-title {
+  color: var(--almanac-ink);
+  font-family: "Newsreader", Georgia, serif;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.living-coast .state-spotlight-copy strong,
+.living-coast .directory-card-title,
+.living-coast .kit-card-title {
+  font-size: 26px;
+  line-height: 1.08;
+}
+
+.living-coast .directory-card-desc,
+.living-coast .kit-card-desc,
+.living-coast .state-spotlight-copy > span {
+  color: var(--almanac-muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.living-coast .directory-card-link,
+.living-coast .kit-card-link {
+  color: var(--almanac-estuary-dark);
+  font-size: 13px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.living-coast .state-compact-links a {
+  min-height: 0;
+  padding: 3px 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--almanac-estuary-dark);
+  background: transparent;
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.living-coast .state-compact-links a:hover {
+  color: var(--almanac-ink);
+  background: transparent;
+  transform: none;
+}
+
+.living-coast .season-banner {
+  padding: 10px 24px;
+  border: 0;
+  border-bottom: 1px solid var(--almanac-rule);
+  color: var(--almanac-ink);
+  background: var(--almanac-deep);
+  font-size: 13px;
+}
+
+.living-coast .season-banner a,
+.living-coast .season-banner a:hover {
+  color: var(--almanac-estuary-dark);
+  text-decoration-color: var(--almanac-estuary);
+}
+
+.living-coast .home-section {
+  padding: 66px 0;
+  border-bottom: 1px solid var(--almanac-rule);
+  background: var(--almanac-paper);
+}
+
+.living-coast .home-section--preseason,
+.living-coast .home-section--intro,
+.living-coast .home-start {
+  background: var(--almanac-paper);
+  background-image: none;
+}
+
+.living-coast .home-section--preseason {
+  background: var(--almanac-deep);
+}
+
+.living-coast .home-section h2,
+.living-coast .faq-phase-title,
+.living-coast .faq-closer h2 {
+  font-family: "Newsreader", Georgia, serif;
+  font-weight: 650;
+  letter-spacing: -0.025em;
+}
+
+.living-coast .page-hero .hero-layout {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.living-coast .page-hero .hero-layout .hero-copy,
+.living-coast[data-page="directory"] .page-hero .hero-copy {
+  padding: 0;
+  border: 0;
+  color: var(--almanac-ink);
+  background: transparent;
+}
+
+body.living-coast[data-page="directory"] .page-hero h1,
+body.living-coast[data-page="directory"] .page-hero .lede,
+body.living-coast[data-page="directory"] .page-hero .hero-eyebrow {
+  color: inherit;
+}
+
+.living-coast .directory-grid,
+.living-coast .kit-grid {
+  gap: 26px;
+}
+
+.living-coast .faq-jump-wrap {
+  padding-top: 28px;
+}
+
+.living-coast .faq-jump-nav {
+  margin-top: 0;
+  padding: 22px 0;
+  border: 0;
+  border-top: 1px solid var(--almanac-rule);
+  border-bottom: 1px solid var(--almanac-rule);
+  border-radius: 0;
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+}
+
+.living-coast .faq-phase {
+  border-top: 1px solid var(--almanac-rule);
+}
+
+.living-coast .faq-phase-label,
+.living-coast .faq-jump-nav li a::before,
+.living-coast .callout-label {
+  color: var(--almanac-satsuma);
+}
+
+.living-coast details.qa,
+.living-coast details.qa:nth-of-type(3n + 2),
+.living-coast details.qa:nth-of-type(3n) {
+  margin: 0;
+  padding: 20px 0;
+  border: 0;
+  border-bottom: 1px solid var(--almanac-rule);
+  border-radius: 0;
+  background: transparent;
+}
+
+.living-coast details.qa[open] {
+  padding-bottom: 25px;
+}
+
+.living-coast details.qa > summary::after {
+  border: 1px solid var(--almanac-rule);
+  border-radius: 50%;
+  color: var(--almanac-estuary-dark);
+}
+
+/* Authentic About photography, quietly framed. */
+body.living-coast.about-variant-page {
+  background: var(--almanac-paper);
+  background-image: none;
+}
+
+.living-coast .about-hero-notes {
+  padding: 54px 0 48px;
+  border-bottom: 1px solid var(--almanac-rule);
+  background: var(--almanac-paper);
+  background-image: none;
+}
+
+.living-coast .about-hero-notes .about-hero-panel {
+  grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.05fr);
+  gap: clamp(36px, 5vw, 72px);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.living-coast .about-notes-visual {
+  min-height: 520px;
+  border: 1px solid var(--almanac-rule);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.living-coast .about-notes-copy {
+  padding: 0;
+  color: var(--almanac-ink);
+  background: transparent;
+  background-image: none;
+}
+
+.living-coast .about-notes-copy h1 {
+  max-width: 10ch;
+  color: var(--almanac-ink);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: clamp(52px, 5.2vw, 66px);
+  font-weight: 650;
+  line-height: 0.99;
+}
+
+.living-coast .about-notes-copy .lede {
+  color: var(--almanac-muted);
+}
+
+.living-coast .about-note-card,
+.living-coast .about-notes-quote,
+.living-coast .about-story {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.living-coast .about-story {
+  width: min(720px, calc(100vw - 64px));
+  margin: 68px auto 76px;
+  padding: 0;
+}
+
+.living-coast .about-story h2 {
+  padding-left: 0;
+  border-left: 0;
+  font-size: clamp(34px, 4vw, 44px);
+}
+
+/* Atlas: the map is the illustration. */
+body.living-coast.hurricane-atlas-body,
+.living-coast .hurricane-atlas-page,
+.living-coast .hurricane-atlas-section {
+  background: var(--almanac-paper);
+}
+
+.living-coast .hurricane-atlas-layout {
+  gap: 24px;
+}
+
+.living-coast .hurricane-atlas-copy h1 {
+  font-family: "Newsreader", Georgia, serif;
+  font-size: clamp(44px, 5vw, 62px);
+  font-weight: 650;
+}
+
+.living-coast .hurricane-atlas-panel,
+.living-coast .hurricane-atlas-selected,
+.living-coast .hurricane-atlas-storm-list-wrap,
+.living-coast .hurricane-atlas-map-panel,
+.living-coast .weather-popout {
+  border: 1px solid var(--almanac-rule);
+  border-radius: 0;
+  background: var(--almanac-clean);
+  box-shadow: none;
+}
+
+.living-coast .hurricane-atlas-toggle,
+.living-coast .hurricane-atlas-storm-button {
+  border-color: var(--almanac-rule);
+  border-radius: 2px;
+  background: transparent;
+}
+
+.living-coast .hurricane-atlas-storm-button:hover,
+.living-coast .hurricane-atlas-storm-button[aria-pressed="true"] {
+  color: var(--almanac-clean);
+  background: var(--almanac-estuary-dark);
+}
+
+.living-coast .printables-index-list {
+  border-top: 1px solid var(--almanac-rule);
+}
+
+.living-coast .printable-row {
+  border-color: var(--almanac-rule);
+}
+
+@media (max-width: 1100px) {
+  .living-coast .site-nav .container-wide {
+    min-height: 76px;
+  }
+
+  .living-coast .brand-mark {
+    width: 52px;
+    flex-basis: 52px;
+    transform: scale(0.86);
+    transform-origin: left center;
+  }
+
+  .living-coast .nav-links {
+    gap: 1rem;
+  }
+
+  .living-coast .site-nav a {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 900px) {
+  .living-coast .site-nav .container-wide {
+    padding-block: 12px;
+    flex-wrap: wrap;
+  }
+
+  .living-coast .nav-toggle {
+    min-height: 40px;
+    display: inline-flex;
+    border: 0;
+    border-radius: 0;
+    color: var(--almanac-ink);
+    background: transparent;
+  }
+
+  .living-coast .nav-links {
+    border-top: 1px solid var(--almanac-rule);
+  }
+
+  .living-coast .nav-links a {
+    border-bottom: 1px solid rgba(215, 200, 178, 0.62);
+  }
+
+  .living-coast .hero-layout {
+    width: auto;
+    grid-template-columns: 1fr;
+    margin-inline: 2rem;
+  }
+
+  .living-coast .hero-home-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .living-coast .hero-home-copy {
+    max-width: 680px;
+  }
+
+  .living-coast .state-spotlight-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .living-coast .about-hero-notes .about-hero-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .living-coast .about-notes-visual {
+    min-height: 430px;
+  }
+
+  .living-coast .hero-media {
+    border: 0;
+  }
+
+  .living-coast .hero-media-wrap {
+    max-width: 760px;
+  }
+
+  .living-coast .fx-prep-track {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .living-coast .fx-prep-step:nth-child(2) {
+    border-right: 0;
+  }
+
+  .living-coast .fx-prep-step:nth-child(n+3) {
+    border-top: 1px solid var(--almanac-rule);
+  }
+}
+
+@media (max-width: 640px) {
+  body.living-coast {
+    font-size: 17px;
+  }
+
+  .living-coast .container-wide {
+    padding-inline: 18px;
+  }
+
+  .living-coast .site-nav .container-wide {
+    min-height: 68px;
+  }
+
+  .living-coast .site-nav .brand {
+    gap: 6px;
+    font-size: 26px;
+  }
+
+  .living-coast .brand-mark {
+    width: 43px;
+    flex-basis: 43px;
+    transform: scale(0.72);
+  }
+
+  .living-coast .nav-toggle {
+    padding-inline: 0;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .living-coast .hero,
+  .living-coast .hero--split,
+  .living-coast .hero-home,
+  .living-coast .page-hero,
+  .living-coast .page-hero--split {
+    padding: 39px 0 38px;
+  }
+
+  .living-coast .hero-layout {
+    gap: 34px;
+    margin-inline: 18px;
+  }
+
+  .living-coast .hero h1 {
+    max-width: 11ch;
+    margin-bottom: 18px;
+    font-size: 42px;
+    line-height: 1;
+  }
+
+  .living-coast .hero-home h1,
+  .living-coast .page-hero h1,
+  .living-coast .about-notes-copy h1 {
+    max-width: 11ch;
+    margin-bottom: 18px;
+    font-size: 42px;
+    line-height: 1;
+  }
+
+  .living-coast .state-spotlight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .living-coast .home-state-shortcuts,
+  .living-coast .home-section {
+    padding-block: 48px;
+  }
+
+  .living-coast .home-state-shortcuts-label {
+    font-size: 36px;
+  }
+
+  .living-coast .about-hero-notes {
+    padding: 39px 0 38px;
+  }
+
+  .living-coast .about-notes-visual {
+    min-height: 320px;
+  }
+
+  .living-coast .about-story {
+    width: calc(100vw - 36px);
+    margin-block: 48px 58px;
+  }
+
+  .living-coast .hero .prose {
+    font-size: 17px;
+    line-height: 1.62;
+  }
+
+  .living-coast .hero .btn-row {
+    align-items: flex-start;
+  }
+
+  .living-coast .btn {
+    min-height: 44px;
+  }
+
+  .living-coast .hero-media-image {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .living-coast .share-sticky-wrap > article.container {
+    width: calc(100vw - 36px);
+    padding: 46px 0 58px;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  .living-coast .share-sticky-wrap article.container > section + section {
+    margin-top: 50px;
+  }
+
+  .living-coast .share-sticky-wrap article.container h2 {
+    font-size: 34px;
+  }
+
+  .living-coast ul.checklist li {
+    padding-left: 29px;
+    font-size: 16px;
+  }
+
+  .living-coast .fx-prep-track {
+    grid-template-columns: 1fr;
+  }
+
+  .living-coast .fx-prep {
+    width: calc(100vw - 36px);
+    padding-top: 20px;
+  }
+
+  .living-coast .fx-prep-step,
+  .living-coast .fx-prep-step + .fx-prep-step {
+    min-height: 0;
+    padding: 16px 0;
+    border-right: 0;
+    border-top: 1px solid var(--almanac-rule);
+  }
+
+  .living-coast .fx-prep-step:first-child {
+    border-top: 0;
+  }
+
+  .living-coast .editorial-note {
+    width: calc(100vw - 36px);
+  }
+
+  .living-coast .site-footer .container-wide {
+    display: block;
+  }
+
+  .living-coast .site-footer p {
+    margin-bottom: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .living-coast *,
+  .living-coast *::before,
+  .living-coast *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  .living-coast .site-nav,
+  .living-coast .hero,
+  .living-coast .site-footer,
+  .living-coast .feedback-widget,
+  .living-coast .inline-share-row,
+  .living-coast .support-card,
+  .living-coast .editorial-note-block {
+    display: none !important;
+  }
+}
