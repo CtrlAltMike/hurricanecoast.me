@@ -624,22 +624,6 @@ body.living-coast {
 }
 
 /* Shared production families */
-.living-coast .live-alert-ticker {
-  min-height: 42px;
-  border: 0;
-  border-bottom: 1px solid rgba(255, 253, 247, 0.16);
-  background: var(--almanac-ink);
-  box-shadow: none;
-}
-
-.living-coast .live-alert-ticker-label,
-.living-coast .live-alert-ticker-readout,
-.living-coast .live-alert-ticker-item,
-.living-coast .live-alert-ticker-empty {
-  font-size: 12px;
-  letter-spacing: 0.03em;
-}
-
 .living-coast .hero-home,
 .living-coast .page-hero,
 .living-coast .page-hero--split {

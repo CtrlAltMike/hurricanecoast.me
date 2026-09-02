@@ -51,6 +51,10 @@ function webpDimensions(buffer) {
 const productionPages = Array.from(sitemap.matchAll(/<loc>([^<]+)<\/loc>/g), (match) => publicPathFromLoc(match[1]));
 productionPages.push("404.html");
 if (productionPages.length !== 68) fail(`Expected 68 production pages; found ${productionPages.length}.`);
+const sitemapReviewDates = Array.from(sitemap.matchAll(/<lastmod>([^<]+)<\/lastmod>/g), (match) => match[1]);
+if (sitemapReviewDates.length !== productionPages.length - 1 || sitemapReviewDates.some((date) => date !== "2026-09-02")) {
+  fail("Every sitemap URL must have a 2026-09-02 lastmod date.");
+}
 
 let regions = 0;
 let siteNavPages = 0;
@@ -71,21 +75,15 @@ for (const relativePath of productionPages) {
   if (!/<link\s+rel=["']canonical["']/i.test(html)) fail(`${relativePath}: missing canonical link.`);
   if (/Michael Hendrick|AboutMe\.(?:png|webp)|about#author/i.test(html)) fail(`${relativePath}: contains retired personal attribution.`);
   if (!/<meta\s+name=["']author["']\s+content=["']Hurricane Coast["']/i.test(html)) fail(`${relativePath}: author metadata must name Hurricane Coast.`);
-  const isHomepage = relativePath === "index.html" || relativePath === "es/index.html";
-  const expectedModifiedDate = isHomepage ? "2026-09-01" : "2026-07-14";
-  if (relativePath !== "404.html" && !new RegExp(`"dateModified":\\s*"${expectedModifiedDate}"`).test(html)) {
-    fail(`${relativePath}: dateModified must be ${expectedModifiedDate}.`);
+  if (relativePath !== "404.html" && !/"dateModified":\s*"2026-09-02"/.test(html)) {
+    fail(`${relativePath}: dateModified must be 2026-09-02.`);
   }
-  const reviewDate = isHomepage
-    ? (isSpanish
-      ? /(?:Última revisión:|Revisado el)\s*(?:<[^>]+>)?1 de septiembre de 2026/i
-      : /(?:Last reviewed:|Reviewed)\s*(?:<[^>]+>)?September 1, 2026/i)
-    : (isSpanish
-      ? /(?:Última revisión:|Revisado el)\s*(?:<[^>]+>)?14 de julio de 2026/i
-      : /(?:Last reviewed:|Reviewed)\s*(?:<[^>]+>)?July 14, 2026/i);
+  const reviewDate = isSpanish
+    ? /(?:Última revisión:|Revisado el)\s*(?:<[^>]+>)?2 de septiembre de 2026/i
+    : /(?:Last reviewed:|Reviewed)\s*(?:<[^>]+>)?September 2, 2026/i;
   if (!reviewDate.test(html)) fail(`${relativePath}: visible review date does not match its expected review date.`);
-  if (isHomepage && /(?:July 14, 2026|14 de julio de 2026)/i.test(html)) {
-    fail(`${relativePath}: contains a stale homepage review date.`);
+  if (/(?:July 14, 2026|September 1, 2026|14 de julio de 2026|1 de septiembre de 2026)/i.test(html)) {
+    fail(`${relativePath}: contains a stale review date.`);
   }
 
   if (/\bdata-region=["'][^"']+["']/i.test(html)) regions += 1;

@@ -10,7 +10,6 @@ const root = path.resolve(__dirname, '..');
 const runtimeFiles = [
   'assets/js/share.js',
   'assets/js/feedback.js',
-  'assets/js/live-alert-ticker.js',
   'assets/js/hurricane-atlas.js',
   'assets/js/page-language-toggle.js'
 ];
@@ -128,29 +127,6 @@ test('Atlas reads every documented visual token from CSS with category fallbacks
   assert.match(atlasSource, /window\.getComputedStyle\(root\)/);
   assert.match(atlasSource, /ATLAS_COLORS\.selectedTrack/);
   assert.match(atlasSource, /CATEGORY_COLORS\[point\.category\]/);
-});
-
-test('live alerts expose localized loading, empty, active, and error states with accessible motion controls', () => {
-  const tickerSource = read('assets/js/live-alert-ticker.js');
-  const siteCss = read('assets/css/site.css');
-
-  ['loading', 'empty', 'ready', 'error'].forEach((state) => {
-    assert.match(tickerSource, new RegExp(`setTickerState\\(['"]${state}['"]\\)`), state);
-  });
-  assert.match(tickerSource, /No active NWS tropical alerts right now\./);
-  assert.match(tickerSource, /No hay alertas tropicales activas del NWS/);
-  assert.match(tickerSource, /Unable to load live NWS tropical alerts/);
-  assert.match(tickerSource, /No se pudieron cargar las alertas tropicales/);
-  assert.match(tickerSource, /encodeURIComponent\(tropicalEvents\.join\(','\)\)/);
-  assert.doesNotMatch(tickerSource, /return ['"]event=['"] \+ encodeURIComponent\(eventName\)/);
-  assert.match(tickerSource, /item\.dataset\.level\s*=\s*\/Watch\$\//);
-  assert.match(tickerSource, /visualClone\.setAttribute\(['"]aria-hidden['"], ['"]true['"]\)/);
-  assert.match(tickerSource, /second\.setAttribute\(['"]aria-hidden['"], ['"]true['"]\)/);
-  assert.match(siteCss, /\.live-alert-ticker:hover[\s\S]*?animation-play-state:\s*paused/);
-  assert.match(siteCss, /\.live-alert-ticker:focus-within[\s\S]*?animation-play-state:\s*paused/);
-  assert.match(siteCss, /\.live-alert-ticker-item\[data-level=['"]watch['"]\][\s\S]*?--color-watch-indicator/);
-  assert.match(siteCss, /\.live-alert-ticker\[data-state=['"]error['"]\][\s\S]*?--color-danger-indicator/);
-  assert.match(siteCss, /@media\s*\(prefers-reduced-motion:\s*reduce\)[\s\S]*?\.live-alert-ticker-track-inner[\s\S]*?animation:\s*none/);
 });
 
 test('feedback and Atlas failure paths retain semantic, localized status copy', () => {

@@ -85,7 +85,7 @@
         "publisher": {
           "@id": "https://hurricanecoast.me/#organization"
         },
-        "dateModified": "2026-09-01",
+        "dateModified": "2026-09-02",
         "breadcrumb": {
           "@id": "https://hurricanecoast.me/#breadcrumb"
         }
@@ -128,20 +128,6 @@
     </div>
   </div>
 </nav>
-
-  <aside class="live-alert-ticker" aria-label="Live National Weather Service tropical alerts" data-live-alert-ticker data-state="loading">
-    <a class="live-alert-ticker-label" href="https://www.weather.gov/alerts/active" target="_blank" rel="noopener">
-      <span class="live-alert-ticker-label-dot" aria-hidden="true"></span>
-      Live · NWS tropical alerts
-    </a>
-    <div class="live-alert-ticker-track" aria-live="polite">
-      <div class="live-alert-ticker-track-inner" data-live-alert-items>
-        <span class="live-alert-ticker-empty">Loading live NWS tropical alerts…</span>
-        <span class="live-alert-ticker-empty" aria-hidden="true">Loading live NWS tropical alerts…</span>
-      </div>
-    </div>
-    <span class="live-alert-ticker-readout" data-live-alert-updated>NWS · Connecting…</span>
-  </aside>
 
   <main>
 
@@ -210,10 +196,10 @@
       <div class="container home-editorial-grid">
         <div class="home-editorial-heading">
           <p class="editorial-note-eyebrow">2026 season update</p>
-          <h2>Edouard is inland. Flooding remains the main concern.</h2>
+          <h2>Edouard has weakened. Flooding remains the main concern.</h2>
         </div>
         <div class="home-editorial-body">
-          <p class="prose">Updated September 1 at 4 p.m. CDT: <a href="https://www.nhc.noaa.gov/archive/2026/EDOUARD.shtml" target="_blank" rel="noopener">Tropical Storm Edouard</a> made landfall near Johnson Bayou, Louisiana, this afternoon and is moving inland across eastern Texas. The National Hurricane Center says gusty winds and heavy rain continue across southeastern Texas, with significant flash flooding possible. Follow alerts from your local National Weather Service office and instructions from local officials.</p>
+          <p class="prose">Updated September 2 at 4 a.m. CDT: <a href="https://www.nhc.noaa.gov/archive/2026/EDOUARD.shtml" target="_blank" rel="noopener">Edouard</a> has weakened to a tropical depression over eastern Texas. The National Hurricane Center has issued its final advisory, and the <a href="https://www.wpc.ncep.noaa.gov/" target="_blank" rel="noopener">Weather Prediction Center</a> is continuing updates while the system remains a flood threat. Flood watches remain in effect from the Upper Texas Coast into parts of eastern Texas. Follow alerts from your local National Weather Service office and instructions from local officials.</p>
           <p class="prose">Edouard is the fifth named storm of the Atlantic season; no Atlantic hurricanes have formed so far. <a href="https://www.cpc.ncep.noaa.gov/products/outlooks/hurricane.shtml" target="_blank" rel="noopener">NOAA's August 6 update</a> gives a 75% chance of a below-normal season and calls for 7-13 named storms, 2-6 hurricanes, and 0-2 major hurricanes. The peak months are still underway, and a quieter seasonal forecast does not predict the risk to any one coast.</p>
         </div>
       </div>
@@ -296,7 +282,7 @@
         <div class="editorial-note">
           <p class="editorial-note-eyebrow">Editorial note</p>
           <h2>How this guidance is reviewed</h2>
-          <p>This page was reviewed on <strong>September 1, 2026</strong>. Hurricane Coast is an independent preparedness project with no ads or affiliate links.</p>
+          <p>This page was reviewed on <strong>September 2, 2026</strong>. Hurricane Coast is an independent preparedness project with no ads or affiliate links.</p>
           <p>This guidance is checked against Ready.gov, the National Hurricane Center, the National Weather Service, FEMA, and the state or local emergency management sources linked on the page.</p>
           <p>Use this page to prepare early. When local officials issue evacuation orders, shelter instructions, weather alerts, or medical guidance, follow those primary sources first.</p>
         </div>
@@ -309,51 +295,9 @@
     <div class="container-wide">
       <p>A supplement, not a replacement for your <a href="https://www.ready.gov/local">local emergency management office</a>.</p>
       <p><a href="./">Hurricane Coast</a></p>
-      <p>Last reviewed: September 1, 2026</p>
+      <p>Last reviewed: September 2, 2026</p>
     </div>
   </footer>
-  <script>
-    (function () {
-      var bootTimer = window.setTimeout(function () {
-        if (window.HSLLiveAlertTickerBooted) {
-          return;
-        }
-
-        var track = document.querySelector('[data-live-alert-items]');
-        var readout = document.querySelector('[data-live-alert-updated]');
-
-        if (track) {
-          track.classList.add('is-static');
-          track.innerHTML = '<span class="live-alert-ticker-empty">Unable to load live NWS tropical alerts right now. The ticker script did not start.</span>';
-        }
-
-        if (readout) {
-          readout.textContent = 'NWS · Script error';
-        }
-      }, 4000);
-
-      window.HSLLiveAlertTickerScriptLoaded = function () {
-        window.HSLLiveAlertTickerBooted = true;
-        window.clearTimeout(bootTimer);
-      };
-
-      window.HSLLiveAlertTickerScriptError = function () {
-        window.clearTimeout(bootTimer);
-
-        var track = document.querySelector('[data-live-alert-items]');
-        var readout = document.querySelector('[data-live-alert-updated]');
-
-        if (track) {
-          track.classList.add('is-static');
-          track.innerHTML = '<span class="live-alert-ticker-empty">Unable to load live NWS tropical alerts right now. The ticker script failed to load.</span>';
-        }
-
-        if (readout) {
-          readout.textContent = 'NWS · Script load error';
-        }
-      };
-    })();
-  </script>
   <script>
     (function () {
       var el = document.getElementById('season-countdown');
@@ -380,7 +324,6 @@
       if (html) el.innerHTML = html;
     })();
   </script>
-  <script src="assets/js/live-alert-ticker.js?v=20260901a" onerror="window.HSLLiveAlertTickerScriptError && window.HSLLiveAlertTickerScriptError()"></script>
   <script src="assets/js/share.js"></script>
   <script src="assets/js/feedback.js"></script>
 </body>

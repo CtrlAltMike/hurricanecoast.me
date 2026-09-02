@@ -86,7 +86,7 @@
         "publisher": {
           "@id": "https://hurricanecoast.me/#organization"
         },
-        "dateModified": "2026-09-01",
+        "dateModified": "2026-09-02",
         "breadcrumb": {
           "@id": "https://hurricanecoast.me/es/#breadcrumb"
         }
@@ -129,20 +129,6 @@
     </div>
   </div>
 </nav>
-
-  <aside class="live-alert-ticker" aria-label="Alertas tropicales en vivo del Servicio Meteorológico Nacional" data-live-alert-ticker data-state="loading">
-    <a class="live-alert-ticker-label" href="https://www.weather.gov/alerts/active" target="_blank" rel="noopener">
-      <span class="live-alert-ticker-label-dot" aria-hidden="true"></span>
-      En vivo · Alertas tropicales del NWS
-    </a>
-    <div class="live-alert-ticker-track" aria-live="polite">
-      <div class="live-alert-ticker-track-inner" data-live-alert-items>
-        <span class="live-alert-ticker-empty">Cargando alertas tropicales del NWS…</span>
-        <span class="live-alert-ticker-empty" aria-hidden="true">Cargando alertas tropicales del NWS…</span>
-      </div>
-    </div>
-    <span class="live-alert-ticker-readout" data-live-alert-updated>NWS · Conectando…</span>
-  </aside>
 
   <main>
 
@@ -211,10 +197,10 @@
       <div class="container home-editorial-grid">
         <div class="home-editorial-heading">
           <p class="editorial-note-eyebrow">Actualización de la temporada 2026</p>
-          <h2>Edouard está tierra adentro. El riesgo de inundaciones continúa.</h2>
+          <h2>Edouard se ha debilitado. El riesgo de inundaciones continúa.</h2>
         </div>
         <div class="home-editorial-body">
-          <p class="prose">Actualizado el 1 de septiembre a las 4 p.m. CDT: la <a href="https://www.nhc.noaa.gov/archive/2026/EDOUARD.shtml" target="_blank" rel="noopener">tormenta tropical Edouard</a> tocó tierra cerca de Johnson Bayou, Luisiana, esta tarde y se desplaza tierra adentro por el este de Texas. El National Hurricane Center informa que las lluvias intensas y las ráfagas continúan en el sureste de Texas, con posibilidad de inundaciones repentinas significativas. Siga las alertas de su oficina local del National Weather Service y las instrucciones de las autoridades locales.</p>
+          <p class="prose">Actualizado el 2 de septiembre a las 4 a.m. CDT: <a href="https://www.nhc.noaa.gov/archive/2026/EDOUARD.shtml" target="_blank" rel="noopener">Edouard</a> se ha debilitado a depresión tropical sobre el este de Texas. El National Hurricane Center emitió su aviso final, y el <a href="https://www.wpc.ncep.noaa.gov/" target="_blank" rel="noopener">Weather Prediction Center</a> continúa publicando actualizaciones mientras el sistema siga representando una amenaza de inundación. Siguen vigentes vigilancias de inundación desde la costa superior de Texas hasta partes del este del estado. Siga las alertas de su oficina local del National Weather Service y las instrucciones de las autoridades locales.</p>
           <p class="prose">Edouard es la quinta tormenta con nombre de la temporada del Atlántico; hasta ahora no se ha formado ningún huracán en el Atlántico. La <a href="https://www.cpc.ncep.noaa.gov/products/outlooks/hurricane.shtml" target="_blank" rel="noopener">actualización de NOAA del 6 de agosto</a> indica un 75% de probabilidad de una temporada por debajo de lo normal y prevé 7-13 tormentas con nombre, 2-6 huracanes y 0-2 huracanes intensos. Los meses de mayor actividad aún están en curso, y un pronóstico estacional más tranquilo no predice el riesgo para una costa en particular.</p>
         </div>
       </div>
@@ -297,7 +283,7 @@
         <div class="editorial-note">
           <p class="editorial-note-eyebrow">Nota editorial</p>
           <h2>Cómo se revisa esta guía</h2>
-          <p>Esta página fue revisada el <strong>1 de septiembre de 2026</strong>. Hurricane Coast es un proyecto independiente de preparación, sin anuncios ni enlaces de afiliados.</p>
+          <p>Esta página fue revisada el <strong>2 de septiembre de 2026</strong>. Hurricane Coast es un proyecto independiente de preparación, sin anuncios ni enlaces de afiliados.</p>
           <p>La orientación se contrasta con Ready.gov, el National Hurricane Center, el National Weather Service, FEMA y las oficinas estatales o locales de manejo de emergencias enlazadas en la página.</p>
           <p>Use esta guía para prepararse con anticipación. Cuando las autoridades locales emitan órdenes de evacuación, instrucciones de refugio, alertas meteorológicas o orientación médica, siga primero esas fuentes oficiales.</p>
         </div>
@@ -310,52 +296,10 @@
     <div class="container-wide">
       <p>Un complemento, no un sustituto de su <a href="https://www.ready.gov/local">oficina local de manejo de emergencias</a>.</p>
       <p><a href="./">Hurricane Coast</a></p>
-      <p>Última revisión: 1 de septiembre de 2026</p>
+      <p>Última revisión: 2 de septiembre de 2026</p>
     </div>
   </footer>
 
-  <script>
-    (function () {
-      var bootTimer = window.setTimeout(function () {
-        if (window.HSLLiveAlertTickerBooted) {
-          return;
-        }
-
-        var track = document.querySelector('[data-live-alert-items]');
-        var readout = document.querySelector('[data-live-alert-updated]');
-
-        if (track) {
-          track.classList.add('is-static');
-          track.innerHTML = '<span class="live-alert-ticker-empty">No se pueden cargar las alertas tropicales del NWS en este momento. El script del ticker no se inició.</span>';
-        }
-
-        if (readout) {
-          readout.textContent = 'NWS · Error de script';
-        }
-      }, 4000);
-
-      window.HSLLiveAlertTickerScriptLoaded = function () {
-        window.HSLLiveAlertTickerBooted = true;
-        window.clearTimeout(bootTimer);
-      };
-
-      window.HSLLiveAlertTickerScriptError = function () {
-        window.clearTimeout(bootTimer);
-
-        var track = document.querySelector('[data-live-alert-items]');
-        var readout = document.querySelector('[data-live-alert-updated]');
-
-        if (track) {
-          track.classList.add('is-static');
-          track.innerHTML = '<span class="live-alert-ticker-empty">No se pueden cargar las alertas tropicales del NWS en este momento. El script del ticker no se pudo cargar.</span>';
-        }
-
-        if (readout) {
-          readout.textContent = 'NWS · Error al cargar el script';
-        }
-      };
-    })();
-  </script>
   <script>
     (function () {
       var el = document.getElementById('season-countdown');
@@ -382,7 +326,6 @@
       if (html) el.innerHTML = html;
     })();
   </script>
-  <script src="../assets/js/live-alert-ticker.js?v=20260901a" onerror="window.HSLLiveAlertTickerScriptError && window.HSLLiveAlertTickerScriptError()"></script>
   <script src="../assets/js/share.js"></script>
   <script src="../assets/js/feedback.js"></script>
 </body>
