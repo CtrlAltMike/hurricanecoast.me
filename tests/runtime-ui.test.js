@@ -141,6 +141,8 @@ test('live alerts expose localized loading, empty, active, and error states with
   assert.match(tickerSource, /No hay alertas tropicales activas del NWS/);
   assert.match(tickerSource, /Unable to load live NWS tropical alerts/);
   assert.match(tickerSource, /No se pudieron cargar las alertas tropicales/);
+  assert.match(tickerSource, /encodeURIComponent\(tropicalEvents\.join\(','\)\)/);
+  assert.doesNotMatch(tickerSource, /return ['"]event=['"] \+ encodeURIComponent\(eventName\)/);
   assert.match(tickerSource, /item\.dataset\.level\s*=\s*\/Watch\$\//);
   assert.match(tickerSource, /visualClone\.setAttribute\(['"]aria-hidden['"], ['"]true['"]\)/);
   assert.match(tickerSource, /second\.setAttribute\(['"]aria-hidden['"], ['"]true['"]\)/);

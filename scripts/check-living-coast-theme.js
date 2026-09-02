@@ -71,11 +71,22 @@ for (const relativePath of productionPages) {
   if (!/<link\s+rel=["']canonical["']/i.test(html)) fail(`${relativePath}: missing canonical link.`);
   if (/Michael Hendrick|AboutMe\.(?:png|webp)|about#author/i.test(html)) fail(`${relativePath}: contains retired personal attribution.`);
   if (!/<meta\s+name=["']author["']\s+content=["']Hurricane Coast["']/i.test(html)) fail(`${relativePath}: author metadata must name Hurricane Coast.`);
-  if (relativePath !== "404.html" && !/"dateModified":\s*"2026-07-14"/.test(html)) fail(`${relativePath}: dateModified must be 2026-07-14.`);
-  const reviewDate = isSpanish
-    ? /(?:Última revisión:|Revisado el)\s*(?:<[^>]+>)?14 de julio de 2026/i
-    : /(?:Last reviewed:|Reviewed)\s*(?:<[^>]+>)?July 14, 2026/i;
-  if (!reviewDate.test(html)) fail(`${relativePath}: visible review date must be July 14, 2026.`);
+  const isHomepage = relativePath === "index.html" || relativePath === "es/index.html";
+  const expectedModifiedDate = isHomepage ? "2026-09-01" : "2026-07-14";
+  if (relativePath !== "404.html" && !new RegExp(`"dateModified":\\s*"${expectedModifiedDate}"`).test(html)) {
+    fail(`${relativePath}: dateModified must be ${expectedModifiedDate}.`);
+  }
+  const reviewDate = isHomepage
+    ? (isSpanish
+      ? /(?:Última revisión:|Revisado el)\s*(?:<[^>]+>)?1 de septiembre de 2026/i
+      : /(?:Last reviewed:|Reviewed)\s*(?:<[^>]+>)?September 1, 2026/i)
+    : (isSpanish
+      ? /(?:Última revisión:|Revisado el)\s*(?:<[^>]+>)?14 de julio de 2026/i
+      : /(?:Last reviewed:|Reviewed)\s*(?:<[^>]+>)?July 14, 2026/i);
+  if (!reviewDate.test(html)) fail(`${relativePath}: visible review date does not match its expected review date.`);
+  if (isHomepage && /(?:July 14, 2026|14 de julio de 2026)/i.test(html)) {
+    fail(`${relativePath}: contains a stale homepage review date.`);
+  }
 
   if (/\bdata-region=["'][^"']+["']/i.test(html)) regions += 1;
   if (/<nav\b[^>]*class=["'][^"']*\bsite-nav\b/i.test(html)) {

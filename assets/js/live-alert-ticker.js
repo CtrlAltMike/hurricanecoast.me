@@ -60,10 +60,8 @@
     'Tropical Storm Watch': 'Vigilancia de tormenta tropical'
   } : Object.create(null);
 
-  var endpoint = 'https://api.weather.gov/alerts/active?'
-    + tropicalEvents.map(function (eventName) {
-      return 'event=' + encodeURIComponent(eventName);
-    }).join('&');
+  var endpoint = 'https://api.weather.gov/alerts/active?event='
+    + encodeURIComponent(tropicalEvents.join(','));
 
   var refreshMs = 30 * 60 * 1000;
   var visibilityThrottleMs = 60 * 1000;
