@@ -52,8 +52,8 @@ const productionPages = Array.from(sitemap.matchAll(/<loc>([^<]+)<\/loc>/g), (ma
 productionPages.push("404.html");
 if (productionPages.length !== 68) fail(`Expected 68 production pages; found ${productionPages.length}.`);
 const sitemapReviewDates = Array.from(sitemap.matchAll(/<lastmod>([^<]+)<\/lastmod>/g), (match) => match[1]);
-if (sitemapReviewDates.length !== productionPages.length - 1 || sitemapReviewDates.some((date) => date !== "2026-09-02")) {
-  fail("Every sitemap URL must have a 2026-09-02 lastmod date.");
+if (sitemapReviewDates.length !== productionPages.length - 1 || sitemapReviewDates.some((date) => date !== "2026-10-09")) {
+  fail("Every sitemap URL must have a 2026-10-09 lastmod date.");
 }
 
 let regions = 0;
@@ -75,14 +75,14 @@ for (const relativePath of productionPages) {
   if (!/<link\s+rel=["']canonical["']/i.test(html)) fail(`${relativePath}: missing canonical link.`);
   if (/Michael Hendrick|AboutMe\.(?:png|webp)|about#author/i.test(html)) fail(`${relativePath}: contains retired personal attribution.`);
   if (!/<meta\s+name=["']author["']\s+content=["']Hurricane Coast["']/i.test(html)) fail(`${relativePath}: author metadata must name Hurricane Coast.`);
-  if (relativePath !== "404.html" && !/"dateModified":\s*"2026-09-02"/.test(html)) {
-    fail(`${relativePath}: dateModified must be 2026-09-02.`);
+  if (relativePath !== "404.html" && !/"dateModified":\s*"2026-10-09"/.test(html)) {
+    fail(`${relativePath}: dateModified must be 2026-10-09.`);
   }
   const reviewDate = isSpanish
-    ? /(?:Última revisión:|Revisado el)\s*(?:<[^>]+>)?2 de septiembre de 2026/i
-    : /(?:Last reviewed:|Reviewed)\s*(?:<[^>]+>)?September 2, 2026/i;
+    ? /(?:Última revisión:|Revisado el)\s*(?:<[^>]+>)?9 de octubre de 2026/i
+    : /(?:Last reviewed:|Reviewed)\s*(?:<[^>]+>)?October 9, 2026/i;
   if (!reviewDate.test(html)) fail(`${relativePath}: visible review date does not match its expected review date.`);
-  if (/(?:July 14, 2026|September 1, 2026|14 de julio de 2026|1 de septiembre de 2026)/i.test(html)) {
+  if (/(?:July 14, 2026|September 1, 2026|September 2, 2026|14 de julio de 2026|1 de septiembre de 2026|2 de septiembre de 2026)/i.test(html)) {
     fail(`${relativePath}: contains a stale review date.`);
   }
 
