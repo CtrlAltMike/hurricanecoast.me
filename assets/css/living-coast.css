@@ -1392,3 +1392,30 @@ body.living-coast.hurricane-atlas-body,
     display: none !important;
   }
 }
+
+.living-coast .live-notice {
+  margin: 0 0 1.25rem;
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--almanac-satsuma);
+  border-radius: 6px;
+  background: var(--almanac-clean);
+  color: var(--almanac-ink);
+}
+
+.living-coast .live-notice p {
+  margin: 0 0 0.5rem;
+}
+
+.living-coast .live-notice-title {
+  font-weight: 700;
+  color: var(--almanac-satsuma);
+}
+
+.living-coast .live-notice-links {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.living-coast .live-notice-links li {
+  margin: 0.25rem 0;
+}
