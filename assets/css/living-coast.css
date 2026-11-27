@@ -578,6 +578,59 @@ body.living-coast {
   line-height: 1.65;
 }
 
+/* NowWePlan bridge: optional, disclosed, and quieter than the page's own actions.
+   Shares the editorial note's column so the two read as one closing sequence. */
+.living-coast .nowweplan-band {
+  padding: 48px 0 52px;
+  border-top: 1px solid var(--almanac-rule);
+  background: var(--almanac-paper);
+}
+
+.living-coast .nowweplan-bridge {
+  width: min(720px, calc(100vw - 64px));
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.living-coast .nowweplan-bridge-eyebrow {
+  margin: 0 0 10px;
+  color: var(--almanac-satsuma);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.living-coast .nowweplan-bridge h2 {
+  margin: 0 0 14px;
+  font-size: 30px;
+  line-height: 1.15;
+}
+
+.living-coast .nowweplan-bridge-copy {
+  max-width: 62ch;
+  margin: 0 0 22px;
+  color: var(--almanac-muted);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.living-coast .nowweplan-bridge-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+}
+
+.living-coast .nowweplan-bridge-note {
+  flex: 1 1 18rem;
+  max-width: 40ch;
+  margin: 0;
+  color: var(--almanac-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
 .living-coast .palm-footer-scene {
   display: none;
 }
@@ -1357,8 +1410,21 @@ body.living-coast.hurricane-atlas-body,
     border-top: 0;
   }
 
-  .living-coast .editorial-note {
+  .living-coast .editorial-note,
+  .living-coast .nowweplan-bridge {
     width: calc(100vw - 36px);
+  }
+
+  .living-coast .nowweplan-band {
+    padding: 40px 0 44px;
+  }
+
+  .living-coast .nowweplan-bridge h2 {
+    font-size: 26px;
+  }
+
+  .living-coast .nowweplan-bridge-actions .btn {
+    width: 100%;
   }
 
   .living-coast .site-footer .container-wide {
@@ -1388,6 +1454,7 @@ body.living-coast.hurricane-atlas-body,
   .living-coast .feedback-widget,
   .living-coast .inline-share-row,
   .living-coast .support-card,
+  .living-coast .nowweplan-band,
   .living-coast .editorial-note-block {
     display: none !important;
   }
